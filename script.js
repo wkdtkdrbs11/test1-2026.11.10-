@@ -29,7 +29,6 @@ const projectData = {
     `,
     results: [
       "KDB 산업은행 창업 프로젝트 최종 IR 피칭 및 <strong>장려상 수상</strong>",
-      "초기 MVP 포스터 가설 검증 실험에서 <strong>39명 유입 중 3명 가입 (전환율 7.7%)</strong> 달성",
       "대형 축제 단기 집약 거점 모델 및 순환식 '밀크런(Milk Run)' 물류 전략 수립 (TAM 2.4조, SAM 970억, SOM 18억 추정)"
     ],
     downloadFile: "assets/files/IR_deck.pptx",

@@ -1,80 +1,107 @@
 /* ===================================================================
-   FRONTEND DESIGN & MODERN MINIMALIST THEME
-   Tailored for Marketer Jang Sanggyun Portfolio
+   TOSS DESIGN SYSTEM — Applied to Marketer Jang Sanggyun Portfolio
+   Based on Toss Business (toss.im/business) design language
+   Primary: #2972e8 | Radius-card: 32px | Subtle shadows
    =================================================================== */
 
+/* ——— Toss Color Tokens ——— */
 :root {
+  --tds-blue-50:  #ebf2ff;
+  --tds-blue-100: #d6e5ff;
+  --tds-blue-200: #adc9ff;
+  --tds-blue-300: #80abff;
+  --tds-blue-400: #5590ff;
+  --tds-blue-500: #3578f7;
+  --tds-blue-600: #2972e8;  /* Primary */
+  --tds-blue-700: #1c5fd4;
+  --tds-blue-800: #1450be;
+  --tds-blue-900: #0e3fa5;
+
+  --tds-gray-50:  #f6f7f9;
+  --tds-gray-100: #eef0f4;
+  --tds-gray-200: #e1e4eb;
+  --tds-gray-300: #c8cdd8;
+  --tds-gray-400: #9ea6b8;
+  --tds-gray-500: #6e7a93;
+  --tds-gray-600: #4e5a73;
+  --tds-gray-700: #3a4459;
+  --tds-gray-800: #2b3348;
+  --tds-gray-900: #1c1f25;
+
   --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-full: 9999px;
 
-  --transition-fast: 0.15s ease;
+  /* Toss border-radius scale */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   14px;   /* buttons */
+  --radius-lg:   32px;   /* cards (Toss signature) */
+  --radius-full: 9999px; /* pills */
+
+  --transition-fast:   0.15s ease;
   --transition-normal: 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 /* --------------------------------------------------
-   DARK THEME (Deep Ink & Slate)
+   DARK THEME — Toss Dark
    -------------------------------------------------- */
 [data-theme="dark"] {
-  --bg-canvas: #090d16;
-  --bg-surface: #101623;
-  --bg-surface-elevated: #161f30;
-  --bg-subtle: #1c263b;
-  
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.14);
-  --border-focus: #38bdf8;
+  --bg-canvas:          #121318;
+  --bg-surface:         #1c1f25;
+  --bg-surface-elevated:#252930;
+  --bg-subtle:          #2d313a;
 
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-faint: #64748b;
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-medium: rgba(255, 255, 255, 0.12);
+  --border-focus:  var(--tds-blue-400);
 
-  --accent-primary: #38bdf8;
-  --accent-secondary: #818cf8;
-  --accent-badge-bg: rgba(56, 189, 248, 0.12);
-  --accent-badge-text: #7dd3fc;
+  --text-main:  #f6f7f9;
+  --text-muted: #9ea6b8;
+  --text-faint: #6e7a93;
 
-  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
-  --shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  --accent-primary:    var(--tds-blue-500);
+  --accent-secondary:  #818cf8;
+  --accent-badge-bg:   rgba(41, 114, 232, 0.15);
+  --accent-badge-text: var(--tds-blue-300);
 
-  --navbar-bg: rgba(9, 13, 22, 0.85);
-  --modal-backdrop: rgba(4, 7, 13, 0.8);
+  /* Toss-style subtle shadows */
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-card:   0 8px 32px -4px rgba(0, 0, 0, 0.45);
+  --shadow-modal:  0 24px 56px -8px rgba(0, 0, 0, 0.75);
+
+  --navbar-bg:      rgba(18, 19, 24, 0.88);
+  --modal-backdrop: rgba(0, 0, 0, 0.72);
 }
 
 /* --------------------------------------------------
-   LIGHT THEME (Warm Gallery Minimalist)
+   LIGHT THEME — Toss Light
    -------------------------------------------------- */
 [data-theme="light"] {
-  --bg-canvas: #f8fafc;
-  --bg-surface: #ffffff;
-  --bg-surface-elevated: #f1f5f9;
-  --bg-subtle: #e2e8f0;
+  --bg-canvas:          var(--tds-gray-50);   /* #f6f7f9 */
+  --bg-surface:         #ffffff;
+  --bg-surface-elevated:var(--tds-gray-100);  /* #eef0f4 */
+  --bg-subtle:          var(--tds-gray-200);  /* #e1e4eb */
 
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-medium: rgba(0, 0, 0, 0.14);
-  --border-focus: #0284c7;
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-medium: rgba(0, 0, 0, 0.11);
+  --border-focus:  var(--tds-blue-600);
 
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --text-faint: #94a3b8;
+  --text-main:  var(--tds-gray-900);  /* #1c1f25 */
+  --text-muted: var(--tds-gray-500);  /* #6e7a93 */
+  --text-faint: var(--tds-gray-400);  /* #9ea6b8 */
 
-  --accent-primary: #0284c7;
-  --accent-secondary: #4f46e5;
-  --accent-badge-bg: rgba(2, 132, 199, 0.08);
-  --accent-badge-text: #0284c7;
+  --accent-primary:    var(--tds-blue-600);  /* #2972e8 */
+  --accent-secondary:  #4f46e5;
+  --accent-badge-bg:   var(--tds-blue-50);   /* #ebf2ff */
+  --accent-badge-text: var(--tds-blue-700);  /* #1c5fd4 */
 
-  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow-card: 0 4px 16px -2px rgba(0, 0, 0, 0.08);
-  --shadow-modal: 0 20px 40px -8px rgba(15, 23, 42, 0.2);
+  /* Toss-style feather shadows */
+  --shadow-subtle: 0 2px 8px -1px rgba(0, 0, 0, 0.04);
+  --shadow-card:   0 8px 24px -4px rgba(0, 0, 0, 0.07);
+  --shadow-modal:  0 20px 48px -8px rgba(28, 31, 37, 0.18);
 
-  --navbar-bg: rgba(248, 250, 252, 0.88);
-  --modal-backdrop: rgba(15, 23, 42, 0.45);
+  --navbar-bg:      rgba(246, 247, 249, 0.90);
+  --modal-backdrop: rgba(28, 31, 37, 0.42);
 }
 
 /* ===================================================================
@@ -257,13 +284,18 @@ img {
 .btn-primary {
   background: var(--accent-primary);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+  box-shadow: 0 2px 10px rgba(41, 114, 232, 0.28);
 }
 
 .btn-primary:hover {
-  background: #0284c7;
+  background: var(--tds-blue-700);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+  box-shadow: 0 6px 18px rgba(41, 114, 232, 0.38);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(41, 114, 232, 0.22);
 }
 
 .btn-secondary {
