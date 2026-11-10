@@ -1,0 +1,181 @@
+/**
+ * Toss Design System (TDS) - Extracted from toss.im/business/shopping
+ * Clean, production-ready tokens and component styles
+ */
+
+:root {
+  /* ===================================================================
+     1. COLORS
+     =================================================================== */
+
+  /* Primary Brand (Toss Blue) */
+  --tds-blue-50:  #f2f8ff;
+  --tds-blue-100: #ebf4ff;
+  --tds-blue-200: #dcecfe;
+  --tds-blue-300: #bfdbfd;
+  --tds-blue-400: #93c0fc;
+  --tds-blue-500: #4396fb;
+  --tds-blue-600: #2972e8; /* Core Toss Blue */
+  --tds-blue-700: #2365cf;
+  --tds-blue-800: #1b57ae;
+  --tds-blue-900: #103d7c;
+
+  /* Grayscale (Light Mode) */
+  --tds-gray-0:   #ffffff;
+  --tds-gray-50:  #f6f7f9; /* Subtle Page Background */
+  --tds-gray-100: #f2f4f7; /* Card/Input Background */
+  --tds-gray-200: #e8ebf0; /* Light Divider/Border */
+  --tds-gray-300: #d4d9e1; /* Medium Border */
+  --tds-gray-400: #b8bdc5; /* Placeholder/Disabled */
+  --tds-gray-500: #8f959e; /* Faint Text */
+  --tds-gray-600: #727780; /* Tertiary Text */
+  --tds-gray-700: #4e535c; /* Secondary Text */
+  --tds-gray-800: #333840; /* Subtitle/Body Dark */
+  --tds-gray-900: #1c1f25; /* Primary Heading/Black */
+
+  /* Semantic Colors */
+  --tds-green-500: #1d8f6b;
+  --tds-green-100: #ebf9f4;
+  --tds-red-500:   #e42738;
+  --tds-red-100:   #fff0f1;
+  --tds-orange-500:#f29300;
+  --tds-orange-100:#fff7e6;
+
+  /* ===================================================================
+     2. TYPOGRAPHY
+     =================================================================== */
+  --tds-font-family: "Toss Product Sans", "Pretendard Variable", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  --tds-font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Font Sizes & Line Heights */
+  --tds-text-display: clamp(2.5rem, 5vw, 3.5rem); /* 40px - 56px */
+  --tds-leading-display: 1.25;
+  --tds-tracking-display: -0.035em;
+
+  --tds-text-h1: clamp(2rem, 3.5vw, 2.5rem);      /* 32px - 40px */
+  --tds-leading-h1: 1.3;
+  --tds-tracking-h1: -0.03em;
+
+  --tds-text-h2: clamp(1.5rem, 2.5vw, 1.85rem);   /* 24px - 30px */
+  --tds-leading-h2: 1.35;
+  --tds-tracking-h2: -0.025em;
+
+  --tds-text-h3: 1.25rem;                         /* 20px */
+  --tds-leading-h3: 1.4;
+  --tds-tracking-h3: -0.02em;
+
+  --tds-text-body-lg: 1.125rem;                   /* 18px */
+  --tds-leading-body-lg: 1.6;
+
+  --tds-text-body: 1rem;                          /* 16px */
+  --tds-leading-body: 1.65;
+
+  --tds-text-body-sm: 0.875rem;                   /* 14px */
+  --tds-leading-body-sm: 1.5;
+
+  --tds-text-caption: 0.75rem;                    /* 12px */
+  --tds-leading-caption: 1.4;
+
+  /* ===================================================================
+     3. BORDER RADIUS (Toss Signature Smooth Curvature)
+     =================================================================== */
+  --tds-radius-xs: 6px;
+  --tds-radius-sm: 10px;
+  --tds-radius-md: 14px;
+  --tds-radius-lg: 20px;
+  --tds-radius-xl: 28px;
+  --tds-radius-2xl: 32px;  /* Standard Card Curvature */
+  --tds-radius-3xl: 40px;  /* Hero / Banner Feature Box */
+  --tds-radius-full: 9999px; /* Pill / Chips */
+
+  /* ===================================================================
+     4. SHADOWS & ELEVATION
+     =================================================================== */
+  --tds-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --tds-shadow-card: 0 8px 24px -4px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  --tds-shadow-hover: 0 16px 36px -6px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+  --tds-shadow-float: 0 24px 48px -12px rgba(0, 0, 0, 0.12);
+
+  /* Transitions */
+  --tds-transition: 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ===================================================================
+   5. COMPONENT PRIMITIVES
+   =================================================================== */
+
+/* Primary Button (Toss Signature Solid Blue) */
+.tds-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  font-size: var(--tds-text-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  background-color: var(--tds-blue-600);
+  border: none;
+  border-radius: var(--tds-radius-md);
+  cursor: pointer;
+  transition: transform var(--tds-transition), background-color var(--tds-transition);
+}
+
+.tds-btn-primary:hover {
+  background-color: var(--tds-blue-700);
+  transform: translateY(-1px);
+}
+
+.tds-btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Secondary Button (Soft Gray) */
+.tds-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  font-size: var(--tds-text-body);
+  font-weight: 600;
+  color: var(--tds-gray-800);
+  background-color: var(--tds-gray-100);
+  border: none;
+  border-radius: var(--tds-radius-md);
+  cursor: pointer;
+  transition: var(--tds-transition);
+}
+
+.tds-btn-secondary:hover {
+  background-color: var(--tds-gray-200);
+}
+
+/* Soft Pill Badge */
+.tds-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: var(--tds-text-body-sm);
+  font-weight: 600;
+  color: var(--tds-blue-600);
+  background-color: var(--tds-blue-100);
+  border-radius: var(--tds-radius-full);
+}
+
+/* Signature Toss Round Card */
+.tds-card {
+  background-color: var(--tds-gray-0);
+  border-radius: var(--tds-radius-2xl); /* 32px */
+  padding: 36px 32px;
+  box-shadow: var(--tds-shadow-card);
+  border: 1px solid var(--tds-gray-200);
+  transition: transform var(--tds-transition), box-shadow var(--tds-transition);
+}
+
+.tds-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--tds-shadow-hover);
+}
