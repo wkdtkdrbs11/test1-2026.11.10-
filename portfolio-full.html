@@ -276,10 +276,15 @@
 
   <!-- Print action bar (Top) -->
   <div class="print-bar">
-    <span>📄 마케터 장상균 포트폴리오 — 전체 상세 펼침 버전 (인쇄/PDF 저장용)</span>
-    <button class="btn-print" onclick="window.print()">
-      <i class="fa-solid fa-print"></i> PDF로 인쇄 / 저장하기
-    </button>
+    <span>📄 마케터 장상균 포트폴리오 — 전체 상세 펼침 버전 (인쇄/PDF/PPT 저장용)</span>
+    <div style="display: flex; gap: 10px;">
+      <a href="마케터_장상균_포트폴리오.pptx" download class="btn-print" style="background: #10b981; text-decoration: none;">
+        <i class="fa-solid fa-file-powerpoint"></i> PPTX 다운로드
+      </a>
+      <button class="btn-print" onclick="window.print()">
+        <i class="fa-solid fa-print"></i> PDF로 인쇄 / 저장하기
+      </button>
+    </div>
   </div>
 
   <main>
