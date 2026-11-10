@@ -62,7 +62,7 @@ const projectData = {
     `,
     results: [
       "인스타그램 릴스 런칭 후 <strong>1개월 만에 오가닉 팔로워 200명 증가</strong>",
-      "릴스 바이럴 및 로컬 제휴 연계를 통해 <strong>전월 대비 매장 매출 25% 급상승</strong>",
+      "릴스 바이럴 및 로컬 제휴 연계를 통해 <strong>전월 대비 매장 매출 25% 상승</strong>",
       "인근 식당 5곳과의 지속 가능한 B2B 제휴 생태계 구축 및 일일 방문객 증대"
     ],
     downloadFile: null,
