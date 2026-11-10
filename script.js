@@ -5,6 +5,7 @@ const projectData = {
   smartbin: {
     category: "ESG & 순환경제 비즈니스 기획",
     title: "가상 브랜드 ‘스마트빈’ 기획",
+    image: "assets/images/smartbin.png",
     period: "2026. 03. 09 ~ 2026. 07. 05",
     role: "인터뷰 총괄, MVP 기획/제작, IR 피칭",
     team: "3명 (김동민, 장상균, 남윤성)",
@@ -38,6 +39,7 @@ const projectData = {
   cherrycoffee: {
     category: "F&B 지점 총괄 & 브랜드/로컬 마케팅",
     title: "카페 ‘체리커피 군자점’ 지점 운영 총괄",
+    image: "assets/images/cherrycoffee.jpg",
     period: "2023. 07. 15 ~ 2024. 06. 15 (1년)",
     role: "지점 총괄 운영, 로컬 마케팅, 릴스 콘텐츠 기획",
     team: "1명 (단독 총괄)",
@@ -72,6 +74,7 @@ const projectData = {
   startupclub: {
     category: "문제 정의 스프린트 & 린 MVP 가설 검증",
     title: "대학생 AI 교차검증 문제 정의 및 MVP 가설 검증",
+    image: "assets/images/ai-mvp-poster.jpg",
     period: "2026. 07. 10 ~ 현재 진행 중",
     role: "숭실지부장 (문제 정의 및 오프라인 MVP 실험 총괄)",
     team: "창업 프로젝트 팀",
@@ -280,6 +283,12 @@ function initModals() {
             <span class="tag">${p.team}</span>
           </div>
         </div>
+
+        ${p.image ? `
+          <div style="margin: 14px 0 20px 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-subtle); max-height: 280px; text-align: center; background: #ffffff;">
+            <img src="${p.image}" alt="${p.title}" style="max-height: 280px; width: 100%; object-fit: contain; display: block; margin: 0 auto;">
+          </div>
+        ` : ""}
 
         <div class="modal-meta-grid">
           <div class="modal-meta-item">
