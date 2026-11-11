@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마케터 장상균 | 포트폴리오 프레젠테이션 데크</title>
+
+  <!-- Pretendard Font & JetBrains Mono -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ===================================================================
+       TOSS & PITCH STYLE PRESENTATION DECK SYSTEM
+       Crafted for Marketer Jang Sanggyun Portfolio
+       =================================================================== */
+    :root {
+      --bg-dark: #121318;
+      --surface-dark: #1c1f25;
+      --bg-light: #f6f7f9;
+      --surface-light: #ffffff;
+      
+      --blue-primary: #2972e8;
+      --blue-subtle: #ebf2ff;
+      --blue-dark: #1c5fd4;
+      
+      --text-dark-main: #f6f7f9;
+      --text-dark-muted: #9ea6b8;
+      --text-light-main: #1c1f25;
+      --text-light-muted: #6e7a93;
+      --text-light-faint: #9ea6b8;
+      
+      --border-light: rgba(0, 0, 0, 0.08);
+      --border-dark: rgba(255, 255, 255, 0.08);
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 9999px;
+
+      --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #0b0c0e;
+      font-family: var(--font-sans);
+      overflow: hidden;
+      color: var(--text-light-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Deck Controls Top Bar */
+    .deck-topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      background: rgba(18, 19, 24, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+      z-index: 1000;
+      color: #fff;
+    }
+
+    .deck-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .deck-brand .dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+    }
+    .deck-brand .name {
+      color: #fff;
+    }
+    .deck-brand .sep {
+      color: #4e5a73;
+    }
+    .deck-brand .sub {
+      color: #9ea6b8;
+      font-weight: 400;
+      font-size: 0.88rem;
+    }
+
+    .deck-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .deck-btn {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f6f7f9;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+    .deck-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+    }
+    .deck-btn-primary {
+      background: var(--blue-primary);
+      border-color: transparent;
+      color: #ffffff;
+    }
+    .deck-btn-primary:hover {
+      background: var(--blue-dark);
+    }
+
+    /* Deck Viewport (Single Slide Presentation Mode) */
+    .deck-container {
+      width: 100vw;
+      height: calc(100vh - 56px);
+      margin-top: 56px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    /* Fixed 16:9 Aspect Ratio Slide Canvas */
+    .slide-canvas {
+      width: 100%;
+      max-width: 1280px;
+      aspect-ratio: 16 / 9;
+      max-height: calc(100vh - 104px);
+      background: var(--bg-light);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Slide Switcher Animation */
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transform: scale(0.985);
+      display: flex;
+      flex-direction: column;
+      padding: 48px 56px;
+      background: var(--bg-light);
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+      z-index: 10;
+    }
+
+    /* Dark Slides (Slide 1 & Slide 8) */
+    .slide.dark-theme {
+      background: var(--bg-dark);
+      color: var(--text-dark-main);
+    }
+
+    /* Slide Header */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+    .slide-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--blue-primary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .slide-tag::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue-primary);
+    }
+    .slide-title {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      color: var(--text-light-main);
+    }
+    .slide.dark-theme .slide-title {
+      color: var(--text-dark-main);
+    }
+    .slide-number {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-light-faint);
+    }
+
+    /* Slide Content Bodies */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      min-height: 0;
+    }
+
+    /* Bottom Navigation Bar inside Deck */
+    .deck-nav-bar {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(18, 19, 24, 0.88);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-pill);
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 100;
+      color: #fff;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+    .deck-nav-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.15s ease;
+    }
+    .deck-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+    .deck-nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .deck-counter {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #9ea6b8;
+    }
+    .deck-counter .current {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* ===================================================================
+       SLIDE-SPECIFIC DESIGNS
+       =================================================================== */
+
+    /* Slide 1: Cover */
+    .cover-layout {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      align-items: center;
+      gap: 40px;
+      height: 100%;
+    }
+    .cover-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(41, 114, 232, 0.15);
+      border-radius: var(--radius-pill);
+      color: #80abff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      margin-bottom: 24px;
+    }
+    .cover-headline {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.035em;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .cover-desc {
+      font-size: 1.15rem;
+      color: #9ea6b8;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+    .cover-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .cover-author .name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .cover-author .meta {
+      font-size: 0.9rem;
+      color: #6e7a93;
+    }
+    .cover-img-frame {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .cover-img {
+      width: 290px;
+      height: 360px;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* Slide 2: Key Metrics & Philosophy */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+      width: 100%;
+    }
+    .metric-box {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.04);
+    }
+    .metric-box .val {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--blue-primary);
+      font-family: var(--font-sans);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .metric-box .lbl {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-light-main);
+      margin-bottom: 2px;
+    }
+    .metric-box .sub {
+      font-size: 0.78rem;
+      color: var(--text-light-muted);
+      line-height: 1.35;
+    }
+
+    .phil-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      width: 100%;
+      flex: 1;
+    }
+    .phil-box {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .phil-box .p-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--blue-primary);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .phil-box h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-light-main);
+      margin-bottom: 10px;
+    }
+    .phil-box p {
+      font-size: 0.88rem;
+      color: var(--text-light-muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .phil-box .p-eg {
+      font-size: 0.8rem;
+      background: var(--bg-light);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      color: #3a4459;
+      line-height: 1.45;
+    }
+
+    /* Slide 3, 4, 5: Project Showcase */
+    .project-slide-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 36px;
+      width: 100%;
+      height: 100%;
+      align-items: start;
+    }
+
+    .proj-media-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.05);
+    }
+    .proj-media-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      background: #f1f3f6;
+    }
+    .proj-media-img.contain {
+      object-fit: contain;
+      background: #ffffff;
+    }
+    .proj-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .proj-pill {
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-light);
+      color: #4e5a73;
+    }
+    .proj-pill.highlight {
+      background: var(--blue-subtle);
+      color: var(--blue-dark);
+    }
+
+    .proj-detail-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+    .proj-card-block {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+    }
+    .proj-card-block h5 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--blue-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .proj-card-block p {
+      font-size: 0.88rem;
+      color: var(--text-light-muted);
+      line-height: 1.6;
+    }
+    .proj-card-block p strong {
+      color: var(--text-light-main);
+    }
+    .proj-res-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .proj-res-list li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 0.88rem;
+      color: var(--text-light-main);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    .proj-res-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--blue-primary);
+      font-weight: bold;
+    }
+
+    /* Slide 6: Stories (3 Columns) */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 100%;
+      height: 100%;
+    }
+    .story-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.04);
+    }
+    .story-num {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--blue-primary);
+      margin-bottom: 8px;
+    }
+    .story-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-light-main);
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .story-sub {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #6e7a93;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .story-body-text {
+      font-size: 0.88rem;
+      color: #4e5a73;
+      line-height: 1.7;
+      flex: 1;
+    }
+    .story-body-text strong {
+      color: var(--text-light-main);
+    }
+
+    /* Slide 7: Timeline & Skills (2 Columns) */
+    .timeline-grid-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      width: 100%;
+      height: 100%;
+    }
+    .tl-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 26px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .tl-card h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--blue-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .tl-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .tl-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .tl-item .t-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-light-main);
+    }
+    .tl-item .t-date {
+      font-size: 0.78rem;
+      color: var(--text-light-faint);
+      font-family: var(--font-mono);
+    }
+    .tl-item .t-sub {
+      font-size: 0.82rem;
+      color: var(--text-light-muted);
+      line-height: 1.45;
+    }
+
+    /* Slide 8: Closing */
+    .closing-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 40px;
+    }
+    .closing-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(41, 114, 232, 0.15);
+      border-radius: var(--radius-pill);
+      color: #80abff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      margin-bottom: 24px;
+    }
+    .closing-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.3;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      max-width: 800px;
+    }
+    .closing-desc {
+      font-size: 1.2rem;
+      color: #9ea6b8;
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: 40px;
+    }
+    .closing-contact-grid {
+      display: flex;
+      gap: 16px;
+    }
+    .contact-pill {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-pill);
+      padding: 10px 22px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contact-pill i {
+      color: var(--blue-primary);
+    }
+
+    /* Grid / Print Mode (When Toggled) */
+    body.grid-mode {
+      overflow-y: auto !important;
+    }
+    body.grid-mode .deck-container {
+      height: auto !important;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      padding: 40px 24px;
+    }
+    body.grid-mode .slide-canvas {
+      position: relative !important;
+      height: auto !important;
+      aspect-ratio: 16 / 9;
+      max-height: none !important;
+      margin-bottom: 30px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    }
+    body.grid-mode .slide {
+      position: relative !important;
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto !important;
+      inset: auto !important;
+      height: 100%;
+    }
+    body.grid-mode .deck-nav-bar {
+      display: none !important;
+    }
+
+    /* Print media: Export all 8 slides into 8 landscape pages */
+    @media print {
+      .deck-topbar, .deck-nav-bar {
+        display: none !important;
+      }
+      html, body {
+        background: #ffffff !important;
+        overflow: visible !important;
+        width: 100% !important;
+        height: auto !important;
+      }
+      .deck-container {
+        margin-top: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
+        display: block !important;
+        width: 100% !important;
+      }
+      .slide-canvas {
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        height: auto !important;
+        aspect-ratio: auto !important;
+        overflow: visible !important;
+        display: block !important;
+        background: transparent !important;
+      }
+      .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        transform: none !important;
+        display: flex !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        box-sizing: border-box !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        border-radius: 0 !important;
+        inset: auto !important;
+        padding: 44px 50px !important;
+      }
+      .slide.dark-theme {
+        background: #121318 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="deck-topbar">
+    <div class="deck-brand">
+      <span class="dot"></span>
+      <span class="name">장상균 마케터</span>
+      <span class="sep">/</span>
+      <span class="sub">Keynote Presentation Deck</span>
+    </div>
+
+    <div class="deck-actions">
+      <button class="deck-btn" id="btn-toggle-grid" title="모든 슬라이드를 스크롤로 펼쳐보기">
+        <i class="fa-solid fa-table-cells-large"></i> 전체 펼침 뷰
+      </button>
+      <button class="deck-btn deck-btn-primary" onclick="window.print()">
+        <i class="fa-solid fa-print"></i> PDF로 인쇄 / 저장
+      </button>
+      <a href="index.html" class="deck-btn">
+        <i class="fa-solid fa-house"></i> 메인 홈
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="deck-container">
+    <div class="slide-canvas">
+
+      <!-- SLIDE 1: Cover (Dark) -->
+      <section class="slide dark-theme active" data-slide="1">
+        <div class="cover-layout">
+          <div class="cover-text-col">
+            <div class="cover-badge">
+              <i class="fa-solid fa-bullseye"></i> BRAND & CRM MARKETER
+            </div>
+            <h1 class="cover-headline">
+              브랜드의 본질을 파악하고,<br>
+              데이터로 입증합니다.
+            </h1>
+            <p class="cover-desc">
+              고객이 제품을 선택하는 진짜 이유와 불편을 파고들어 가설을 세우고,<br>
+              현장에서 발로 뛰는 실험과 데이터로 성과를 입증하는 마케터 장상균입니다.
+            </p>
+            <div class="cover-author">
+              <div>
+                <div class="name">장상균 <span style="font-size: 0.9rem; font-weight: 400; color: #9ea6b8;">Sanggyun Jang</span></div>
+                <div class="meta">숭실대학교 벤처중소기업학과 • wkdtkdrbs11@naver.com</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cover-img-frame">
+            <img src="assets/images/profile.png" alt="장상균 프로필 사진" class="cover-img">
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: Metrics & Philosophy (Light) -->
+      <section class="slide" data-slide="2">
+        <div class="slide-header">
+          <div>
+            <div class="slide-tag">KEY IMPACT & PHILOSOPHY</div>
+            <h2 class="slide-title">숫자로 증명된 실행력과 3가지 핵심 태도</h2>
+          </div>
+          <div class="slide-number">02 / 08</div>
+        </div>
+
+        <div class="slide-body" style="flex-direction: column;">
+          <!-- 4 Metrics -->
+          <div class="metrics-row">
+            <div class="metric-box">
+              <div class="val">+25%</div>
+              <div class="lbl">매출 성장 견인</div>
+              <div class="sub">체리커피 릴스 마케팅 1개월 만에 달성</div>
+            </div>
+            <div class="metric-box">
+              <div class="val">200명+</div>
+              <div class="lbl">오가닉 팔로워 증가</div>
+              <div class="sub">상권 차별화 강점 발굴 및 릴스 제작</div>
+            </div>
+            <div class="metric-box">
+              <div class="val">45건</div>
+              <div class="lbl">현장 심층 인터뷰</div>
+              <div class="sub">쓰레기 선별장/축제 이해관계자 리서치</div>
+            </div>
+            <div class="metric-box">
+              <div class="val">7.7%</div>
+              <div class="lbl">MVP 가입 전환율</div>
+              <div class="sub">오프라인 포스터 가설 검증 (39명 중 3명 가입)</div>
+            </div>
+          </div>
+
+          <!-- 3 Philosophy Cards -->
+          <div class="phil-row">
+            <div class="phil-box">
+              <div>
+                <div class="p-tag">PRINCIPLE 01</div>
+                <h4>문제의 본질 정의</h4>
+                <p>"눈앞에 보이는 현상에 머무르지 않고, 고객이 선택하는 이유와 불편을 겪는 지점을 구체적으로 파고듭니다."</p>
+              </div>
+              <div class="p-eg">
+                <strong>실행 사례:</strong> 단순 인테리어 홍보 대신 '역세권 도심 속 교외 정원'으로 본질 가치 재정의
+              </div>
+            </div>
+
+            <div class="phil-box">
+              <div>
+                <div class="p-tag">PRINCIPLE 02</div>
+                <h4>데이터와 실험으로 검증</h4>
+                <p>"막연한 추측 대신 직접 가설을 세우고, 빠른 실험을 통해 숫자로 명확히 증명합니다."</p>
+              </div>
+              <div class="p-eg">
+                <strong>실행 사례:</strong> 개발 전 포스터 MVP 실험으로 고객 반응(전환율 7.7%)을 먼저 검증 후 실행
+              </div>
+            </div>
+
+            <div class="phil-box">
+              <div>
+                <div class="p-tag">PRINCIPLE 03</div>
+                <h4>발로 뛰는 현장 협업</h4>
+                <p>"모두가 꺼리는 현장이라도 꼭 필요한 정보라면 직접 발로 뛰어 확인하고 팀과 투명하게 나눕니다."</p>
+              </div>
+              <div class="p-eg">
+                <strong>실행 사례:</strong> 쓰레기 선별장을 직접 방문해 인터뷰하며 플라스틱 혼입 문제를 발견하고 피벗 주도
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3: Project 1 - Smartbin -->
+      <section class="slide" data-slide="3">
+        <div class="slide-header">
+          <div>
+            <div class="slide-tag">PROJECT 01 • ESG & CIRCULAR ECONOMY</div>
+            <h2 class="slide-title">가상 브랜드 ‘스마트빈’ 기획 및 순환경제 밸류체인 구축</h2>
+          </div>
+          <div class="slide-number">03 / 08</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="project-slide-grid">
+            <!-- Left Media & Metadata -->
+            <div class="proj-media-card">
+              <img src="assets/images/smartbin.png" alt="스마트빈 프로젝트" class="proj-media-img contain">
+              <div class="proj-pills">
+                <span class="proj-pill highlight">🏆 KDB 창업프로젝트 장려상</span>
+                <span class="proj-pill">기여도 40%</span>
+                <span class="proj-pill">3인 팀 프로젝트</span>
+                <span class="proj-pill">2026.03 ~ 2026.07</span>
+              </div>
+            </div>
+
+            <!-- Right Detail Columns -->
+            <div class="proj-detail-col">
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-circle-exclamation"></i> 1. 배경 및 문제 정의 (Problem)</h5>
+                <p>
+                  대형 축제와 무인카페의 일회용 플라스틱 컵은 약 90%가 빈 공기 상태로 버려져 수거 부피가 폭증하고 잔여 음료가 부패합니다. 
+                  이로 인해 <strong>실질 재활용률은 16.4%</strong>에 불과하며 주최 측은 막대한 청소 비용을 부담하고 있었습니다.
+                </p>
+              </div>
+
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-lightbulb"></i> 2. 45건 현장 인터뷰 및 피벗 인사이트 (Insight)</h5>
+                <p>
+                  단순 압축 쓰레기통 구상에서 벗어나 <strong>직접 쓰레기 선별장 관계자 45건 인터뷰</strong>를 진행했습니다. 
+                  플라스틱은 재질(PET/PP)이 섞여 압축되면 재활용 가치가 0원이 된다는 치명적 병목을 발견하고 <strong>'순환경제 밸류체인 모델'</strong>로 피벗했습니다.
+                </p>
+              </div>
+
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-screwdriver-wrench"></i> 3. 솔루션: 선별장 Skip형 고순도 r-PP 직송 밸류체인 (Solution)</h5>
+                <p>
+                  • <strong>단일 재질 통제:</strong> 무지 투명 PP 컵 3종만 사전 공급하여 혼입 원천 차단<br>
+                  • <strong>스마트빈 인프라:</strong> 음료 분리 및 발 페달식 물리 압축으로 부피 70% 절감<br>
+                  • <strong>턴키 직수거:</strong> 행사 종료 후 전량 자체 회수하여 재활용 공장에 고순도 r-PP 펠릿 직공급
+                </p>
+              </div>
+
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-trophy"></i> 4. 핵심 성과 (Results)</h5>
+                <ul class="proj-res-list">
+                  <li>KDB 산업은행 창업 프로젝트 최종 IR 피칭 및 <strong>장려상 수상</strong></li>
+                  <li>대형 축제 단기 집약 거점 모델 및 순환식 '밀크런(Milk Run)' 물류 전략 수립 (TAM 2.4조)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: Project 2 - Cherry Coffee -->
+      <section class="slide" data-slide="4">
+        <div class="slide-header">
+          <div>
+            <div class="slide-tag">PROJECT 02 • F&B BRAND & LOCAL MARKETING</div>
+            <h2 class="slide-title">카페 ‘체리커피 군자점’ 지점 운영 총괄 및 로컬 마케팅</h2>
+          </div>
+          <div class="slide-number">04 / 08</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="project-slide-grid">
+            <!-- Left Media & Metadata -->
+            <div class="proj-media-card">
+              <img src="assets/images/cherrycoffee.jpg" alt="체리커피 군자점" class="proj-media-img">
+              <div class="proj-pills">
+                <span class="proj-pill highlight">📈 1개월 만에 매출 25% 상승</span>
+                <span class="proj-pill">1인 단독 총괄 (100%)</span>
+                <span class="proj-pill">지점 운영 1년</span>
+                <span class="proj-pill">2023.07 ~ 2024.06</span>
+              </div>
+            </div>
+
+            <!-- Right Detail Columns -->
+            <div class="proj-detail-col">
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-circle-exclamation"></i> 1. 배경 및 과제 (Problem)</h5>
+                <p>
+                  군자역 인근 수많은 프랜차이즈와 개인 카페 사이에서 인지도와 재방문율을 높여야 했습니다. 
+                  기존 SNS 홍보는 단순 인테리어 사진 위주여서 차별점이 없었고, 유휴 시간대 고객 유입과 지역 단골 전환이 절실했습니다.
+                </p>
+              </div>
+
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-lightbulb"></i> 2. 핵심 강점 발굴 및 인사이트 (Insight)</h5>
+                <p>
+                  고객 관점에서 본질적인 매력을 분석했습니다. 
+                  단순히 예쁜 인테리어가 아니라 <strong>'지하철역 도보 3분 역세권이면서도 도심 속에서 교외 대형 정원 카페의 자연 채광과 테라스를 누릴 수 있다'</strong>는 공간적 가치가 핵심 차별화 강점임을 포착했습니다.
+                </p>
+              </div>
+
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-screwdriver-wrench"></i> 3. 3대 실행 전략 (Solution)</h5>
+                <p>
+                  • <strong>공간 강점 살린 숏폼 릴스 제작:</strong> 역 출구부터 정원 테라스로 이어지는 접근성 강조 릴스 기획·배포<br>
+                  • <strong>매장 경험(CX) 넛지 적용:</strong> 주문 카운터 시선 동선에 당일 시그니처 베이커리를 전략 배치해 객단가 유도<br>
+                  • <strong>로컬 B2B 상생 제휴:</strong> 인근 인기 식당 5곳과 상호 쿠폰 비치를 통해 점심 시간대 유입 극대화
+                </p>
+              </div>
+
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-trophy"></i> 4. 핵심 성과 (Results)</h5>
+                <ul class="proj-res-list">
+                  <li>인스타그램 릴스 런칭 후 <strong>1개월 만에 오가닉 팔로워 200명 증가</strong></li>
+                  <li>릴스 바이럴 및 로컬 제휴 연계를 통해 <strong>전월 대비 매장 매출 25% 상승</strong></li>
+                  <li>인근 식당 5곳과의 지속 가능한 B2B 제휴 생태계 구축</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5: Project 3 - AI MVP Sprint (Actual Poster!) -->
+      <section class="slide" data-slide="5">
+        <div class="slide-header">
+          <div>
+            <div class="slide-tag">PROJECT 03 • PROBLEM DEFINITION & LEAN MVP</div>
+            <h2 class="slide-title">대학생 AI 교차검증 문제 정의 및 포스터 MVP 가설 검증</h2>
+          </div>
+          <div class="slide-number">05 / 08</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="project-slide-grid">
+            <!-- Left Media: Actual Poster Image -->
+            <div class="proj-media-card">
+              <img src="assets/images/ai-mvp-poster.jpg" alt="실제 오프라인 MVP 포스터" class="proj-media-img contain" style="height: 270px;">
+              <div class="proj-pills">
+                <span class="proj-pill highlight">🎯 가입 전환율 7.7% 달성</span>
+                <span class="proj-pill">숭실지부장 총괄</span>
+                <span class="proj-pill">포스터 MVP 실험</span>
+                <span class="proj-pill">2026.07 ~ 진행 중</span>
+              </div>
+            </div>
+
+            <!-- Right Detail Columns -->
+            <div class="proj-detail-col">
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-circle-exclamation"></i> 1. 문제 인식과 멘토의 질문 (Problem)</h5>
+                <p>
+                  대학생들의 AI 활용을 보며 '신뢰성이 낮아 교차 검증에 시간을 낭비한다'고 보았으나, 
+                  멘토로부터 <em>"신뢰란 무엇인가? 문제가 너무 모호하다"</em>는 피드백을 받고 문제를 더 깊이 쪼개기로 판단했습니다.
+                </p>
+              </div>
+
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-lightbulb"></i> 2. 문제 쪼개기와 린 의사결정 (Insight)</h5>
+                <p>
+                  • <strong>'신뢰'</strong>는 답변의 정확성, <strong>'불필요한 시간'</strong>은 정확성을 재확인하기 위해 여러 AI를 오가는 교차검증 시간으로 뾰족하게 구체화했습니다.<br>
+                  • 개발 준비가 한 달 넘게 길어지자, 완성도를 높이기보다 <strong>실제 고객의 반응부터 먼저 검증하자</strong>고 제안해 팀의 빠른 동의를 이끌어냈습니다.
+                </p>
+              </div>
+
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-screwdriver-wrench"></i> 3. 오프라인 포스터 MVP 실험 설계 (Solution)</h5>
+                <p>
+                  • '교차검증 시간 단축' 메시지와 QR코드를 담은 오프라인 포스터를 신속히 제작<br>
+                  • 교수님들의 협조를 확보하여 강의실 및 학과 게시판 주요 동선에 포스터 배포<br>
+                  • 단순 조회가 아닌 <strong>'개인정보(이름/연락처)를 입력하고 가입'</strong>하는 높은 전환 장벽을 설정해 진성 수요 측정
+                </p>
+              </div>
+
+              <div class="proj-card-block">
+                <h5><i class="fa-solid fa-trophy"></i> 4. 정량적 성과 및 핵심 배움 (Results)</h5>
+                <ul class="proj-res-list">
+                  <li>교수님을 통해 배포한 포스터 실험에서 <strong>39명 유입 중 3명이 개인정보 입력 및 가입 (전환율 7.7% 달성)</strong></li>
+                  <li>막연한 개발 준비를 멈추고 <strong>실제 고객 데이터를 바탕으로 다음 단계 판단의 명확한 근거</strong> 마련</li>
+                  <li><strong>"문제를 깊이 정의하되, 적시에 가볍게 검증하여 다음 판단의 근거를 만드는 실행 기준"</strong> 체득</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6: 3 Professional Stories -->
+      <section class="slide" data-slide="6">
+        <div class="slide-header">
+          <div>
+            <div class="slide-tag">PROFESSIONAL STORY</div>
+            <h2 class="slide-title">마케터 장상균의 3가지 이야기 (일하는 방식과 태도)</h2>
+          </div>
+          <div class="slide-number">06 / 08</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="story-grid">
+            <div class="story-card">
+              <div class="story-num">01</div>
+              <div class="story-title">F&B와 마케팅에 빠져들게 된 계기</div>
+              <div class="story-sub">디테일이 만드는 실제 매출의 변화</div>
+              <div class="story-body-text">
+                1년간 카페를 총괄 운영하며 <strong>마케팅의 작은 디테일 하나가 실제 매장의 매출 곡선을 바꾼다</strong>는 사실을 체감하고 마케팅의 매력에 깊이 빠져들었습니다.<br><br>
+                단순히 음료를 파는 데 머물지 않고 '고객이 수많은 카페 중 왜 우리 매장을 찾아와야 하는가?'를 매일 치열하게 고민했고, 베이커리 넛지 진열과 역세권 정원 공간 릴스로 <strong>1달 만에 팔로워 200명 증가와 매출 25% 상승</strong>을 달성했습니다.
+              </div>
+            </div>
+
+            <div class="story-card">
+              <div class="story-num">02</div>
+              <div class="story-title">본질을 파고드는 집요함과 가설 검증</div>
+              <div class="story-sub">고객 행동의 진짜 이유를 규명하는 추진력</div>
+              <div class="story-body-text">
+                제 가장 큰 강점은 <strong>겉으로 드러난 현상에 머물지 않고, 고객이 그렇게 행동하는 진짜 이유를 끝까지 파고드는 것</strong>입니다.<br><br>
+                창업 프로젝트 당시 'AI 답변 신뢰 부족'을 '정확성 재검증에 소모되는 시간 비용'으로 뾰족하게 재정의했습니다. 준비가 길어지자 탁상공론을 멈추고 포스터 MVP 실험을 제안해 <strong>39명 중 3명의 사전 가입(전환율 7.7%)을 입증</strong>하며 팀의 불확실성을 해소했습니다.
+              </div>
+            </div>
+
+            <div class="story-card">
+              <div class="story-num">03</div>
+              <div class="story-title">남들이 꺼리는 현장에 뛰어드는 협업</div>
+              <div class="story-sub">발로 뛰어 얻은 날것의 정보 공유</div>
+              <div class="story-body-text">
+                저는 협업할 때 <strong>서로의 상황을 먼저 배려하고, 각자 현장에서 발로 뛰며 얻은 생생한 정보를 투명하게 나눌 때 가장 올바른 결정이 나온다</strong>고 믿습니다.<br><br>
+                스마트빈 프로젝트 당시 열악한 재활용 선별장 방문 조사는 누구나 꺼리는 일이었지만, 직접 찾아가 인터뷰하며 '재질 혼합 시 가치 0원'이라는 치명적 병목을 발견했습니다. 이를 팀과 공유해 <strong>순환경제 직송 밸류체인으로 사업 피벗</strong>을 이끌었습니다.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: Timeline & Skillset -->
+      <section class="slide" data-slide="7">
+        <div class="slide-header">
+          <div>
+            <div class="slide-tag">TIMELINE & SKILLSET</div>
+            <h2 class="slide-title">주요 이력, 활동 및 실무 역량 요약</h2>
+          </div>
+          <div class="slide-number">07 / 08</div>
+        </div>
+
+        <div class="slide-body">
+          <div class="timeline-grid-layout">
+            <!-- Left: Timeline -->
+            <div class="tl-card">
+              <h4><i class="fa-solid fa-clock-rotate-left"></i> 주요 활동 및 경력</h4>
+              <div class="tl-list">
+                <div class="tl-item">
+                  <div class="t-head">
+                    <span>대학연합 창업동아리 | 숭실지부장</span>
+                    <span class="t-date">2026. 07 ~ 현재</span>
+                  </div>
+                  <div class="t-sub">타겟 고객 정의 및 린 가설 검증 스프린트 총괄</div>
+                </div>
+
+                <div class="tl-item">
+                  <div class="t-head">
+                    <span>KDB 산업은행 창업 프로젝트 | IR 피칭</span>
+                    <span class="t-date">2026. 03 ~ 07</span>
+                  </div>
+                  <div class="t-sub">'스마트빈' 순환경제 비즈니스 모델 기획 (장려상 수상)</div>
+                </div>
+
+                <div class="tl-item">
+                  <div class="t-head">
+                    <span>카페 체리커피 군자점 | 지점 운영 총괄</span>
+                    <span class="t-date">2023. 07 ~ 2024. 06</span>
+                  </div>
+                  <div class="t-sub">매출 25% 상승 견인, 오가닉 팔로워 200명 증가, 로컬 B2B 제휴</div>
+                </div>
+
+                <div class="tl-item">
+                  <div class="t-head">
+                    <span>숭실대학교 벤처중소기업학과</span>
+                    <span class="t-date">2021. 03 ~ 2027. 02</span>
+                  </div>
+                  <div class="t-sub">비즈니스 모델링, 스타트업 마케팅 및 기업가정신 전공 (졸업예정)</div>
+                </div>
+
+                <div class="tl-item">
+                  <div class="t-head">
+                    <span>39보병사단 대테러특수임무대 3팀 (SDT)</span>
+                    <span class="t-date">병장 만기전역</span>
+                  </div>
+                  <div class="t-sub">대테러 초동조치 및 특수경호 (강한 체력, 위기 대응력, 책임감)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Skills & Tools -->
+            <div class="tl-card">
+              <h4><i class="fa-solid fa-screwdriver-wrench"></i> 실무 역량 & 도구 숙련도</h4>
+              <div class="tl-list">
+                <div class="tl-item">
+                  <div class="t-head">
+                    <span>AI & 업무 생산성</span>
+                    <span class="t-date">Expert</span>
+                  </div>
+                  <div class="t-sub">
+                    • <strong>ChatGPT / Claude (5.0/5.0):</strong> 시장 리서치, 카피라이팅, 데이터 구조화<br>
+                    • <strong>Notion (4.0/5.0):</strong> 프로젝트 일정 관리, 관계형 DB 구축<br>
+                    • <strong>Sheets / Excel (4.0/5.0):</strong> 매출 분석, 수치 트래킹, 피벗테이블
+                  </div>
+                </div>
+
+                <div class="tl-item">
+                  <div class="t-head">
+                    <span>디자인 & 데이터 분석</span>
+                    <span class="t-date">Intermediate</span>
+                  </div>
+                  <div class="t-sub">
+                    • <strong>Figma (3.0/5.0):</strong> SNS 배너 기획, 와이어프레임 설계<br>
+                    • <strong>Photoshop (2.0/5.0):</strong> 이미지 보정 및 비주얼 애셋 가공<br>
+                    • <strong>GA4 (1.5/5.0):</strong> 웹 유입 경로 분석 및 전환 이벤트 트래킹
+                  </div>
+                </div>
+
+                <div class="tl-item">
+                  <div class="t-head">
+                    <span>어학 성적 & 자격</span>
+                    <span class="t-date">Certified</span>
+                  </div>
+                  <div class="t-sub">
+                    • <strong>TOEIC 825점:</strong> 비즈니스 영어 커뮤니케이션 및 해외 아티클 독해<br>
+                    • <strong>자동차운전면허 1종 보통:</strong> 현장 기동 및 매장 물류 직접 운용 가능
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: Closing (Dark) -->
+      <section class="slide dark-theme" data-slide="8">
+        <div class="closing-wrap">
+          <div class="closing-badge">
+            <i class="fa-solid fa-handshake"></i> LET'S CONNECT & GROW
+          </div>
+          <h2 class="closing-title">
+            함께 더 큰 성장을 만들<br>
+            준비가 되었습니다
+          </h2>
+          <p class="closing-desc">
+            브랜드 마케팅 및 CRM 직무 기회, 커피챗이나 포트폴리오에 관한 어떤 질문이든 언제든 편하게 연락해 주세요.
+          </p>
+
+          <div class="closing-contact-grid">
+            <div class="contact-pill">
+              <i class="fa-regular fa-envelope"></i> wkdtkdrbs11@naver.com
+            </div>
+            <div class="contact-pill">
+              <i class="fa-solid fa-phone"></i> 010-5779-****
+            </div>
+            <div class="contact-pill">
+              <i class="fa-solid fa-location-dot"></i> 서울시 동작구 (숭실대학교)
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Bottom Navigation Bar inside Deck -->
+    <nav class="deck-nav-bar" id="deck-navbar">
+      <button class="deck-nav-btn" id="btn-prev" aria-label="이전 슬라이드">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <div class="deck-counter">
+        <span class="current" id="counter-current">1</span> / <span id="counter-total">8</span>
+      </div>
+      <button class="deck-nav-btn" id="btn-next" aria-label="다음 슬라이드">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </nav>
+  </main>
+
+  <script>
+    // Deck Interactive Navigation Script
+    let currentSlide = 1;
+    const totalSlides = 8;
+    const slides = document.querySelectorAll(".slide");
+    const counterCurrent = document.getElementById("counter-current");
+    const btnPrev = document.getElementById("btn-prev");
+    const btnNext = document.getElementById("btn-next");
+    const btnToggleGrid = document.getElementById("btn-toggle-grid");
+
+    function goToSlide(n) {
+      if (n < 1) n = 1;
+      if (n > totalSlides) n = totalSlides;
+      currentSlide = n;
+
+      slides.forEach((s, idx) => {
+        s.classList.toggle("active", idx + 1 === currentSlide);
+      });
+
+      counterCurrent.textContent = currentSlide;
+      btnPrev.disabled = currentSlide === 1;
+      btnNext.disabled = currentSlide === totalSlides;
+    }
+
+    btnPrev.addEventListener("click", () => goToSlide(currentSlide - 1));
+    btnNext.addEventListener("click", () => goToSlide(currentSlide + 1));
+
+    // Keyboard Arrow Keys Navigation
+    window.addEventListener("keydown", (e) => {
+      if (document.body.classList.contains("grid-mode")) return;
+      if (e.key === "ArrowRight" || e.key === "Space" || e.key === "PageDown") {
+        e.preventDefault();
+        goToSlide(currentSlide + 1);
+      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        e.preventDefault();
+        goToSlide(currentSlide - 1);
+      }
+    });
+
+    // Toggle Grid / Single Slide Mode
+    let isGridMode = false;
+    btnToggleGrid.addEventListener("click", () => {
+      isGridMode = !isGridMode;
+      document.body.classList.toggle("grid-mode", isGridMode);
+      if (isGridMode) {
+        btnToggleGrid.innerHTML = '<i class="fa-solid fa-desktop"></i> 슬라이드 뷰 모드';
+      } else {
+        btnToggleGrid.innerHTML = '<i class="fa-solid fa-table-cells-large"></i> 전체 펼침 뷰';
+        goToSlide(currentSlide);
+      }
+    });
+
+    // Initial State
+    goToSlide(1);
+  </script>
+</body>
+</html>
