@@ -400,15 +400,15 @@ entries = [
 ]
 
 for idx, (pill, title, desc) in enumerate(entries):
-    top_pos = Inches(1.3 + idx * 1.25)
-    card = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.8), top_pos, Inches(7.4), Inches(1.05))
+    top_pos = Inches(1.2 + idx * 1.3)
+    card = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.7), top_pos, Inches(7.5), Inches(1.18))
     card.fill.solid()
     card.fill.fore_color.rgb = RGBColor(46, 155, 67)
     card.line.color.rgb = COLOR_WHITE
     card.line.width = Pt(1)
 
     # Pill
-    badge = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(5.05), top_pos + Inches(0.24), Inches(1.3), Inches(0.55))
+    badge = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.95), top_pos + Inches(0.3), Inches(1.3), Inches(0.55))
     badge.fill.background()
     badge.line.color.rgb = COLOR_WHITE
     badge.line.width = Pt(1.5)
@@ -423,14 +423,14 @@ for idx, (pill, title, desc) in enumerate(entries):
     r.font.color.rgb = COLOR_WHITE
 
     # Text
-    e_box = s3.shapes.add_textbox(Inches(6.55), top_pos + Inches(0.18), Inches(5.4), Inches(0.7))
+    e_box = s3.shapes.add_textbox(Inches(6.45), top_pos + Inches(0.14), Inches(5.6), Inches(0.9))
     tf = e_box.text_frame
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     p = tf.paragraphs[0]
     r = p.add_run()
     r.text = title + "\n"
     r.font.name = FONT_HEADING
-    r.font.size = Pt(13)
+    r.font.size = Pt(15.5)  # Enlarged & Bolder
     r.font.bold = True
     r.font.color.rgb = COLOR_WHITE
 
