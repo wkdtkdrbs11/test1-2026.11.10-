@@ -693,7 +693,7 @@ r2.font.color.rgb = COLOR_DARK
 # ==============================================================================
 s6 = prs.slides.add_slide(blank_layout)
 set_slide_background(s6, COLOR_BG)
-add_green_top_bar(s6, "Project 2", "업무의 핵심 배경과 본질적 강점 재정의", "기간: 2023.07.15 - 2024.06.15 (1년)", "기여도: 100% (지점 운영 총괄)")
+add_green_top_bar(s6, "Project 2", "카페 ‘체리커피 군자점’ 운영 총괄", "기간: 2023.07.15 - 2024.06.15 (1년)", "")
 add_main_frame_box(s6)
 
 # Left 3 Vertical Bar Items
@@ -707,80 +707,87 @@ vbars_s6 = [
         "“고객이 수많은 카페 중 왜 우리 매장을 찾아와야 하는가?”를 고객 관점에서 다시 정의함"
     ]),
     ("본질적 공간 강점 포착", "Core Insight", [
-        "‘지하철역에서 도보 3분 거리의 뛰어난 역세권 접근성을 가지면서도, 도심 속에서 마치 교외 대형 정원 카페에 온 듯한 여유로운 자연 채광과 테라스를 누릴 수 있다’는 핵심 가치를 소구점으로 도출"
+        "‘지하철역에서 도보 3분 거리의 뛰어난 역세권 접근성을 가지면서도, 도심 속에서 마치 교외 대형 정원 카페에 온 듯한 여유로운 자연 채광과 테라스를 누릴 수 있다’는 핵심 가치를 차별점으로 도출"
     ])
 ]
 
 for idx, (title, sub, bullets) in enumerate(vbars_s6):
-    top_pos = Inches(1.7 + idx * 1.55)
+    top_pos = Inches(1.68 + idx * 1.62)
     # Green Bar
-    bar = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), top_pos, Inches(0.08), Inches(1.3))
+    bar = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), top_pos, Inches(0.08), Inches(1.4))
     bar.fill.solid()
     bar.fill.fore_color.rgb = COLOR_PRIMARY
     bar.line.fill.background()
 
-    tbox = s6.shapes.add_textbox(Inches(1.15), top_pos, Inches(5.4), Inches(1.3))
+    tbox = s6.shapes.add_textbox(Inches(1.15), top_pos, Inches(5.4), Inches(1.4))
     tf = tbox.text_frame
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     p = tf.paragraphs[0]
     r = p.add_run()
     r.text = title + "  "
     r.font.name = FONT_HEADING
-    r.font.size = Pt(13)
+    r.font.size = Pt(15)
     r.font.bold = True
     r.font.color.rgb = COLOR_DARK
 
     r = p.add_run()
     r.text = sub
     r.font.name = FONT_HEADING
-    r.font.size = Pt(10)
+    r.font.size = Pt(10.5)
     r.font.bold = True
     r.font.color.rgb = COLOR_PRIMARY
 
     for bullet in bullets:
         p = tf.add_paragraph()
-        p.space_before = Pt(4)
+        p.space_before = Pt(6)
         r = p.add_run()
         r.text = "• " + bullet
         r.font.name = FONT_BODY
-        r.font.size = Pt(9.5)
+        r.font.size = Pt(12)
         r.font.color.rgb = COLOR_TEXT
 
 # Right Showcase
-r_frame = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(7.0), Inches(1.7), Inches(5.4), Inches(4.7))
+r_frame = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(7.0), Inches(1.6), Inches(5.4), Inches(4.9))
 r_frame.fill.solid()
 r_frame.fill.fore_color.rgb = COLOR_PANEL
 r_frame.line.color.rgb = COLOR_PRIMARY
 r_frame.line.width = Pt(1.5)
 
-c_title = s6.shapes.add_textbox(Inches(7.2), Inches(1.9), Inches(5.0), Inches(0.4))
+c_title = s6.shapes.add_textbox(Inches(7.2), Inches(1.8), Inches(5.0), Inches(0.4))
 tf = c_title.text_frame
 p = tf.paragraphs[0]
 p.alignment = PP_ALIGN.CENTER
 r = p.add_run()
 r.text = "핵심 포지셔닝 : “역세권 도보 3분, 도심 속 교외 정원 카페”"
 r.font.name = FONT_HEADING
-r.font.size = Pt(12)
+r.font.size = Pt(13)
 r.font.bold = True
 r.font.color.rgb = COLOR_PRIMARY
 
-if os.path.exists(IMG_CHERRY):
-    s6.shapes.add_picture(IMG_CHERRY, Inches(7.4), Inches(2.4), width=Inches(4.6))
+# Centered Instagram Frame
+insta_bg = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(8.35), Inches(2.3), Inches(2.7), Inches(2.6))
+insta_bg.fill.solid()
+insta_bg.fill.fore_color.rgb = RGBColor(0, 0, 0)
+insta_bg.line.color.rgb = COLOR_PRIMARY
+insta_bg.line.width = Pt(1.5)
 
-post_box = s6.shapes.add_textbox(Inches(7.3), Inches(5.35), Inches(4.8), Inches(0.9))
+if os.path.exists(IMG_CHERRY):
+    s6.shapes.add_picture(IMG_CHERRY, Inches(8.48), Inches(2.35), height=Inches(2.5))
+
+post_box = s6.shapes.add_textbox(Inches(7.2), Inches(5.15), Inches(5.0), Inches(1.1))
 tf = post_box.text_frame
 p = tf.paragraphs[0]
 r = p.add_run()
-r.text = "차별화 소구 전략 (Positioning Shift) :\n"
+r.text = "차별화 전략 (Positioning Shift) :\n"
 r.font.name = FONT_HEADING
-r.font.size = Pt(10.5)
+r.font.size = Pt(11.5)
 r.font.bold = True
 r.font.color.rgb = COLOR_PRIMARY
 
 r = p.add_run()
 r.text = "단순 감성 인테리어 사진 지양 → 지하철역 출구부터 매장 정원 테라스로 이어지는 접근성과 공간감을 강조한 숏폼 릴스로 전환"
 r.font.name = FONT_BODY
-r.font.size = Pt(9.5)
+r.font.size = Pt(11)
 r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
