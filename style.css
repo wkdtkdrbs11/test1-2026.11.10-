@@ -473,7 +473,8 @@ body.deck-mode .deck-nav-bar {
 .cover-contact-list {
   display: flex;
   align-items: center;
-  gap: 28px;
+  justify-content: flex-end;
+  gap: 36px;
   flex-wrap: wrap;
 }
 
@@ -481,18 +482,15 @@ body.deck-mode .deck-nav-bar {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: #ffffff;
 }
 
 .cover-contact-item.phone-enlarged {
-  font-size: 1.18rem; /* +2pt larger as requested */
+  font-size: 1.2rem;
   font-weight: 800;
-  background: rgba(255, 255, 255, 0.14);
-  padding: 4px 12px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
 }
 
 .contact-circle-icon {

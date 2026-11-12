@@ -1023,14 +1023,10 @@ p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
 r = p.add_run(); r.text = "THANK YOU"; r.font.name = FONT_HEADING; r.font.size = Pt(72); r.font.bold = True; r.font.color.rgb = COLOR_DARK
 
 # Subtitle
-tf = s9.shapes.add_textbox(Inches(1.0), Inches(3.3), Inches(11.333), Inches(0.5)).text_frame
+tf = s9.shapes.add_textbox(Inches(1.0), Inches(3.5), Inches(11.333), Inches(0.6)).text_frame
+tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
 r = p.add_run(); r.text = "검토해 주셔서 감사합니다. 함께 더 큰 성장을 만들 준비가 되어 있습니다."; r.font.name = FONT_HEADING; r.font.size = Pt(17); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
-
-# Chips
-tf = s9.shapes.add_textbox(Inches(1.0), Inches(3.95), Inches(11.333), Inches(0.4)).text_frame
-p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r = p.add_run(); r.text = "#즉시_실무_투입_가능    #TOEIC_825점_1종보통    #SDT_특수임무대_만기전역"; r.font.name = FONT_BODY; r.font.size = Pt(12); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
 
 # Bottom Green Bar
 btm9 = s9.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(5.7), Inches(12.133), Inches(1.2))
@@ -1045,9 +1041,8 @@ tf = s9.shapes.add_textbox(Inches(4.2), Inches(6.1), Inches(8.1), Inches(0.5)).t
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.RIGHT
 
-r = p.add_run(); r.text = "📞 010-5779-0849   "; r.font.name = FONT_HEADING; r.font.size = Pt(14); r.font.bold = True; r.font.color.rgb = COLOR_WHITE
-r = p.add_run(); r.text = "  ✉️ wkdtkdrbs11@naver.com   "; r.font.name = FONT_BODY; r.font.size = Pt(12); r.font.color.rgb = COLOR_WHITE
-r = p.add_run(); r.text = "  🌐 서울특별시 · 숭실대학교 벤처중소기업학과"; r.font.name = FONT_BODY; r.font.size = Pt(12); r.font.color.rgb = COLOR_WHITE
+r = p.add_run(); r.text = "📞 010-5779-0849     "; r.font.name = FONT_HEADING; r.font.size = Pt(15); r.font.bold = True; r.font.color.rgb = COLOR_WHITE
+r = p.add_run(); r.text = "✉️ wkdtkdrbs11@naver.com"; r.font.name = FONT_BODY; r.font.size = Pt(14); r.font.color.rgb = COLOR_WHITE
 
 # Save Output
 out_path = os.path.join(BASE_DIR, "마케터_장상균_포트폴리오.pptx")
