@@ -126,15 +126,15 @@ def add_main_frame_box(slide, top=Inches(1.42), height=Inches(5.4)):
 s1 = prs.slides.add_slide(blank_layout)
 set_slide_background(s1, COLOR_BG)
 
-# Upper Box
-up1 = s1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(0.6), Inches(12.133), Inches(4.9))
+# Upper Box (Expanded to Full Height, No Bottom Green Bar)
+up1 = s1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(0.6), Inches(12.133), Inches(6.3))
 up1.fill.solid()
 up1.fill.fore_color.rgb = COLOR_WHITE
 up1.line.color.rgb = COLOR_PRIMARY
 up1.line.width = Pt(3.5)
 
 # Top Left Meta
-t_box = s1.shapes.add_textbox(Inches(1.0), Inches(0.9), Inches(4.0), Inches(0.8))
+t_box = s1.shapes.add_textbox(Inches(1.0), Inches(0.95), Inches(4.0), Inches(0.8))
 tf = t_box.text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
@@ -146,7 +146,7 @@ r.font.bold = True
 r.font.color.rgb = COLOR_DARK
 
 # Giant Title: PORTFOLIO
-t_box = s1.shapes.add_textbox(Inches(1.0), Inches(1.85), Inches(11.333), Inches(1.4))
+t_box = s1.shapes.add_textbox(Inches(1.0), Inches(2.2), Inches(11.333), Inches(1.4))
 tf = t_box.text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
@@ -154,12 +154,12 @@ p.alignment = PP_ALIGN.CENTER
 r = p.add_run()
 r.text = "PORTFOLIO"
 r.font.name = FONT_HEADING
-r.font.size = Pt(72)
+r.font.size = Pt(76)
 r.font.bold = True
 r.font.color.rgb = COLOR_DARK
 
 # Subtitle
-sub_box = s1.shapes.add_textbox(Inches(1.0), Inches(3.3), Inches(11.333), Inches(0.5))
+sub_box = s1.shapes.add_textbox(Inches(1.0), Inches(3.75), Inches(11.333), Inches(0.5))
 tf = sub_box.text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
@@ -167,41 +167,41 @@ p.alignment = PP_ALIGN.CENTER
 r = p.add_run()
 r.text = "“브랜드의 본질을 파악하고, 데이터로 입증하는 마케터 장상균입니다.”"
 r.font.name = FONT_HEADING
-r.font.size = Pt(17)
+r.font.size = Pt(17.5)
 r.font.bold = True
 r.font.color.rgb = COLOR_PRIMARY
 
 # Chips
-chips_box = s1.shapes.add_textbox(Inches(1.0), Inches(3.95), Inches(11.333), Inches(0.4))
+chips_box = s1.shapes.add_textbox(Inches(1.0), Inches(4.45), Inches(11.333), Inches(0.45))
 tf = chips_box.text_frame
 p = tf.paragraphs[0]
 p.alignment = PP_ALIGN.CENTER
 r = p.add_run()
 r.text = "#KDB IR 제안&피칭    #체리커피_매출25%상승    #포스터MVP_전환율7.7%"
 r.font.name = FONT_BODY
-r.font.size = Pt(12.5)
+r.font.size = Pt(13)
 r.font.bold = True
 r.font.color.rgb = COLOR_PRIMARY
 
-# Bottom Green Bar
-btm1 = s1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(5.7), Inches(12.133), Inches(1.2))
-btm1.fill.solid()
-btm1.fill.fore_color.rgb = COLOR_PRIMARY
-btm1.line.fill.background()
+# Bottom Footer Meta inside Box (No Green Box)
+f_line = s1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.0), Inches(6.05), Inches(11.333), Inches(0.015))
+f_line.fill.solid()
+f_line.fill.fore_color.rgb = COLOR_LIGHT
+f_line.line.fill.background()
 
-name_box = s1.shapes.add_textbox(Inches(1.0), Inches(6.05), Inches(3.5), Inches(0.6))
-tf = name_box.text_frame
+f_name = s1.shapes.add_textbox(Inches(1.0), Inches(6.2), Inches(3.5), Inches(0.45))
+tf = f_name.text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
 r = p.add_run()
 r.text = "Jang, sang-gyun"
 r.font.name = FONT_HEADING
-r.font.size = Pt(22)
+r.font.size = Pt(14)
 r.font.bold = True
-r.font.color.rgb = COLOR_WHITE
+r.font.color.rgb = COLOR_DARK
 
-contact_box = s1.shapes.add_textbox(Inches(4.8), Inches(6.1), Inches(7.5), Inches(0.5))
-tf = contact_box.text_frame
+f_contact = s1.shapes.add_textbox(Inches(4.8), Inches(6.22), Inches(7.5), Inches(0.45))
+tf = f_contact.text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
 p.alignment = PP_ALIGN.RIGHT
@@ -209,21 +209,21 @@ p.alignment = PP_ALIGN.RIGHT
 r = p.add_run()
 r.text = "📞 010-5779-0849   "
 r.font.name = FONT_HEADING
-r.font.size = Pt(14)  # +2pt larger as requested
+r.font.size = Pt(13)
 r.font.bold = True
-r.font.color.rgb = COLOR_WHITE
+r.font.color.rgb = COLOR_PRIMARY
 
 r = p.add_run()
 r.text = "  ✉️ wkdtkdrbs11@naver.com   "
 r.font.name = FONT_BODY
-r.font.size = Pt(12)
-r.font.color.rgb = COLOR_WHITE
+r.font.size = Pt(11)
+r.font.color.rgb = COLOR_TEXT
 
 r = p.add_run()
 r.text = "  🌐 숭실대학교 벤처중소기업학과"
 r.font.name = FONT_BODY
-r.font.size = Pt(12)
-r.font.color.rgb = COLOR_WHITE
+r.font.size = Pt(11)
+r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
 # SLIDE 2 : 이력사항 (PROFILE)
