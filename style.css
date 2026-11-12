@@ -815,6 +815,10 @@ body.deck-mode .deck-nav-bar {
   padding: 16px;
 }
 
+.visual-card-frame.has-img {
+  padding: 0;
+}
+
 .visual-card-frame img {
   width: 100%;
   height: 100%;

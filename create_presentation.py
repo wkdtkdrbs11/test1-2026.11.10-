@@ -33,6 +33,8 @@ IMG_PROFILE = os.path.join(BASE_DIR, "assets", "images", "profile.png")
 IMG_SMARTBIN = os.path.join(BASE_DIR, "assets", "images", "smartbin.png")
 IMG_CHERRY = os.path.join(BASE_DIR, "assets", "images", "cherrycoffee.jpg")
 IMG_POSTER = os.path.join(BASE_DIR, "assets", "images", "ai-mvp-poster.jpg")
+IMG_TRASH = os.path.join(BASE_DIR, "assets", "images", "trash-cups-overflow.jpg")
+IMG_STAFF = os.path.join(BASE_DIR, "assets", "images", "staff-sorting-interview.jpg")
 
 prs = Presentation()
 prs.slide_width = Inches(13.333)
@@ -441,50 +443,44 @@ for idx, (pill, title, desc) in enumerate(entries):
     r.font.color.rgb = COLOR_LIGHT
 
 # ==============================================================================
-# SLIDE 4 : Project 1 (스마트빈 배경 & 선별장 45건 인터뷰)
+# SLIDE 4 : Project 1 (스마트빈 — 문제정의 및 피벗)
 # ==============================================================================
 s4 = prs.slides.add_slide(blank_layout)
 set_slide_background(s4, COLOR_BG)
-add_green_top_bar(s4, "Project 1", "업무상 만난 문제와 45건 현장 리서치", "기간: 2026.03.09 - 07.05", "기여도: 40% (인터뷰·MVP 총괄)")
+add_green_top_bar(s4, "Project 1", "문제정의 및 피벗", "기간: 2026.03.09 - 07.05", "")
 add_main_frame_box(s4)
 
 # 3 Columns
 cols_s4 = [
-    ("고객 및 시장 배경", "Customer & Market", "실질 재활용률 16.4%", [
+    ("고객 및 시장 배경", "Customer & Market", IMG_TRASH, [
         "워터밤·맥주축제 등 대형 행사장과 무인카페에서 단시간에 대량의 일회용 플라스틱 컵 배출",
         "컵 내부의 약 90%가 빈 공기 상태로 버려져 수거 부피가 폭증하고 잔여 음료 부패로 악취 유발",
         "주최 측은 막대한 청소 용역비와 분리 비용을 부담하나 실질 재활용률은 16.4%에 그침"
     ]),
-    ("문제 상황", "Problem Definition", "단순 압축 시 원료가치 0원", [
+    ("문제 상황", "Problem Definition", IMG_SMARTBIN, [
         "초기에는 부피만 줄이는 ‘단순 3단 압축 쓰레기통’을 구상했으나 실제 처리 과정 검증 착수",
         "재질 혼합 문제: PET, PP, PS 등 서로 다른 재질이 섞여 압축되면 선별 불가로 원료 가치 0원",
         "세척 한계: 남은 음료 오염이 플라스틱 표면에 스며들면 사후 세척으로도 재생 원료화 불가"
     ]),
-    ("선별장 45건 인터뷰", "Field Insight & Pivot", "선별장 Skip 직송 모델", [
+    ("선별장 45건 인터뷰", "Field Insight & Pivot", IMG_STAFF, [
         "누구나 꺼리는 쓰레기 선별장을 직접 방문해 작업자 및 축제 관계자 45건 심층 인터뷰 주도",
         "“수거함 판매가 아니라 투입 단계부터 단일 재질(PP)로 통제해야 돈이 되는 원료가 된다”는 병목 포착",
         "단순 하드웨어에서 ‘선별장 Skip형 고순도 r-PP 직송 밸류체인’으로 비즈니스 모델 전면 피벗"
     ])
 ]
 
-for i, (title, sub, badge_val, bullets) in enumerate(cols_s4):
+for i, (title, sub, img_path, bullets) in enumerate(cols_s4):
     left_x = Inches(0.85 + i * 3.95)
     
-    # Visual Box
+    # Visual Box with Image
     vbox = s4.shapes.add_shape(MSO_SHAPE.RECTANGLE, left_x, Inches(1.7), Inches(3.65), Inches(1.4))
     vbox.fill.solid()
     vbox.fill.fore_color.rgb = COLOR_PANEL
     vbox.line.color.rgb = COLOR_PRIMARY
     vbox.line.width = Pt(1.5)
-    tf = vbox.text_frame
-    p = tf.paragraphs[0]
-    p.alignment = PP_ALIGN.CENTER
-    r = p.add_run()
-    r.text = badge_val
-    r.font.name = FONT_HEADING
-    r.font.size = Pt(14)
-    r.font.bold = True
-    r.font.color.rgb = COLOR_PRIMARY
+
+    if img_path and os.path.exists(img_path):
+        s4.shapes.add_picture(img_path, left_x + Inches(0.04), Inches(1.74), width=Inches(3.57), height=Inches(1.32))
 
     # Title
     tbox = s4.shapes.add_textbox(left_x, Inches(3.25), Inches(3.65), Inches(0.7))
