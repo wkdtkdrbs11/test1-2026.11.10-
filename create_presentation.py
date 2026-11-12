@@ -765,15 +765,15 @@ r.font.size = Pt(13)
 r.font.bold = True
 r.font.color.rgb = COLOR_PRIMARY
 
-# Centered Instagram Frame
-insta_bg = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(8.35), Inches(2.3), Inches(2.7), Inches(2.6))
+# Centered Garden Reels Frame
+insta_bg = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(8.75), Inches(2.25), Inches(1.9), Inches(2.75))
 insta_bg.fill.solid()
 insta_bg.fill.fore_color.rgb = RGBColor(0, 0, 0)
 insta_bg.line.color.rgb = COLOR_PRIMARY
 insta_bg.line.width = Pt(1.5)
 
-if os.path.exists(IMG_CHERRY):
-    s6.shapes.add_picture(IMG_CHERRY, Inches(8.48), Inches(2.35), height=Inches(2.5))
+if os.path.exists(IMG_CHERRY_REELS):
+    s6.shapes.add_picture(IMG_CHERRY_REELS, Inches(8.92), Inches(2.32), height=Inches(2.6))
 
 post_box = s6.shapes.add_textbox(Inches(7.2), Inches(5.15), Inches(5.0), Inches(1.1))
 tf = post_box.text_frame
@@ -806,9 +806,15 @@ c_panel.fill.fore_color.rgb = COLOR_PANEL
 c_panel.line.color.rgb = COLOR_PRIMARY
 c_panel.line.width = Pt(1.5)
 
-# Reels Picture
-if os.path.exists(IMG_CHERRY_REELS):
-    s7.shapes.add_picture(IMG_CHERRY_REELS, Inches(1.1), Inches(1.8), height=Inches(4.55))
+# Profile Picture in Dark Phone Frame
+phone_frame = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.1), Inches(1.8), Inches(2.4), Inches(4.55))
+phone_frame.fill.solid()
+phone_frame.fill.fore_color.rgb = RGBColor(12, 15, 20)
+phone_frame.line.color.rgb = COLOR_PRIMARY
+phone_frame.line.width = Pt(1.5)
+
+if os.path.exists(IMG_CHERRY):
+    s7.shapes.add_picture(IMG_CHERRY, Inches(1.15), Inches(2.75), width=Inches(2.3))
 
 # Graph & Stat on Right Side of Left Panel
 g_title = s7.shapes.add_textbox(Inches(3.65), Inches(1.8), Inches(2.55), Inches(0.4))
@@ -816,7 +822,7 @@ tf = g_title.text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
 r = p.add_run()
-r.text = "캠페인 1개월 핵심 성과"
+r.text = "캠페인 성과"
 r.font.name = FONT_HEADING
 r.font.size = Pt(12)
 r.font.bold = True
@@ -839,7 +845,7 @@ r2.font.size = Pt(13)
 r2.font.bold = True
 r2.font.color.rgb = COLOR_PRIMARY
 r3 = p.add_run()
-r3.text = "전월 대비 매출 25% 상승 견인"
+r3.text = "전월 대비 매출 25% 상승 달성"
 r3.font.name = FONT_BODY
 r3.font.size = Pt(8.5)
 r3.font.color.rgb = COLOR_MUTED
@@ -867,7 +873,7 @@ r2.font.size = Pt(13)
 r2.font.bold = True
 r2.font.color.rgb = COLOR_PRIMARY
 r3 = p.add_run()
-r3.text = "광고비 0원 100% 오가닉 유입"
+r3.text = "광고비 0원 100% 바이럴 유입"
 r3.font.name = FONT_BODY
 r3.font.size = Pt(8.5)
 r3.font.color.rgb = COLOR_MUTED
@@ -893,7 +899,7 @@ r = p.add_run(); r.text = "🤝 인근 식당 5곳 B2B 제휴"; r.font.name = FO
 # Right 3 Action Pillars
 vbars_s7 = [
     ("공간 강점을 살린 숏폼 릴스 제작", "Content", [
-        "‘역세권 도심 속 숨은 숲속 정원 카페’를 테마로 접근성과 공간감을 강조한 릴스를 제작·배포해 1개월 만에 오가닉 팔로워 200명 증가"
+        "‘역세권 도심 속 숨은 숲속 정원 카페’를 테마로 접근성과 공간감을 강조한 릴스를 제작·배포해 1개월 만에 팔로워 200명 증가"
     ]),
     ("매장 경험(CX) 및 넛지(Nudge) 진열", "Store CX", [
         "고객이 주문 카운터로 향하는 시선 동선에 당일 구운 시그니처 베이커리를 전략적으로 배치해 음료+베이커리 동반 구매 및 객단가 상승 유도"
@@ -1080,7 +1086,7 @@ r.font.name = FONT_BODY; r.font.size = Pt(10.5); r.font.color.rgb = COLOR_TEXT
 # Right 3 Stories
 stories = [
     ("01", "1. F&B와 마케팅에 빠져들게 된 계기",
-     "1년간 카페를 총괄 운영하며 마케팅의 작은 디테일 하나가 실제 매장의 매출 곡선을 바꾼다는 사실을 체감했습니다. 베이커리 진열에 넛지(Nudge) 효과를 적용하고 동선을 재배치해 매장 경험(CX)을 최적화했으며, 주변 매장과 똑같은 인테리어 사진 대신 ‘지하철역과 가까우면서도 교외 대형 카페처럼 여유로운 분위기를 즐길 수 있다’는 역세권 정원 강점을 잡아 릴스를 제작해 1달 만에 오가닉 팔로워 200명 증가, 매장 매출 25% 상승을 이끌어냈습니다."),
+     "1년간 카페를 총괄 운영하며 마케팅의 작은 디테일 하나가 실제 매장의 매출 곡선을 바꾼다는 사실을 체감했습니다. 베이커리 진열에 넛지(Nudge) 효과를 적용하고 동선을 재배치해 매장 경험(CX)을 최적화했으며, 주변 매장과 똑같은 인테리어 사진 대신 ‘지하철역과 가까우면서도 교외 대형 카페처럼 여유로운 분위기를 즐길 수 있다’는 역세권 정원 강점을 잡아 릴스를 제작해 1달 만에 팔로워 200명 증가, 매장 매출 25% 상승을 이끌어냈습니다."),
     ("02", "2. 본질을 파고드는 집요함과 적시 가설 검증",
      "제 강점은 문제의 본질을 파악하고 실행으로 옮기는 추진력입니다. 연합동아리 창업 프로젝트에서 대학생의 AI 활용 문제를 정의할 때, 멘토님의 “신뢰란 무엇인가”라는 피드백을 계기로 ‘신뢰’는 답변의 정확성, ‘불필요한 시간’은 정확성을 확인하는 교차검증 시간으로 구체화했습니다. 실험 준비가 한 달가량 길어지자 완성도를 높이기보다 고객 반응을 먼저 검증하자고 제안해 교수님을 통한 포스터 실험으로 39명 중 3명 가입(7.7% 전환율)을 확인하며 다음 판단의 근거를 만들었습니다."),
     ("03", "3. 남들이 꺼리는 현장에 뛰어드는 협업 역량",
