@@ -151,26 +151,12 @@ tf = t_box.text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
 p.alignment = PP_ALIGN.CENTER
-r1 = p.add_run()
-r1.text = "P"
-r1.font.name = FONT_HEADING
-r1.font.size = Pt(72)
-r1.font.bold = True
-r1.font.color.rgb = COLOR_DARK
-
-r2 = p.add_run()
-r2.text = "O"
-r2.font.name = FONT_SERIF
-r2.font.size = Pt(76)
-r2.font.italic = True
-r2.font.color.rgb = COLOR_DARK
-
-r3 = p.add_run()
-r3.text = "RTFOLIO"
-r3.font.name = FONT_HEADING
-r3.font.size = Pt(72)
-r3.font.bold = True
-r3.font.color.rgb = COLOR_DARK
+r = p.add_run()
+r.text = "PORTFOLIO"
+r.font.name = FONT_HEADING
+r.font.size = Pt(72)
+r.font.bold = True
+r.font.color.rgb = COLOR_DARK
 
 # Subtitle
 sub_box = s1.shapes.add_textbox(Inches(1.0), Inches(3.3), Inches(11.333), Inches(0.5))
@@ -191,14 +177,11 @@ tf = chips_box.text_frame
 p = tf.paragraphs[0]
 p.alignment = PP_ALIGN.CENTER
 r = p.add_run()
-r.text = "#문제정의와_가설검증    #체리커피_매출25%상승    #선별장45건_현장인터뷰    #포스터MVP_전환율7.7%"
+r.text = "#KDB IR 제안&피칭    #체리커피_매출25%상승    #포스터MVP_전환율7.7%"
 r.font.name = FONT_BODY
-r.font.size = Pt(12)
+r.font.size = Pt(12.5)
 r.font.bold = True
 r.font.color.rgb = COLOR_PRIMARY
-
-# 3 Squares
-add_three_squares(s1, Inches(11.8), Inches(4.9))
 
 # Bottom Green Bar
 btm1 = s1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(5.7), Inches(12.133), Inches(1.2))
