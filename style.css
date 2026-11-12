@@ -832,13 +832,13 @@ body.deck-mode .deck-nav-bar {
 }
 
 .col-main-heading {
-  font-size: 1.18rem;
+  font-size: 1.28rem;
   font-weight: 800;
   color: var(--text-primary);
 }
 
 .col-sub-en {
-  font-size: 0.84rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--green-primary);
 }
@@ -847,7 +847,7 @@ body.deck-mode .deck-nav-bar {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
 }
 
@@ -855,6 +855,35 @@ body.deck-mode .deck-nav-bar {
   position: relative;
   padding-left: 15px;
   line-height: 1.55;
+}
+
+/* Slide 4 Specific: Enhanced font size and readability */
+#slide-4 .col-main-heading {
+  font-size: 1.36rem;
+  font-weight: 900;
+  letter-spacing: -0.015em;
+  margin-bottom: 2px;
+}
+
+#slide-4 .col-sub-en {
+  font-size: 0.96rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+#slide-4 .green-bullet-list {
+  font-size: 1.05rem;
+  line-height: 1.68;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+#slide-4 .green-bullet-list li {
+  padding-left: 20px;
+}
+
+#slide-4 .green-bullet-list li::before {
+  font-size: 1.2rem;
 }
 
 .green-bullet-list li::before {

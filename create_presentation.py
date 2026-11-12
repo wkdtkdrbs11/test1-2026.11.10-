@@ -483,7 +483,7 @@ for i, (title, sub, img_path, bullets) in enumerate(cols_s4):
         s4.shapes.add_picture(img_path, left_x + Inches(0.04), Inches(1.74), width=Inches(3.57), height=Inches(1.32))
 
     # Title
-    tbox = s4.shapes.add_textbox(left_x, Inches(3.25), Inches(3.65), Inches(0.7))
+    tbox = s4.shapes.add_textbox(left_x, Inches(3.22), Inches(3.65), Inches(0.75))
     tf = tbox.text_frame
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     p = tf.paragraphs[0]
@@ -491,28 +491,28 @@ for i, (title, sub, img_path, bullets) in enumerate(cols_s4):
     r = p.add_run()
     r.text = title + "\n"
     r.font.name = FONT_HEADING
-    r.font.size = Pt(14)
+    r.font.size = Pt(16)
     r.font.bold = True
     r.font.color.rgb = COLOR_DARK
 
     r = p.add_run()
     r.text = sub
     r.font.name = FONT_HEADING
-    r.font.size = Pt(10)
+    r.font.size = Pt(11)
     r.font.bold = True
     r.font.color.rgb = COLOR_PRIMARY
 
     # Bullets
-    bbox = s4.shapes.add_textbox(left_x, Inches(4.05), Inches(3.65), Inches(2.4))
+    bbox = s4.shapes.add_textbox(left_x, Inches(4.05), Inches(3.65), Inches(2.6))
     tf = bbox.text_frame
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     for b_idx, bullet in enumerate(bullets):
         p = tf.paragraphs[0] if b_idx == 0 else tf.add_paragraph()
-        p.space_before = Pt(6)
+        p.space_before = Pt(8)
         r = p.add_run()
         r.text = "• " + bullet
         r.font.name = FONT_BODY
-        r.font.size = Pt(10)
+        r.font.size = Pt(12)
         r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
