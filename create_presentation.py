@@ -393,10 +393,10 @@ r.font.color.rgb = COLOR_WHITE
 
 # Right Entries
 entries = [
-    ("경험 1", "가상 브랜드 ‘스마트빈’ 순환경제 모델 기획", "선별장 45건 인터뷰로 발견한 재질 혼입 병목 해결 및 KDB 장려상 수상"),
-    ("경험 2", "카페 ‘체리커피 군자점’ 지점 운영 및 로컬 마케팅 총괄", "‘역세권 도심 속 교외 정원’ 소구 릴스 바이럴 및 B2B 제휴로 매출 25% 상승"),
-    ("경험 3", "대학생 AI 교차검증 문제 정의 및 오프라인 포스터 MVP 검증", "‘신뢰’와 ‘시간 낭비’ 본질 분해 및 포스터 실험으로 가입 전환율 7.7% 달성"),
-    ("경험 4", "마케터 장상균의 3가지 이야기 (Philosophy & Attitude)", "F&B와 마케팅에 빠진 계기 · 본질을 파고드는 가설 검증 · 현장 협업 역량")
+    ("Project 1", "가상 브랜드 ‘스마트빈’ 기획", "축제·행사장 플라스틱 컵 선별 비용 절감 단일 PP 공급 및 직송 순환경제 플랫폼 (선별장 45건 인터뷰 & KDB 장려상)"),
+    ("Project 2", "카페 ‘체리커피 군자점’ 운영 총괄", "차별화 릴스 소구점(위치 강조) 발굴, 매장 넛지 효과 적용 및 인근 식당 5곳 B2B 제휴로 매출 25% 상승"),
+    ("Project 3", "대학생 AI 교차검증 문제 정의 및 MVP 실험", "‘AI 답변의 불필요한 교차검증 시간’으로 문제 쪼개기 및 오프라인 포스터 MVP로 사전 가입 전환율 7.7% 달성"),
+    ("Story 3", "마케터 장상균의 3가지 이야기 (Philosophy & Attitude)", "F&B와 마케팅에 빠진 계기 · 본질을 파고드는 가설 검증 · 남들이 꺼리는 현장에 뛰어드는 협업 역량")
 ]
 
 for idx, (pill, title, desc) in enumerate(entries):
@@ -408,7 +408,7 @@ for idx, (pill, title, desc) in enumerate(entries):
     card.line.width = Pt(1)
 
     # Pill
-    badge = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(5.1), top_pos + Inches(0.24), Inches(1.1), Inches(0.55))
+    badge = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(5.05), top_pos + Inches(0.24), Inches(1.3), Inches(0.55))
     badge.fill.background()
     badge.line.color.rgb = COLOR_WHITE
     badge.line.width = Pt(1.5)
@@ -418,12 +418,12 @@ for idx, (pill, title, desc) in enumerate(entries):
     r = p.add_run()
     r.text = pill
     r.font.name = FONT_HEADING
-    r.font.size = Pt(12)
+    r.font.size = Pt(11.5)
     r.font.bold = True
     r.font.color.rgb = COLOR_WHITE
 
     # Text
-    e_box = s3.shapes.add_textbox(Inches(6.4), top_pos + Inches(0.18), Inches(5.5), Inches(0.7))
+    e_box = s3.shapes.add_textbox(Inches(6.55), top_pos + Inches(0.18), Inches(5.4), Inches(0.7))
     tf = e_box.text_frame
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     p = tf.paragraphs[0]
@@ -437,15 +437,15 @@ for idx, (pill, title, desc) in enumerate(entries):
     r = p.add_run()
     r.text = desc
     r.font.name = FONT_BODY
-    r.font.size = Pt(10)
+    r.font.size = Pt(9.5)
     r.font.color.rgb = COLOR_LIGHT
 
 # ==============================================================================
-# SLIDE 4 : 경험 1 (스마트빈 배경 & 선별장 45건 인터뷰)
+# SLIDE 4 : Project 1 (스마트빈 배경 & 선별장 45건 인터뷰)
 # ==============================================================================
 s4 = prs.slides.add_slide(blank_layout)
 set_slide_background(s4, COLOR_BG)
-add_green_top_bar(s4, "경험 1", "업무상 만난 문제와 45건 현장 리서치", "기간: 2026.03.09 - 07.05", "기여도: 40% (인터뷰·MVP 총괄)")
+add_green_top_bar(s4, "Project 1", "업무상 만난 문제와 45건 현장 리서치", "기간: 2026.03.09 - 07.05", "기여도: 40% (인터뷰·MVP 총괄)")
 add_main_frame_box(s4)
 
 # 3 Columns
@@ -635,11 +635,11 @@ r.font.size = Pt(11)
 r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
-# SLIDE 6 : 경험 2 (체리커피 군자점 — 업무 배경과 차별점 분석)
+# SLIDE 6 : Project 2 (체리커피 군자점 — 업무 배경과 차별점 분석)
 # ==============================================================================
 s6 = prs.slides.add_slide(blank_layout)
 set_slide_background(s6, COLOR_BG)
-add_green_top_bar(s6, "경험 2", "업무의 핵심 배경과 본질적 강점 재정의", "기간: 2023.07.15 - 2024.06.15 (1년)", "기여도: 100% (지점 운영 총괄)")
+add_green_top_bar(s6, "Project 2", "업무의 핵심 배경과 본질적 강점 재정의", "기간: 2023.07.15 - 2024.06.15 (1년)", "기여도: 100% (지점 운영 총괄)")
 add_main_frame_box(s6)
 
 # Left 3 Vertical Bar Items
@@ -825,11 +825,11 @@ for idx, (title, sub, bullets) in enumerate(vbars_s7):
         r = p.add_run(); r.text = "• " + bullet; r.font.name = FONT_BODY; r.font.size = Pt(9.5); r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
-# SLIDE 8 : 경험 3 (대학생 AI 교차검증 문제 정의 및 포스터 실험)
+# SLIDE 8 : Project 3 (대학생 AI 교차검증 문제 정의 및 포스터 실험)
 # ==============================================================================
 s8 = prs.slides.add_slide(blank_layout)
 set_slide_background(s8, COLOR_BG)
-add_green_top_bar(s8, "경험 3", "대학생 AI 활용 문제 정의 쪼개기와 병목 돌파", "기간: 2026.07.10 - 현재", "역할: 대학연합 창업동아리 숭실지부장")
+add_green_top_bar(s8, "Project 3", "대학생 AI 활용 문제 정의 쪼개기와 병목 돌파", "기간: 2026.07.10 - 현재", "역할: 대학연합 창업동아리 숭실지부장")
 add_main_frame_box(s8)
 
 # Left 3 Vertical Bar Items
@@ -963,11 +963,11 @@ r = p.add_run(); r.text = "브랜드의 정체성과 메시지를 실험할 때,
 r = p.add_run(); r.text = "이 중요함을 배웠습니다."; r.font.name = FONT_BODY; r.font.size = Pt(11); r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
-# SLIDE 10 : 경험 4 (마케터 장상균의 3가지 이야기)
+# SLIDE 10 : Story 3 (마케터 장상균의 3가지 이야기)
 # ==============================================================================
 s10 = prs.slides.add_slide(blank_layout)
 set_slide_background(s10, COLOR_BG)
-add_green_top_bar(s10, "경험 4", "마케터 장상균의 3가지 이야기", "JANG SANGGYUN", "PHILOSOPHY")
+add_green_top_bar(s10, "Story 3", "마케터 장상균의 3가지 이야기", "JANG SANGGYUN", "PHILOSOPHY")
 add_main_frame_box(s10)
 
 # Left Gray Panel
