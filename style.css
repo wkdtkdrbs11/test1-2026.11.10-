@@ -557,20 +557,22 @@ body.deck-mode .deck-nav-bar {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-size: 0.88rem;
-  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
-.profile-contact-lines .phone-line {
-  font-size: 1.12rem; /* +2pt larger unmasked 010-5779-0849 */
-  font-weight: 800;
+.profile-contact-lines p {
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.6;
   color: var(--text-primary);
 }
 
 .profile-contact-lines strong {
   color: var(--green-primary);
   font-weight: 800;
-  margin-right: 4px;
+  margin-right: 6px;
 }
 
 .profile-col {

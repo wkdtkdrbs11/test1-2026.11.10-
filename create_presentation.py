@@ -219,7 +219,7 @@ p_left.line.fill.background()
 if os.path.exists(IMG_PROFILE):
     s2.shapes.add_picture(IMG_PROFILE, Inches(1.2), Inches(1.75), width=Inches(2.0))
 
-p_info = s2.shapes.add_textbox(Inches(0.9), Inches(4.45), Inches(2.6), Inches(1.8))
+p_info = s2.shapes.add_textbox(Inches(0.9), Inches(4.55), Inches(2.6), Inches(1.8))
 tf = p_info.text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
@@ -237,20 +237,26 @@ r.font.size = Pt(11)
 r.font.bold = True
 r.font.color.rgb = COLOR_PRIMARY
 
-r = p.add_run()
-r.text = "T. 010-5779-0849\n"
-r.font.name = FONT_HEADING
-r.font.size = Pt(13)  # +2pt larger unmasked
-r.font.bold = True
-r.font.color.rgb = COLOR_DARK
+contact_info = [
+    ("T.", "010-5779-0849"),
+    ("E.", "wkdtkdrbs11@naver.com"),
+    ("U.", "숭실대 벤처중소기업학과")
+]
+for label, val in contact_info:
+    p = tf.add_paragraph()
+    p.space_before = Pt(4)
+    r1 = p.add_run()
+    r1.text = label + " "
+    r1.font.name = FONT_HEADING
+    r1.font.size = Pt(10.5)
+    r1.font.bold = True
+    r1.font.color.rgb = COLOR_PRIMARY
 
-r = p.add_run()
-r.text = "E. wkdtkdrbs11@naver.com\nU. 숭실대 벤처중소기업학과"
-r.font.name = FONT_BODY
-r.font.size = Pt(10)
-r.font.color.rgb = COLOR_TEXT
-
-add_three_squares(s2, Inches(1.2), Inches(6.35), Inches(0.2))
+    r2 = p.add_run()
+    r2.text = val
+    r2.font.name = FONT_BODY
+    r2.font.size = Pt(10.5)
+    r2.font.color.rgb = COLOR_TEXT
 
 # Center Column: Education & Experience
 c_box = s2.shapes.add_textbox(Inches(4.1), Inches(1.65), Inches(4.0), Inches(5.0))
@@ -290,7 +296,7 @@ r.font.color.rgb = COLOR_PRIMARY
 exp_items = [
     ("대학연합 창업동아리 (2026.07 - 현재)", "숭실지부장 / AI 교차검증 문제 정의 및 포스터 MVP 검증 총괄"),
     ("KDB 산업은행 창업 프로젝트 (2026.03 - 2026.07)", "스마트빈 기획 / 선별장 45건 인터뷰 리서치 총괄 및 IR 피칭"),
-    ("카페 체리커피 군자점 (2023.07 - 2024.06 / 1년)", "지점 운영 총괄 / 공간 소구 릴스 바이럴(팔로워 +200) 및 매출 25% 상승")
+    ("카페 체리커피 군자점 (2023.07 - 2024.06 / 1년)", "지점 운영 총괄 / 위치 강조 릴스 제작(팔로워 +200) 및 매출 25% 상승")
 ]
 for title, desc in exp_items:
     p = tf.add_paragraph()
@@ -342,7 +348,7 @@ skills_list = [
     ("Notion / DB 구축", "4.0 / 5.0", "일정 및 관계형 데이터베이스 관리"),
     ("Google Sheets / Excel", "4.0 / 5.0", "매출 지표 분석, 수치 트래킹, 피벗테이블"),
     ("Figma (콘텐츠/기획)", "3.0 / 5.0", "SNS 콘텐츠 디자인, 와이어프레임 기획"),
-    ("Photoshop / GA4", "2.0 / 5.0", "이미지 보정 및 전환 이벤트 트래킹")
+    ("Photoshop (포토샵)", "2.0 / 5.0", "이미지 보정, 포스터 편집, 비주얼 애셋 가공")
 ]
 for name, score, desc in skills_list:
     p = tf.add_paragraph()
@@ -978,8 +984,6 @@ r = p.add_run(); r.text = "본질을 묻고,\n현장과 데이터로\n답합니�
 r = p.add_run(); r.text = "눈앞의 현상에 머무르지 않고 고객이 행동하는 진짜 이유를 파고들며, 탁상공론 대신 빠른 실험과 현장 협업으로 실질적인 비즈니스 임팩트를 만듭니다."
 r.font.name = FONT_BODY; r.font.size = Pt(10.5); r.font.color.rgb = COLOR_TEXT
 
-add_three_squares(s10, Inches(1.0), Inches(6.3), Inches(0.22))
-
 # Right 3 Stories
 stories = [
     ("01", "1. F&B와 마케팅에 빠져들게 된 계기",
@@ -1025,9 +1029,7 @@ r = p.add_run(); r.text = "JANG SANGGYUN\nBRAND & CRM MARKETER"; r.font.name = F
 tf = s11.shapes.add_textbox(Inches(1.0), Inches(1.85), Inches(11.333), Inches(1.4)).text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r1 = p.add_run(); r1.text = "THANK Y"; r1.font.name = FONT_HEADING; r1.font.size = Pt(72); r1.font.bold = True; r1.font.color.rgb = COLOR_DARK
-r2 = p.add_run(); r2.text = "O"; r2.font.name = FONT_SERIF; r2.font.size = Pt(76); r2.font.italic = True; r2.font.color.rgb = COLOR_DARK
-r3 = p.add_run(); r3.text = "U"; r3.font.name = FONT_HEADING; r3.font.size = Pt(72); r3.font.bold = True; r3.font.color.rgb = COLOR_DARK
+r = p.add_run(); r.text = "THANK YOU"; r.font.name = FONT_HEADING; r.font.size = Pt(72); r.font.bold = True; r.font.color.rgb = COLOR_DARK
 
 # Subtitle
 tf = s11.shapes.add_textbox(Inches(1.0), Inches(3.3), Inches(11.333), Inches(0.5)).text_frame
@@ -1038,8 +1040,6 @@ r = p.add_run(); r.text = "검토해 주셔서 감사합니다. 함께 더 큰 �
 tf = s11.shapes.add_textbox(Inches(1.0), Inches(3.95), Inches(11.333), Inches(0.4)).text_frame
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
 r = p.add_run(); r.text = "#즉시_실무_투입_가능    #TOEIC_825점_1종보통    #SDT_특수임무대_만기전역"; r.font.name = FONT_BODY; r.font.size = Pt(12); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
-
-add_three_squares(s11, Inches(11.8), Inches(4.9))
 
 # Bottom Green Bar
 btm11 = s11.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(5.7), Inches(12.133), Inches(1.2))
