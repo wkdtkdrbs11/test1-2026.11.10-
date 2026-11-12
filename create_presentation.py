@@ -36,6 +36,8 @@ IMG_POSTER = os.path.join(BASE_DIR, "assets", "images", "ai-mvp-poster.jpg")
 IMG_TRASH = os.path.join(BASE_DIR, "assets", "images", "trash-cups-overflow.jpg")
 IMG_STAFF = os.path.join(BASE_DIR, "assets", "images", "staff-sorting-interview.jpg")
 IMG_FESTIVAL = os.path.join(BASE_DIR, "assets", "images", "songdo-beer-festival.jpg")
+IMG_CUPS = os.path.join(BASE_DIR, "assets", "images", "transparent-pp-cups.jpg")
+IMG_KDB = os.path.join(BASE_DIR, "assets", "images", "kdb-award-ceremony.jpg")
 
 prs = Presentation()
 prs.slide_width = Inches(13.333)
@@ -527,7 +529,7 @@ add_main_frame_box(s5)
 
 # --- 3 PHASE STEP CARDS (Reference 2 Step Showcase) ---
 cards_s5 = [
-    ("1", "단일 재질(PP) 통제", "원료 순도 100% 확보", IMG_FESTIVAL,
+    ("1", "단일 재질(PP) 통제", "원료 순도 100% 확보", IMG_CUPS,
      "무지 PP컵 통일 ➔ 부스 일괄 공급 ➔ 혼입 원천 차단", [
          "사전에 로고 없는 무지 투명 PP 컵 3종만 행사장에 일괄 공급하여 타 재질 혼입 원천 차단",
          "입점 푸드트럭 및 부스 가이드라인 배포로 원료 순도 100% 회수 환경 조성"
@@ -537,10 +539,10 @@ cards_s5 = [
          "음료 분리 배출 유도 후 발 페달식 물리적 압축 시스템으로 적재 부피 70% 이상 절감",
          "행사 종료 후 주최 측 부담 없이 전량 자체 철수·회수(Turn-key 직수거) 전담"
      ]),
-    ("3", "선별장 Skip 직송 & 성과", "KDB 장려상 & 고순도 원료화", IMG_STAFF,
+    ("3", "선별장 Skip 직송 & 성과", "KDB 장려상 & 고순도 원료화", IMG_KDB,
      "선별장 건너뛰기 ➔ r-PP 펠릿 직공급 ➔ KDB 장려상", [
          "복잡한 중간 선별장을 전면 건너뛰고 재생 플라스틱 공장에 고순도 r-PP 펠릿 원료 직공급",
-         "KDB 산업은행 창업프로젝트 장려상 수상 및 정량적 ESG 성과 리포트 발행"
+         "KDB 산업은행 창업프로젝트 장려상 수상 (IR 피칭을 통한 순환경제 BM 검증 및 성과 입증)"
      ])
 ]
 
