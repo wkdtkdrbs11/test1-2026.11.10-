@@ -1227,6 +1227,147 @@ body.deck-mode .deck-nav-bar {
   color: var(--text-secondary);
 }
 
+/* Slide 7 Specific: Unified Font Sizes & Reels + Mini Graph Card */
+#slide-7 .vbar-item-title {
+  font-size: 1.34rem;
+  font-weight: 900;
+  letter-spacing: -0.015em;
+}
+
+#slide-7 .vbar-item-en {
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: var(--green-primary);
+}
+
+#slide-7 .green-bullet-list {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  gap: 10px;
+}
+
+#slide-7 .green-bullet-list li {
+  padding-left: 18px;
+}
+
+#slide-7 .green-bullet-list li::before {
+  font-size: 1.2rem;
+}
+
+/* S7 Visual Graph Card */
+.s7-visual-graph-card {
+  border: 2px solid rgba(38, 140, 58, 0.28);
+  background: var(--bg-page);
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: 195px 1fr;
+  gap: 18px;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.s7-reels-frame {
+  height: 380px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--green-primary);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  background: #000000;
+}
+
+.s7-reels-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.s7-graph-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.s7-graph-heading {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--green-tint);
+}
+
+.s7-bar-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.s7-bm-label-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.s7-bm-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.s7-bm-val.bold-green {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--green-primary);
+  font-family: var(--font-mono);
+}
+
+.s7-bm-track {
+  height: 10px;
+  background: var(--bg-panel);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.s7-bm-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green-mid) 0%, var(--green-primary) 100%);
+  border-radius: 999px;
+}
+
+.s7-bm-fill.follower {
+  background: linear-gradient(90deg, #5bb56f 0%, #1e7832 100%);
+}
+
+.s7-bm-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.s7-badge-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.s7-stat-pill {
+  background: #ffffff;
+  border: 1.5px solid var(--green-primary);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.s7-stat-pill i {
+  color: var(--green-primary);
+  margin-right: 6px;
+}
+
+.s7-stat-pill strong {
+  color: var(--green-dark);
+}
+
 /* Charts & Visual Showcase Panels */
 .chart-showcase-box {
   border: 2px solid rgba(38, 140, 58, 0.25);

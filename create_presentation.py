@@ -38,6 +38,7 @@ IMG_STAFF = os.path.join(BASE_DIR, "assets", "images", "staff-sorting-interview.
 IMG_FESTIVAL = os.path.join(BASE_DIR, "assets", "images", "songdo-beer-festival.jpg")
 IMG_CUPS = os.path.join(BASE_DIR, "assets", "images", "transparent-pp-cups.jpg")
 IMG_KDB = os.path.join(BASE_DIR, "assets", "images", "kdb-award-ceremony.jpg")
+IMG_CHERRY_REELS = os.path.join(BASE_DIR, "assets", "images", "cherry-reels-garden.jpg")
 
 prs = Presentation()
 prs.slide_width = Inches(13.333)
@@ -791,99 +792,130 @@ r.font.size = Pt(11)
 r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
-# SLIDE 7 : 경험 2 결과물 (체리커피 릴스 & 매출 25% 상승)
+# SLIDE 7 : Project 2 결과물 (체리커피 릴스 & 매출 25% 상승)
 # ==============================================================================
 s7 = prs.slides.add_slide(blank_layout)
 set_slide_background(s7, COLOR_BG)
-add_green_top_bar(s7, "결과물", "오가닉 팔로워 200명 증가 및 전월 대비 매출 25% 상승", "JANG SANGGYUN", "PORTFOLIO")
+add_green_top_bar(s7, "Project 2", "팔로워 200명 증가 및 전월 대비 매출 25% 상승", "기간: 2023.07.15 - 2024.06.15", "")
 add_main_frame_box(s7)
 
-# Left Chart Showcase
-c_panel = s7.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), Inches(1.7), Inches(5.4), Inches(4.7))
+# Left Showcase (Reels Photo + Concise Comparison Graph)
+c_panel = s7.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), Inches(1.6), Inches(5.4), Inches(5.0))
 c_panel.fill.solid()
 c_panel.fill.fore_color.rgb = COLOR_PANEL
 c_panel.line.color.rgb = COLOR_PRIMARY
 c_panel.line.width = Pt(1.5)
 
-tf = s7.shapes.add_textbox(Inches(1.1), Inches(1.9), Inches(5.0), Inches(0.5)).text_frame
+# Reels Picture
+if os.path.exists(IMG_CHERRY_REELS):
+    s7.shapes.add_picture(IMG_CHERRY_REELS, Inches(1.1), Inches(1.8), height=Inches(4.55))
+
+# Graph & Stat on Right Side of Left Panel
+g_title = s7.shapes.add_textbox(Inches(3.65), Inches(1.8), Inches(2.55), Inches(0.4))
+tf = g_title.text_frame
+tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
-p.alignment = PP_ALIGN.CENTER
 r = p.add_run()
-r.text = "릴스 런칭 및 제휴 1개월 만에 매장 매출 25% 상승"
+r.text = "캠페인 1개월 핵심 성과"
 r.font.name = FONT_HEADING
-r.font.size = Pt(13)
+r.font.size = Pt(12)
 r.font.bold = True
-r.font.color.rgb = COLOR_PRIMARY
+r.font.color.rgb = COLOR_DARK
 
-# Bar 1 : Before
-b1 = s7.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.5), Inches(3.6), Inches(1.1), Inches(1.8))
-b1.fill.solid()
-b1.fill.fore_color.rgb = RGBColor(189, 189, 189)
-b1.line.fill.background()
-tf = s7.shapes.add_textbox(Inches(1.4), Inches(3.2), Inches(1.3), Inches(0.4)).text_frame
-p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r = p.add_run(); r.text = "100%"; r.font.size = Pt(11); r.font.bold = True; r.font.color.rgb = COLOR_DARK
-tf = s7.shapes.add_textbox(Inches(1.3), Inches(5.45), Inches(1.5), Inches(0.4)).text_frame
-p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r = p.add_run(); r.text = "캠페인 전 매출"; r.font.size = Pt(10); r.font.bold = True
+# Metric 1: Revenue +25%
+m1_box = s7.shapes.add_textbox(Inches(3.65), Inches(2.35), Inches(2.55), Inches(0.8))
+tf = m1_box.text_frame
+tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
+p = tf.paragraphs[0]
+r = p.add_run()
+r.text = "매장 매출 : "
+r.font.name = FONT_BODY
+r.font.size = Pt(10)
+r.font.bold = True
+r2 = p.add_run()
+r2.text = "+25% UP\n"
+r2.font.name = FONT_HEADING
+r2.font.size = Pt(13)
+r2.font.bold = True
+r2.font.color.rgb = COLOR_PRIMARY
+r3 = p.add_run()
+r3.text = "전월 대비 매출 25% 상승 견인"
+r3.font.name = FONT_BODY
+r3.font.size = Pt(8.5)
+r3.font.color.rgb = COLOR_MUTED
 
-# Bar 2 : After (+25%)
-b2 = s7.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(3.0), Inches(2.8), Inches(1.1), Inches(2.6))
-b2.fill.solid()
-b2.fill.fore_color.rgb = COLOR_PRIMARY
-b2.line.fill.background()
-tf = s7.shapes.add_textbox(Inches(2.9), Inches(2.4), Inches(1.3), Inches(0.4)).text_frame
-p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r = p.add_run(); r.text = "+25% UP"; r.font.size = Pt(12); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
-tf = s7.shapes.add_textbox(Inches(2.8), Inches(5.45), Inches(1.5), Inches(0.4)).text_frame
-p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r = p.add_run(); r.text = "1개월 후 매출"; r.font.size = Pt(10); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
+# Bar 1 Track & Fill
+b1_track = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.65), Inches(3.2), Inches(2.4), Inches(0.12))
+b1_track.fill.solid(); b1_track.fill.fore_color.rgb = RGBColor(220, 220, 220); b1_track.line.fill.background()
+b1_fill = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.65), Inches(3.2), Inches(2.4), Inches(0.12))
+b1_fill.fill.solid(); b1_fill.fill.fore_color.rgb = COLOR_PRIMARY; b1_fill.line.fill.background()
 
-# Bar 3 : Follower (+200)
-b3 = s7.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(4.5), Inches(3.1), Inches(1.1), Inches(2.3))
-b3.fill.solid()
-b3.fill.fore_color.rgb = COLOR_MID
-b3.line.fill.background()
-tf = s7.shapes.add_textbox(Inches(4.4), Inches(2.7), Inches(1.3), Inches(0.4)).text_frame
-p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r = p.add_run(); r.text = "+200명"; r.font.size = Pt(12); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
-tf = s7.shapes.add_textbox(Inches(4.3), Inches(5.45), Inches(1.5), Inches(0.4)).text_frame
-p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r = p.add_run(); r.text = "오가닉 팔로워"; r.font.size = Pt(10); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
+# Metric 2: Followers +200
+m2_box = s7.shapes.add_textbox(Inches(3.65), Inches(3.55), Inches(2.55), Inches(0.8))
+tf = m2_box.text_frame
+tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
+p = tf.paragraphs[0]
+r = p.add_run()
+r.text = "인스타 팔로워 : "
+r.font.name = FONT_BODY
+r.font.size = Pt(10)
+r.font.bold = True
+r2 = p.add_run()
+r2.text = "+200명 (646명)\n"
+r2.font.name = FONT_HEADING
+r2.font.size = Pt(13)
+r2.font.bold = True
+r2.font.color.rgb = COLOR_PRIMARY
+r3 = p.add_run()
+r3.text = "광고비 0원 100% 오가닉 유입"
+r3.font.name = FONT_BODY
+r3.font.size = Pt(8.5)
+r3.font.color.rgb = COLOR_MUTED
 
-tf = s7.shapes.add_textbox(Inches(1.1), Inches(5.95), Inches(5.0), Inches(0.3)).text_frame
-p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r = p.add_run(); r.text = "광고비 0원 (100% 오가닉 릴스 도달)  |  인근 식당 5곳 상생 제휴 네트워크"; r.font.size = Pt(9); r.font.color.rgb = COLOR_MUTED
+# Bar 2 Track & Fill
+b2_track = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.65), Inches(4.4), Inches(2.4), Inches(0.12))
+b2_track.fill.solid(); b2_track.fill.fore_color.rgb = RGBColor(220, 220, 220); b2_track.line.fill.background()
+b2_fill = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.65), Inches(4.4), Inches(2.0), Inches(0.12))
+b2_fill.fill.solid(); b2_fill.fill.fore_color.rgb = COLOR_MID; b2_fill.line.fill.background()
+
+# Stat Pills
+pill1 = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.65), Inches(4.75), Inches(2.45), Inches(0.52))
+pill1.fill.solid(); pill1.fill.fore_color.rgb = COLOR_WHITE; pill1.line.color.rgb = COLOR_PRIMARY; pill1.line.width = Pt(1)
+p = pill1.text_frame.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
+r = p.add_run(); r.text = "⚡ 광고비 0원 숏폼 도달"; r.font.name = FONT_BODY; r.font.size = Pt(9.5); r.font.bold = True; r.font.color.rgb = COLOR_DARK
+
+pill2 = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.65), Inches(5.42), Inches(2.45), Inches(0.52))
+pill2.fill.solid(); pill2.fill.fore_color.rgb = COLOR_WHITE; pill2.line.color.rgb = COLOR_PRIMARY; pill2.line.width = Pt(1)
+p = pill2.text_frame.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
+r = p.add_run(); r.text = "🤝 인근 식당 5곳 B2B 제휴"; r.font.name = FONT_BODY; r.font.size = Pt(9.5); r.font.bold = True; r.font.color.rgb = COLOR_DARK
+
 
 # Right 3 Action Pillars
 vbars_s7 = [
     ("공간 강점을 살린 숏폼 릴스 제작", "Content", [
-        "‘도심 속 숨은 숲속 정원 카페’를 테마로 지하철역 출구부터 매장 테라스로 이어지는 접근성을 강조한 릴스를 기획·제작·배포",
-        "런칭 1개월 만에 광고비 0원으로 오가닉 팔로워 200명 증가 및 잠재 고객 유입 확보"
+        "‘역세권 도심 속 숨은 숲속 정원 카페’를 테마로 접근성과 공간감을 강조한 릴스를 제작·배포해 1개월 만에 오가닉 팔로워 200명 증가"
     ]),
     ("매장 경험(CX) 및 넛지(Nudge) 진열", "Store CX", [
-        "고객이 주문 카운터로 향하는 시선 동선에 당일 구운 시그니처 베이커리를 전략적으로 배치",
-        "음료 단독 주문 고객의 베이커리 추가 구매를 자연스럽게 유도해 객단가 상승 견인"
+        "고객이 주문 카운터로 향하는 시선 동선에 당일 구운 시그니처 베이커리를 전략적으로 배치해 음료+베이커리 동반 구매 및 객단가 상승 유도"
     ]),
     ("인근 인기 식당 5곳 B2B 상생 제휴", "Promotion", [
-        "주변 식당 5곳과 협력해 식사 영수증 지참 시 음료 할인 및 매장 내 상호 쿠폰 비치 진행",
-        "점심 피크 타임 직후 유휴 시간대 유입을 극대화하여 전월 대비 매장 매출 25% 상승 달성"
+        "주변 식당 5곳과 협력해 식사 영수증 지참 시 음료 할인 및 매장 내 상호 쿠폰 비치를 진행, 점심 피크 직후 유휴 시간대 유입 극대화"
     ])
 ]
 
 for idx, (title, sub, bullets) in enumerate(vbars_s7):
-    top_pos = Inches(1.7 + idx * 1.55)
-    bar = s7.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.8), top_pos, Inches(0.08), Inches(1.3))
+    top_pos = Inches(1.68 + idx * 1.62)
+    bar = s7.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.8), top_pos, Inches(0.08), Inches(1.4))
     bar.fill.solid(); bar.fill.fore_color.rgb = COLOR_PRIMARY; bar.line.fill.background()
 
-    tbox = s7.shapes.add_textbox(Inches(7.05), top_pos, Inches(5.4), Inches(1.3))
+    tbox = s7.shapes.add_textbox(Inches(7.05), top_pos, Inches(5.4), Inches(1.4))
     tf = tbox.text_frame; tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     p = tf.paragraphs[0]
-    r = p.add_run(); r.text = title + "  "; r.font.name = FONT_HEADING; r.font.size = Pt(13); r.font.bold = True; r.font.color.rgb = COLOR_DARK
-    r = p.add_run(); r.text = sub; r.font.name = FONT_HEADING; r.font.size = Pt(10); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
+    r = p.add_run(); r.text = title + "  "; r.font.name = FONT_HEADING; r.font.size = Pt(15); r.font.bold = True; r.font.color.rgb = COLOR_DARK
+    r = p.add_run(); r.text = sub; r.font.name = FONT_HEADING; r.font.size = Pt(10.5); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
     for bullet in bullets:
-        p = tf.add_paragraph(); p.space_before = Pt(4)
-        r = p.add_run(); r.text = "• " + bullet; r.font.name = FONT_BODY; r.font.size = Pt(9.5); r.font.color.rgb = COLOR_TEXT
+        p = tf.add_paragraph(); p.space_before = Pt(6)
+        r = p.add_run(); r.text = "• " + bullet; r.font.name = FONT_BODY; r.font.size = Pt(12); r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
 # SLIDE 8 : Project 3 (대학생 AI 교차검증 문제 정의 및 포스터 실험)
