@@ -1185,15 +1185,19 @@ body.deck-mode .deck-nav-bar {
 }
 
 #slide-6 .chart-showcase-box {
-  padding: 16px 20px;
-  gap: 12px;
+  padding: 14px 18px;
+  gap: 10px;
 }
 
 .cherry-insta-frame {
-  height: 250px;
+  height: 320px;
+  max-width: 220px;
+  width: 100%;
+  margin: 0 auto;
   background: #000000;
   border: 1.5px solid var(--green-primary);
-  border-radius: 6px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1211,19 +1215,19 @@ body.deck-mode .deck-nav-bar {
   background: #ffffff;
   border: 1.5px solid var(--green-primary);
   border-radius: 6px;
-  padding: 12px 16px;
+  padding: 10px 14px;
 }
 
 .cherry-strategy-title {
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   font-weight: 900;
   color: var(--green-primary);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
 .cherry-strategy-text {
-  font-size: 0.98rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.55;
   color: var(--text-secondary);
 }
 
@@ -1320,7 +1324,8 @@ body.deck-mode .deck-nav-bar {
   font-size: 1.15rem;
   font-weight: 900;
   color: var(--green-primary);
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
 }
 
 .s7-bm-track {
@@ -1337,7 +1342,7 @@ body.deck-mode .deck-nav-bar {
 }
 
 .s7-bm-fill.follower {
-  background: linear-gradient(90deg, #5bb56f 0%, #1e7832 100%);
+  background: linear-gradient(90deg, var(--green-mid) 0%, var(--green-primary) 100%);
 }
 
 .s7-bm-sub {

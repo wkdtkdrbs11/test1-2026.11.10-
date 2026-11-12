@@ -765,17 +765,17 @@ r.font.size = Pt(13)
 r.font.bold = True
 r.font.color.rgb = COLOR_PRIMARY
 
-# Centered Garden Reels Frame
-insta_bg = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(8.75), Inches(2.25), Inches(1.9), Inches(2.75))
+# Centered Garden Reels Frame (Extended Height)
+insta_bg = s6.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(8.65), Inches(2.15), Inches(2.1), Inches(3.1))
 insta_bg.fill.solid()
 insta_bg.fill.fore_color.rgb = RGBColor(0, 0, 0)
 insta_bg.line.color.rgb = COLOR_PRIMARY
 insta_bg.line.width = Pt(1.5)
 
 if os.path.exists(IMG_CHERRY_REELS):
-    s6.shapes.add_picture(IMG_CHERRY_REELS, Inches(8.92), Inches(2.32), height=Inches(2.6))
+    s6.shapes.add_picture(IMG_CHERRY_REELS, Inches(8.85), Inches(2.2), height=Inches(3.0))
 
-post_box = s6.shapes.add_textbox(Inches(7.2), Inches(5.15), Inches(5.0), Inches(1.1))
+post_box = s6.shapes.add_textbox(Inches(7.2), Inches(5.35), Inches(5.0), Inches(1.0))
 tf = post_box.text_frame
 p = tf.paragraphs[0]
 r = p.add_run()
@@ -882,7 +882,7 @@ r3.font.color.rgb = COLOR_MUTED
 b2_track = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.65), Inches(4.4), Inches(2.4), Inches(0.12))
 b2_track.fill.solid(); b2_track.fill.fore_color.rgb = RGBColor(220, 220, 220); b2_track.line.fill.background()
 b2_fill = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.65), Inches(4.4), Inches(2.0), Inches(0.12))
-b2_fill.fill.solid(); b2_fill.fill.fore_color.rgb = COLOR_MID; b2_fill.line.fill.background()
+b2_fill.fill.solid(); b2_fill.fill.fore_color.rgb = COLOR_PRIMARY; b2_fill.line.fill.background()
 
 # Stat Pills
 pill1 = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.65), Inches(4.75), Inches(2.45), Inches(0.52))
