@@ -1737,6 +1737,45 @@ body.deck-mode .deck-nav-bar {
 /* ==========================================================================
    PRINT / PDF EXPORT (Exact 11-Page Landscape Slide Deck)
    ========================================================================== */
+/* Capture Slide Mode (Exact 16:9 1920x1080 full viewport capture) */
+body.capture-slide-mode {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: var(--bg-page) !important;
+}
+body.capture-slide-mode .top-control-bar,
+body.capture-slide-mode .deck-nav-bar,
+body.capture-slide-mode .lightbox-modal {
+  display: none !important;
+}
+body.capture-slide-mode .portfolio-deck {
+  max-width: none !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+body.capture-slide-mode .template-sheet {
+  display: none !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+  padding: 44px 54px !important;
+  box-sizing: border-box !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+body.capture-slide-mode .template-sheet.active-capture {
+  display: flex !important;
+}
+
 @media print {
   @page {
     size: 297mm 167mm; /* 16:9 widescreen ratio */

@@ -3,6 +3,17 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const captureParam = urlParams.get('capture');
+  if (captureParam) {
+    document.body.classList.add('capture-slide-mode');
+    const targetSheet = document.getElementById(`slide-${captureParam}`);
+    if (targetSheet) {
+      targetSheet.classList.add('active-capture');
+    }
+    return;
+  }
+
   const sheets = Array.from(document.querySelectorAll('.template-sheet'));
   const navLinks = Array.from(document.querySelectorAll('.quick-nav .nav-link'));
   const indexEntries = Array.from(document.querySelectorAll('.index-entry'));
