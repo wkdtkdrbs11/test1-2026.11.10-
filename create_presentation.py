@@ -517,119 +517,269 @@ for i, (title, sub, img_path, bullets) in enumerate(cols_s4):
         r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
-# SLIDE 5 : 경험 1 결과물 (스마트빈 솔루션 & 수상 성과)
+# SLIDE 5 : Project 1 결과 & 성과 (스마트빈 순환경제 밸류체인 & 인사이트)
 # ==============================================================================
 s5 = prs.slides.add_slide(blank_layout)
 set_slide_background(s5, COLOR_BG)
-add_green_top_bar(s5, "결과물", "가상 브랜드 ‘스마트빈’ 순환경제 밸류체인 구축", "JANG SANGGYUN", "PORTFOLIO")
+add_green_top_bar(s5, "Project 1 결과 & 성과", "‘스마트빈’ 순환경제 밸류체인 구축 및 성과", "2026.03 - 2026.07 (KDB 산업은행)", "단일 PP 기획 95% | 리서치 100% | IR 피칭 90%")
 add_main_frame_box(s5)
 
-cols_s5 = [
-    ("단일 재질 통제 & 압축", "Product Strategy", [
-        "사전에 로고 없는 무지 투명 PP 컵 3종만 행사장에 일괄 공급하여 타 재질 혼입 원천 차단",
-        "음료 분리 배출 유도 후 발 페달식 물리적 압축 시스템으로 수거 부피 70% 이상 절감"
-    ], IMG_SMARTBIN),
-    ("턴키(Turn-key) 직수거", "Process & Logistics", [
-        "행사 종료 후 선별장을 거치지 않고 전량 자체 회수해 재활용 공장에 고순도 r-PP 원료로 직공급",
-        "대형 축제 단기 집약 거점 모델 및 순환식 ‘밀크런(Milk Run)’ 물류 전략 수립 (TAM 2.4조 추정)"
-    ], None),
-    ("정량적 ESG 리포트", "Promotion & Value", [
-        "축제 주최 측 및 지자체에 총 공급량 대비 수거량, 실질 순환율 수치를 담은 ESG 데이터 리포트 제공",
-        "KDB 산업은행 창업 프로젝트 최종 IR 피칭 및 장려상 수상 (ESG 투명성 입증)"
-    ], None)
+# --- LEFT PANEL (Overview, Flow, and Comparison Chart) ---
+# 1. Award Box
+award_box = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.85), Inches(1.58), Inches(3.45), Inches(1.05))
+award_box.fill.solid()
+award_box.fill.fore_color.rgb = RGBColor(250, 246, 235)
+award_box.line.color.rgb = RGBColor(212, 163, 66)
+award_box.line.width = Pt(1.5)
+tf = award_box.text_frame
+tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = Inches(0.08)
+p = tf.paragraphs[0]
+r = p.add_run()
+r.text = "🏆 KDB 산업은행 창업프로젝트\n"
+r.font.name = FONT_HEADING
+r.font.size = Pt(10)
+r.font.bold = True
+r.font.color.rgb = RGBColor(140, 104, 32)
+r = p.add_run()
+r.text = "장려상 수상 (최종 IR 피칭)\n"
+r.font.name = FONT_HEADING
+r.font.size = Pt(13)
+r.font.bold = True
+r.font.color.rgb = COLOR_DARK
+r = p.add_run()
+r.text = "선별장 Skip형 고순도 r-PP 직송 순환경제 BM"
+r.font.name = FONT_BODY
+r.font.size = Pt(9.5)
+r.font.color.rgb = COLOR_TEXT
+
+# 2. Strategy Flow Box
+flow_box = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.85), Inches(2.72), Inches(3.45), Inches(1.12))
+flow_box.fill.solid()
+flow_box.fill.fore_color.rgb = COLOR_WHITE
+flow_box.line.color.rgb = COLOR_PRIMARY
+flow_box.line.width = Pt(1.2)
+tf = flow_box.text_frame
+tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = Inches(0.08)
+p = tf.paragraphs[0]
+r = p.add_run()
+r.text = "【타깃 설정】 대형 축제/스포츠 기획사 & 지자체 ESG 부서\n"
+r.font.name = FONT_BODY
+r.font.size = Pt(9.5)
+r.font.bold = True
+r.font.color.rgb = COLOR_DARK
+p2 = tf.add_paragraph()
+p2.alignment = PP_ALIGN.CENTER
+r = p2.add_run()
+r.text = "▼\n"
+r.font.name = FONT_HEADING
+r.font.size = Pt(9)
+r.font.bold = True
+r.font.color.rgb = COLOR_PRIMARY
+p3 = tf.add_paragraph()
+r = p3.add_run()
+r.text = "【전략 설정】 선별장 Skip형 단일 PP 공급·압축·직송 올인원"
+r.font.name = FONT_BODY
+r.font.size = Pt(9.5)
+r.font.bold = True
+r.font.color.rgb = COLOR_PRIMARY
+
+# 3. Chart Box (Before vs After Recycling Rate)
+chart_box = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.85), Inches(3.93), Inches(3.45), Inches(1.55))
+chart_box.fill.solid()
+chart_box.fill.fore_color.rgb = COLOR_WHITE
+chart_box.line.color.rgb = COLOR_PRIMARY
+chart_box.line.width = Pt(1.2)
+tf = chart_box.text_frame
+tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = Inches(0.08)
+p = tf.paragraphs[0]
+r = p.add_run()
+r.text = "플라스틱 실질 순환율 비교 (+78.6%p 향상)\n\n"
+r.font.name = FONT_HEADING
+r.font.size = Pt(10)
+r.font.bold = True
+r.font.color.rgb = COLOR_DARK
+
+# Chart Bar 1: Existing (16.4%)
+c_label1 = s5.shapes.add_textbox(Inches(0.95), Inches(4.35), Inches(1.8), Inches(0.3))
+c_label1.text_frame.margin_left = c_label1.text_frame.margin_top = c_label1.text_frame.margin_right = c_label1.text_frame.margin_bottom = 0
+c_label1.text_frame.paragraphs[0].add_run().text = "기존 축제 현장 (16.4%)"
+c_label1.text_frame.paragraphs[0].runs[0].font.size = Pt(8.5)
+c_label1.text_frame.paragraphs[0].runs[0].font.name = FONT_BODY
+
+bar1_track = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.95), Inches(4.6), Inches(3.25), Inches(0.12))
+bar1_track.fill.solid()
+bar1_track.fill.fore_color.rgb = COLOR_PANEL
+bar1_track.line.fill.background()
+bar1_fill = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.95), Inches(4.6), Inches(3.25 * 0.164), Inches(0.12))
+bar1_fill.fill.solid()
+bar1_fill.fill.fore_color.rgb = RGBColor(160, 160, 160)
+bar1_fill.line.fill.background()
+
+# Chart Bar 2: Smartbin (95.0%)
+c_label2 = s5.shapes.add_textbox(Inches(0.95), Inches(4.8), Inches(2.2), Inches(0.3))
+c_label2.text_frame.margin_left = c_label2.text_frame.margin_top = c_label2.text_frame.margin_right = c_label2.text_frame.margin_bottom = 0
+r2 = c_label2.text_frame.paragraphs[0].add_run()
+r2.text = "스마트빈 도입 시 (95.0%)"
+r2.font.size = Pt(9)
+r2.font.bold = True
+r2.font.name = FONT_BODY
+r2.font.color.rgb = COLOR_PRIMARY
+
+bar2_track = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.95), Inches(5.08), Inches(3.25), Inches(0.15))
+bar2_track.fill.solid()
+bar2_track.fill.fore_color.rgb = COLOR_PANEL
+bar2_track.line.fill.background()
+bar2_fill = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.95), Inches(5.08), Inches(3.25 * 0.95), Inches(0.15))
+bar2_fill.fill.solid()
+bar2_fill.fill.fore_color.rgb = COLOR_PRIMARY
+bar2_fill.line.fill.background()
+
+
+# --- RIGHT PANEL (3 Detailed Execution Rows & Big KPI Badges) ---
+rows_s5 = [
+    ("01", "INPUT", IMG_FESTIVAL, "단일 재질(PP) 일괄 통제 공급", [
+        "사전에 로고 없는 무지 투명 PP 컵 3종만 일괄 공급해 타 재질 혼입 원천 차단",
+        "입점 푸드트럭 및 부스 가이드라인 배포로 원료 순도 100% 회수 환경 조성"
+    ], "수거 부피 절감", "-70%", "빈 공기 90% 물리 압축", RGBColor(216, 58, 45)),
+
+    ("02", "PROCESS", IMG_SMARTBIN, "물리적 3단 압축 및 Turn-key 직수거", [
+        "음료 분리 배출 유도 후 발 페달식 물리 압축으로 적재 부피를 1/3 수준으로 감소",
+        "행사 종료 후 주최 측 부담 없이 전량 자체 철수·회수(Turn-key) 전담"
+    ], "실질 순환율", "95%+", "기존(16.4%) 대비 5.8배↑", COLOR_PRIMARY),
+
+    ("03", "OUTPUT", IMG_STAFF, "선별장 Skip & 고순도 r-PP 직송 원료화", [
+        "복잡한 중간 선별장을 건너뛰고 재생 플라스틱 공장에 고순도 펠릿 원료로 직공급",
+        "지자체·주최사에 탄소 저감량·실질 순환율을 수치화한 정량적 ESG 리포트 발행"
+    ], "선별 비용", "100% Skip", "중간 선별 수수료 0원", RGBColor(23, 66, 31))
 ]
 
-for i, (title, sub, bullets, img_path) in enumerate(cols_s5):
-    left_x = Inches(0.85 + i * 3.95)
-    tbox = s5.shapes.add_textbox(left_x, Inches(1.65), Inches(3.65), Inches(0.6))
+for idx, (step_num, step_tag, img_p, row_title, bullets, kpi_label, kpi_val, kpi_sub, kpi_bg) in enumerate(rows_s5):
+    top_y = Inches(1.58 + idx * 1.30)
+    
+    # Outer row container
+    row_bg = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.5), top_y, Inches(8.0), Inches(1.22))
+    row_bg.fill.solid()
+    row_bg.fill.fore_color.rgb = COLOR_WHITE
+    row_bg.line.color.rgb = COLOR_PRIMARY
+    row_bg.line.width = Pt(1.2)
+
+    # Step Circle Badge
+    badge_circle = s5.shapes.add_shape(MSO_SHAPE.OVAL, Inches(4.6), top_y + Inches(0.18), Inches(0.85), Inches(0.85))
+    badge_circle.fill.solid()
+    badge_circle.fill.fore_color.rgb = kpi_bg
+    badge_circle.line.fill.background()
+    tf_b = badge_circle.text_frame
+    tf_b.margin_left = tf_b.margin_top = tf_b.margin_right = tf_b.margin_bottom = 0
+    p = tf_b.paragraphs[0]
+    p.alignment = PP_ALIGN.CENTER
+    r = p.add_run()
+    r.text = step_num + "\n"
+    r.font.name = FONT_HEADING
+    r.font.size = Pt(12)
+    r.font.bold = True
+    r.font.color.rgb = COLOR_WHITE
+    r2 = p.add_run()
+    r2.text = step_tag
+    r2.font.name = FONT_HEADING
+    r2.font.size = Pt(7)
+    r2.font.bold = True
+    r2.font.color.rgb = COLOR_WHITE
+
+    # Image Thumbnail
+    if img_p and os.path.exists(img_p):
+        s5.shapes.add_picture(img_p, Inches(5.55), top_y + Inches(0.12), width=Inches(1.35), height=Inches(0.98))
+
+    # Text Content (Title & Bullets)
+    tbox = s5.shapes.add_textbox(Inches(7.0), top_y + Inches(0.08), Inches(3.9), Inches(1.05))
     tf = tbox.text_frame
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     p = tf.paragraphs[0]
     r = p.add_run()
-    r.text = title + "\n"
+    r.text = row_title + "\n"
     r.font.name = FONT_HEADING
-    r.font.size = Pt(14)
+    r.font.size = Pt(12)
     r.font.bold = True
     r.font.color.rgb = COLOR_DARK
 
-    r = p.add_run()
-    r.text = sub
-    r.font.name = FONT_HEADING
-    r.font.size = Pt(10)
-    r.font.bold = True
-    r.font.color.rgb = COLOR_PRIMARY
-
-    bbox = s5.shapes.add_textbox(left_x, Inches(2.35), Inches(3.65), Inches(1.8))
-    tf = bbox.text_frame
-    tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     for b_idx, bullet in enumerate(bullets):
-        p = tf.paragraphs[0] if b_idx == 0 else tf.add_paragraph()
-        p.space_before = Pt(6)
-        r = p.add_run()
+        p_b = tf.add_paragraph()
+        p_b.space_before = Pt(2)
+        r = p_b.add_run()
         r.text = "• " + bullet
         r.font.name = FONT_BODY
-        r.font.size = Pt(10)
+        r.font.size = Pt(9.5)
         r.font.color.rgb = COLOR_TEXT
 
-    # Visual Frame
-    v_frame = s5.shapes.add_shape(MSO_SHAPE.RECTANGLE, left_x, Inches(4.3), Inches(3.65), Inches(1.6))
-    v_frame.fill.solid()
-    v_frame.fill.fore_color.rgb = COLOR_PANEL
-    v_frame.line.color.rgb = COLOR_PRIMARY
-    v_frame.line.width = Pt(1.5)
+    # KPI Solid Highlight Box
+    kbox = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(11.0), top_y + Inches(0.1), Inches(1.4), Inches(1.02))
+    kbox.fill.solid()
+    kbox.fill.fore_color.rgb = kpi_bg
+    kbox.line.fill.background()
+    tf_k = kbox.text_frame
+    tf_k.margin_left = tf_k.margin_top = tf_k.margin_right = tf_k.margin_bottom = 0
+    p = tf_k.paragraphs[0]
+    p.alignment = PP_ALIGN.CENTER
+    r = p.add_run()
+    r.text = kpi_label + "\n"
+    r.font.name = FONT_HEADING
+    r.font.size = Pt(8)
+    r.font.bold = True
+    r.font.color.rgb = COLOR_WHITE
 
-    if i == 0 and img_path and os.path.exists(img_path):
-        s5.shapes.add_picture(img_path, left_x + Inches(0.1), Inches(4.35), width=Inches(3.45))
-    elif i == 1:
-        tf = v_frame.text_frame
-        p = tf.paragraphs[0]
-        p.alignment = PP_ALIGN.CENTER
-        r = p.add_run()
-        r.text = "CIRCULAR VALUE CHAIN\n\n무지 PP컵 공급 → 70% 압축수거\n→ 선별장 Skip → r-PP 직공급"
-        r.font.name = FONT_HEADING
-        r.font.size = Pt(11)
-        r.font.bold = True
-        r.font.color.rgb = COLOR_PRIMARY
-    elif i == 2:
-        tf = v_frame.text_frame
-        p = tf.paragraphs[0]
-        p.alignment = PP_ALIGN.CENTER
-        r = p.add_run()
-        r.text = "🏆 KDB 산업은행 창업프로젝트\n\n최종 IR 피칭 장려상 수상\n(TAM 2.4조 / SAM 970억 / SOM 18억)"
-        r.font.name = FONT_HEADING
-        r.font.size = Pt(11)
-        r.font.bold = True
-        r.font.color.rgb = COLOR_PRIMARY
+    p2 = tf_k.add_paragraph()
+    p2.alignment = PP_ALIGN.CENTER
+    r = p2.add_run()
+    r.text = kpi_val + "\n"
+    r.font.name = FONT_HEADING
+    r.font.size = Pt(16)
+    r.font.bold = True
+    r.font.color.rgb = COLOR_WHITE
 
-# Bottom Gray Summary Strip
-strip = s5.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(6.15), Inches(12.133), Inches(0.65))
+    p3 = tf_k.add_paragraph()
+    p3.alignment = PP_ALIGN.CENTER
+    r = p3.add_run()
+    r.text = kpi_sub
+    r.font.name = FONT_BODY
+    r.font.size = Pt(7)
+    r.font.color.rgb = COLOR_WHITE
+
+
+# --- BOTTOM SUMMARY STRIP ---
+strip = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.85), Inches(5.62), Inches(11.65), Inches(0.95))
 strip.fill.solid()
-strip.fill.fore_color.rgb = COLOR_PANEL
-strip.line.fill.background()
+strip.fill.fore_color.rgb = RGBColor(239, 247, 240)
+strip.line.color.rgb = COLOR_PRIMARY
+strip.line.width = Pt(1.5)
 
-s_box = s5.shapes.add_textbox(Inches(1.0), Inches(6.28), Inches(11.333), Inches(0.4))
+s_box = s5.shapes.add_textbox(Inches(1.0), Inches(5.68), Inches(11.35), Inches(0.82))
 tf = s_box.text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
-p = tf.paragraphs[0]
-r = p.add_run()
-r.text = "핵심 성과 요약 : "
+
+p1 = tf.paragraphs[0]
+p1.alignment = PP_ALIGN.CENTER
+r = p1.add_run()
+r.text = "무지 PP컵 일괄공급  ➔  현장 70% 압축수거  ➔  중간 선별장 100% Skip  ➔  고순도 r-PP 직송 원료화\n"
+r.font.name = FONT_HEADING
+r.font.size = Pt(10)
+r.font.bold = True
+r.font.color.rgb = COLOR_PRIMARY
+
+p2 = tf.add_paragraph()
+p2.alignment = PP_ALIGN.CENTER
+p2.space_before = Pt(4)
+r = p2.add_run()
+r.text = "KEY INSIGHT & VALUE : "
 r.font.name = FONT_HEADING
 r.font.size = Pt(11)
 r.font.bold = True
 r.font.color.rgb = COLOR_DARK
 
-r = p.add_run()
-r.text = "KDB 산업은행 창업 프로젝트 장려상 수상 "
+r = p2.add_run()
+r.text = "“선별 비용을 없애고, 버려지는 폐기물을 돈이 되는 고순도 재생 원료(자산)로 전환”"
 r.font.name = FONT_HEADING
 r.font.size = Pt(11)
 r.font.bold = True
 r.font.color.rgb = COLOR_PRIMARY
-
-r = p.add_run()
-r.text = "| 선별장 45건 인터뷰 기반 순환경제 BM 피벗 완료 (부피 70% 절감 및 밀크런 물류 전략)"
-r.font.name = FONT_BODY
-r.font.size = Pt(11)
-r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
 # SLIDE 6 : Project 2 (체리커피 군자점 — 업무 배경과 차별점 분석)
