@@ -1,651 +1,910 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="dark">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>장상균 | 마케터 포트폴리오</title>
+  <title>마케터 장상균 | PORTFOLIO (Green Grid Edition)</title>
   <meta name="description" content="브랜드의 본질을 파악하고, 데이터로 입증하는 마케터 장상균의 포트폴리오입니다.">
-  <!-- Fonts: Pretendard Variable & JetBrains Mono -->
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+
+  <!-- Pretendard Variable + Instrument Serif (for Italic 'O') + JetBrains Mono -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Green Grid Template Stylesheet -->
   <link rel="stylesheet" href="style.css">
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <header class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-logo">
-        <span class="logo-accent">JANG</span> SANGGYUN
-      </a>
+  <!-- Top Control Bar (Hidden when printing to PDF) -->
+  <header class="top-control-bar">
+    <div class="brand-mini">
+      <span class="green-dot"></span>
+      <span>JANG SANGGYUN PORTFOLIO</span>
+      <span class="sub-tag">브랜드 · CRM 마케터</span>
+    </div>
 
-      <nav class="nav-links" id="nav-menu">
-        <a href="#about" class="nav-link">소개</a>
-        <a href="#skills" class="nav-link">핵심 역량</a>
-        <a href="#projects" class="nav-link">프로젝트</a>
-        <a href="#story" class="nav-link">스토리</a>
-        <a href="#timeline" class="nav-link">경력 & 학력</a>
-        <a href="#contact" class="nav-link">연락처</a>
-      </nav>
+    <nav class="quick-nav" aria-label="슬라이드 빠른 이동">
+      <a href="#slide-1" class="nav-link active" data-slide="0">표지</a>
+      <a href="#slide-2" class="nav-link" data-slide="1">이력사항</a>
+      <a href="#slide-3" class="nav-link" data-slide="2">INDEX</a>
+      <a href="#slide-4" class="nav-link" data-slide="3">경험 1 (스마트빈)</a>
+      <a href="#slide-6" class="nav-link" data-slide="5">경험 2 (체리커피)</a>
+      <a href="#slide-8" class="nav-link" data-slide="7">경험 3 (AI MVP)</a>
+      <a href="#slide-10" class="nav-link" data-slide="9">3가지 이야기</a>
+      <a href="#slide-11" class="nav-link" data-slide="10">Contact</a>
+    </nav>
 
-      <div class="nav-actions">
-        <button id="theme-toggle" class="icon-btn" aria-label="테마 전환" title="다크/라이트 모드 전환">
-          <i class="fa-solid fa-moon"></i>
-        </button>
-        <a href="portfolio-deck.html" target="_blank" class="btn btn-primary btn-sm">
-          <i class="fa-solid fa-play"></i> 슬라이드 덱
-        </a>
-        <a href="마케터_장상균_발표용_데크.pdf" download class="btn btn-outline btn-sm">
-          <i class="fa-solid fa-file-pdf"></i> 데크 PDF
-        </a>
-        <a href="https://storage.tally.so/private/sungsildae-jangsanggyun.pdf?id=DRopzZ&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkRSb3B6WiIsImZvcm1JZCI6ImxhYUFybyIsImlhdCI6MTc5MzA3ODIxMn0.ktHkb8NlappkHsdNQdMEUUPK8oagAjka0NH6gAHdOW4&signature=c3f70bbfe1ee48373dab26e4eeea1a5db02c415a1bd4f3d9d94b6a52182c206d" target="_blank" class="btn btn-outline btn-sm">
-          <i class="fa-solid fa-file-arrow-down"></i> 이력서
-        </a>
-        <button class="menu-toggle" id="menu-toggle" aria-label="메뉴 열기">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-      </div>
+    <div class="control-actions">
+      <button type="button" class="btn-mode active" id="btnScrollMode" title="웹 스크롤 모드로 보기">
+        <i class="fa-solid fa-arrows-up-down"></i> 웹 스크롤 보기
+      </button>
+      <button type="button" class="btn-mode" id="btnDeckMode" title="16:9 슬라이드 발표 모드로 보기">
+        <i class="fa-solid fa-display"></i> 슬라이드 발표 보기
+      </button>
+      <button type="button" class="btn-action primary" id="btnPrintPdf" title="A4 가로형 PDF로 저장/인쇄">
+        <i class="fa-solid fa-file-pdf"></i> PDF 인쇄 / 저장
+      </button>
     </div>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-section" id="hero">
-      <div class="container hero-container">
-        <div class="hero-content">
-          <div class="badge-pill">
-            <span class="pulse-dot"></span>
-            브랜드 마케터 · CRM 마케터
-          </div>
-          <h1 class="hero-title">
-            브랜드의 본질을 파악하고,<br>
-            데이터로 입증하는 마케터 장상균
-          </h1>
-          <p class="hero-description">
-            안녕하세요, <strong>장상균</strong>입니다.<br>
-            고객이 제품을 선택하는 진짜 이유와 불편을 파고들어 가설을 세우고,
-            현장에서 발로 뛰는 실험과 데이터로 성과를 입증합니다.
-          </p>
+  <!-- Main Portfolio Deck (11 Template Sheets) -->
+  <main class="portfolio-deck" id="portfolioDeck">
 
-          <div class="hero-badges">
-            <span class="chip"><i class="fa-solid fa-bullseye"></i> #문제해결력</span>
-            <span class="chip"><i class="fa-solid fa-bolt"></i> #실행력</span>
-            <span class="chip"><i class="fa-solid fa-users"></i> #현장협업</span>
-            <span class="chip"><i class="fa-solid fa-chart-line"></i> #데이터검증</span>
-            <span class="chip"><i class="fa-solid fa-mug-hot"></i> #F&B·소비재</span>
-          </div>
+    <!-- ==================================================================
+         SLIDE 01 : COVER (PORTFOLIO)
+         ================================================================== -->
+    <section class="template-sheet" id="slide-1" data-index="0">
+      <div class="cover-upper-box">
+        <div class="cover-top-meta">
+          2023 - 2026<br>
+          BRAND &amp; CRM MARKETER
+        </div>
 
-          <div class="hero-buttons">
-            <a href="portfolio-deck.html" target="_blank" class="btn btn-primary">
-              <i class="fa-solid fa-play"></i> 슬라이드 덱 발표 보기
-            </a>
-            <a href="portfolio-full.html" target="_blank" class="btn btn-secondary">
-              <i class="fa-solid fa-file-pdf"></i> 전체 펼침 / 세로 PDF
-            </a>
-            <a href="#projects" class="btn btn-outline">
-              <i class="fa-solid fa-arrow-down"></i> 프로젝트 탐색
-            </a>
+        <div class="cover-center-hero">
+          <h1 class="cover-giant-title">P<span class="serif-o">O</span>RTFOLIO</h1>
+          <p class="cover-subtitle">“브랜드의 본질을 파악하고, 데이터로 입증하는 마케터 장상균입니다.”</p>
+          <div class="cover-sub-chips">
+            <span class="cover-chip">#문제정의와_가설검증</span>
+            <span class="cover-chip">#체리커피_매출25%상승</span>
+            <span class="cover-chip">#선별장45건_현장인터뷰</span>
+            <span class="cover-chip">#포스터MVP_전환율7.7%</span>
           </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="profile-card">
-            <div class="profile-image-wrapper">
-              <img src="assets/images/profile.png" alt="장상균 프로필 사진" class="profile-img">
-            </div>
-            <div class="profile-card-info">
-              <h3 class="profile-name">장상균 <span class="profile-en">Sanggyun Jang</span></h3>
-              <p class="profile-sub">숭실대학교 벤처중소기업학과</p>
-              <div class="profile-quick-contact">
-                <a href="mailto:wkdtkdrbs11@naver.com" title="이메일 보내기"><i class="fa-regular fa-envelope"></i></a>
-                <a href="#contact" title="연락처 (010-5779-0849)"><i class="fa-solid fa-phone"></i></a>
-                <button class="copy-quick-btn" data-copy="wkdtkdrbs11@naver.com" title="이메일 복사"><i class="fa-regular fa-copy"></i></button>
-              </div>
-            </div>
+        <div class="cover-bottom-right">
+          <div class="three-squares" aria-hidden="true">
+            <span class="sq-1"></span>
+            <span class="sq-2"></span>
+            <span class="sq-3"></span>
           </div>
         </div>
       </div>
 
-      <!-- Key Impact Metrics Counter -->
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number" data-target="25" data-suffix="%">+0%</div>
-            <div class="stat-label">매출 성장 견인</div>
-            <div class="stat-desc">체리커피 릴스 마케팅 1개월 만에 달성</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number" data-target="200" data-suffix="명+">0명+</div>
-            <div class="stat-label">오가닉 팔로워 증가</div>
-            <div class="stat-desc">상권 차별화 소구점 발굴 및 릴스 제작</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number" data-target="45" data-suffix="건">0건</div>
-            <div class="stat-label">현장 및 고객 인터뷰</div>
-            <div class="stat-desc">쓰레기 선별장/축제 이해관계자 심층 리서치</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number" data-target="7.7" data-suffix="%" data-decimal="1">0.0%</div>
-            <div class="stat-label">MVP 가입 전환율</div>
-            <div class="stat-desc">포스터 가설 검증 실험 (39명 중 3명 가입)</div>
-          </div>
+      <div class="cover-bottom-bar">
+        <div class="cover-name-en">Jang, sang-gyun</div>
+        <div class="cover-contact-list">
+          <a href="tel:01057790849" class="cover-contact-item phone-enlarged" title="전화 걸기">
+            <span class="contact-circle-icon"><i class="fa-solid fa-phone"></i></span>
+            <span>010-5779-0849</span>
+          </a>
+          <a href="mailto:wkdtkdrbs11@naver.com" class="cover-contact-item" title="이메일 보내기">
+            <span class="contact-circle-icon"><i class="fa-solid fa-envelope"></i></span>
+            <span>wkdtkdrbs11@naver.com</span>
+          </a>
+          <span class="cover-contact-item">
+            <span class="contact-circle-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+            <span>숭실대학교 벤처중소기업학과</span>
+          </span>
         </div>
       </div>
+      <span class="sheet-page-num">01 / 11</span>
     </section>
 
-    <!-- About Section -->
-    <section class="section about-section" id="about">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">소개 · About</span>
-          <h2 class="section-title">본질을 묻고, 실행으로 답합니다</h2>
-          <p class="section-subtitle">마케팅은 고객의 관점에서 본질적 강점을 발견하고 증명하는 과정입니다.</p>
+    <!-- ==================================================================
+         SLIDE 02 : 이력사항 (RESUME / PROFILE)
+         ================================================================== -->
+    <section class="template-sheet" id="slide-2" data-index="1">
+      <div class="green-top-bar">
+        <div class="bar-left">
+          <h2 class="bar-title">이력사항</h2>
         </div>
-
-        <div class="philosophy-grid">
-          <div class="philosophy-card">
-            <div class="card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-            <h3>1. 문제의 본질 정의</h3>
-            <p>
-              "눈앞에 보이는 현상에 머무르지 않고, 고객이 선택하는 이유와 불편을 느끼는 지점을 구체적으로 파고듭니다."
-            </p>
-            <div class="card-footer-note">
-              단순한 인테리어 홍보 대신 '역세권 도심 속 교외 정원'이라는 본질적 강점을 핵심 가치로 재정의
-            </div>
-          </div>
-
-          <div class="philosophy-card">
-            <div class="card-icon"><i class="fa-solid fa-flask-vial"></i></div>
-            <h3>2. 데이터와 실험으로 검증</h3>
-            <p>
-              "막연한 추측 대신 직접 가설을 세우고, 빠른 실험을 통해 숫자로 명확히 증명합니다."
-            </p>
-            <div class="card-footer-note">
-              초기 MVP 포스터 실험으로 고객 반응(전환율 7.7%)을 먼저 검증한 뒤 실행
-            </div>
-          </div>
-
-          <div class="philosophy-card">
-            <div class="card-icon"><i class="fa-solid fa-handshake-angle"></i></div>
-            <h3>3. 발로 뛰는 현장 협업</h3>
-            <p>
-              "모두가 꺼리는 현장이라도 꼭 필요한 정보라면 직접 발로 뛰어 확인하고 팀과 투명하게 나눕니다."
-            </p>
-            <div class="card-footer-note">
-              쓰레기 선별장을 직접 방문해 인터뷰하며 플라스틱 혼입 문제를 발견하고, 사업 모델 피벗을 주도
-            </div>
-          </div>
+        <div class="bar-brand-right">
+          JANG SANGGYUN<br>PROFILE
         </div>
       </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section class="section skills-section" id="skills">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">핵심 역량 · Skills</span>
-          <h2 class="section-title">스킬 및 업무 도구</h2>
-          <p class="section-subtitle">기획부터 디자인, 데이터 분석과 AI 활용까지 실무에 필요한 역량을 두루 갖추고 있습니다.</p>
-        </div>
-
-        <div class="skills-wrapper">
-          <!-- Skill Category 1 -->
-          <div class="skill-category">
-            <div class="category-header">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <h3>AI & 업무 생산성</h3>
-            </div>
-            <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">ChatGPT & AI 프롬프트</span>
-                  <span class="skill-rating"><i class="fa-solid fa-star"></i> 5.0 / 5.0</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
-                <p class="skill-desc">시장 리서치, 카피라이팅, 데이터 구조화 및 업무 자동화 활용</p>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Notion (노션)</span>
-                  <span class="skill-rating"><i class="fa-solid fa-star"></i> 4.0 / 5.0</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
-                <p class="skill-desc">프로젝트 일정 관리, 관계형 데이터베이스 구축 및 포트폴리오 관리</p>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Google Sheets / Excel</span>
-                  <span class="skill-rating"><i class="fa-solid fa-star"></i> 4.0 / 5.0</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
-                <p class="skill-desc">매출 데이터 분석, 수치 트래킹, 함수 및 피벗테이블 활용</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Skill Category 2 -->
-          <div class="skill-category">
-            <div class="category-header">
-              <i class="fa-solid fa-compass-drafting"></i>
-              <h3>디자인 & 콘텐츠</h3>
-            </div>
-            <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Figma (피그마)</span>
-                  <span class="skill-rating"><i class="fa-solid fa-star"></i> 3.0 / 5.0</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
-                <p class="skill-desc">SNS 콘텐츠 디자인, 와이어프레임 기획, 배너 및 홍보물 제작</p>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Photoshop (포토샵)</span>
-                  <span class="skill-rating"><i class="fa-solid fa-star"></i> 2.0 / 5.0</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 40%;"></div></div>
-                <p class="skill-desc">이미지 보정, 포스터 편집, 비주얼 애셋 가공</p>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">Google Analytics 4 (GA4)</span>
-                  <span class="skill-rating"><i class="fa-solid fa-star"></i> 1.5 / 5.0</span>
-                </div>
-                <div class="progress-bar"><div class="progress-fill" style="width: 30%;"></div></div>
-                <p class="skill-desc">웹 트래픽 유입 경로 분석 및 이벤트 전환 트래킹 학습/적용</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Extra Credentials Box -->
-        <div class="credentials-box">
-          <div class="credential-item">
-            <i class="fa-solid fa-language credential-icon"></i>
+      <div class="green-frame-box">
+        <div class="profile-grid-layout">
+          <!-- Left Gray Profile Panel -->
+          <aside class="profile-left-panel">
             <div>
-              <strong>TOEIC 825점</strong>
-              <p>ETS 공인 어학성적 (비즈니스 영어 회화 및 자료 독해 가능)</p>
+              <div class="profile-photo-frame">
+                <img src="assets/images/profile.png" alt="마케터 장상균 프로필 사진" class="zoomable-img">
+              </div>
+              <h3 class="profile-person-name">장상균</h3>
+              <p class="profile-person-role">Brand &amp; CRM Marketer</p>
+              <div class="profile-contact-lines">
+                <p class="phone-line"><strong>T.</strong> 010-5779-0849</p>
+                <p><strong>E.</strong> wkdtkdrbs11@naver.com</p>
+                <p><strong>U.</strong> 숭실대 벤처중소기업학과</p>
+              </div>
             </div>
-          </div>
-          <div class="credential-item">
-            <i class="fa-solid fa-shield-halved credential-icon"></i>
+
+            <div class="three-squares" aria-hidden="true">
+              <span class="sq-1"></span>
+              <span class="sq-2"></span>
+              <span class="sq-3"></span>
+            </div>
+          </aside>
+
+          <!-- Center Column: Education, Military & Experience -->
+          <div class="profile-col">
             <div>
-              <strong>39보병사단 대테러특수임무대 3팀 (SDT)</strong>
-              <p>병장 만기전역 (강한 체력, 추진력, 위기 대응력)</p>
+              <h4 class="resume-block-title">학력 및 병역사항</h4>
+              <div class="green-timeline-list">
+                <div class="green-timeline-item">
+                  <div class="tl-item-head">숭실대학교 <span class="tl-item-period">2021.03 - 2027.02 (졸업예정)</span></div>
+                  <div class="tl-item-sub">벤처중소기업학과 전공 (비즈니스 모델링, 스타트업 마케팅)</div>
+                </div>
+                <div class="green-timeline-item">
+                  <div class="tl-item-head">육군 39보병사단 대테러특수임무대 3팀 (SDT)</div>
+                  <div class="tl-item-sub">병장 만기전역 · 대테러 초동조치 및 특수임무 수행 (강한 체력과 현장 돌파력)</div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="credential-item">
-            <i class="fa-solid fa-id-card credential-icon"></i>
+
             <div>
-              <strong>자동차운전면허 1종 보통</strong>
-              <p>경찰청 발급 (오프라인 현장 기동성 및 물류/매장 대응 가능)</p>
+              <h4 class="resume-block-title">주요 경력 및 프로젝트</h4>
+              <div class="green-timeline-list">
+                <div class="green-timeline-item">
+                  <div class="tl-item-head">대학연합 창업동아리 <span class="tl-item-period">2026.07 - 현재</span></div>
+                  <div class="tl-item-sub">숭실지부장 / 대학생 AI 교차검증 문제 정의 및 오프라인 포스터 MVP 검증 총괄</div>
+                </div>
+                <div class="green-timeline-item">
+                  <div class="tl-item-head">KDB 산업은행 창업 프로젝트 <span class="tl-item-period">2026.03 - 2026.07</span></div>
+                  <div class="tl-item-sub">가상 브랜드 ‘스마트빈’ 기획 / 쓰레기 선별장 45건 인터뷰 총괄 및 IR 피칭</div>
+                </div>
+                <div class="green-timeline-item">
+                  <div class="tl-item-head">카페 체리커피 군자점 <span class="tl-item-period">2023.07 - 2024.06 (1년)</span></div>
+                  <div class="tl-item-sub">지점 운영 총괄 / 공간 소구 릴스 바이럴(팔로워 +200명) 및 매출 25% 상승 견인</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Awards, Certificates & Skills -->
+          <div class="profile-col">
+            <div>
+              <h4 class="resume-block-title">수상 및 자격사항</h4>
+              <div class="green-timeline-list">
+                <div class="green-timeline-item">
+                  <div class="tl-item-head">KDB 산업은행 창업 프로젝트 장려상 수상 <span class="tl-item-period">2026.07</span></div>
+                  <div class="tl-item-sub">선별장 Skip형 고순도 r-PP 원료 직송 순환경제 밸류체인 구축 및 피칭</div>
+                </div>
+                <div class="green-timeline-item">
+                  <div class="tl-item-head">TOEIC 825점 <span class="tl-item-period">ETS 공인 어학성적</span></div>
+                  <div class="tl-item-sub">비즈니스 영어 커뮤니케이션 및 글로벌 마케팅 레퍼런스 리서치</div>
+                </div>
+                <div class="green-timeline-item">
+                  <div class="tl-item-head">자동차운전면허 1종 보통</div>
+                  <div class="tl-item-sub">오프라인 현장 기동, 팝업·매장 물류 직접 운용 가능</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="resume-block-title">업무 툴 및 마케팅 스킬</h4>
+              <div class="tool-skill-grid">
+                <div class="tool-skill-row">
+                  <span class="tool-skill-name">ChatGPT / AI 활용</span>
+                  <div class="tool-bar-track"><div class="tool-bar-fill" style="width: 100%;"></div></div>
+                  <span class="tool-skill-score">5.0</span>
+                </div>
+                <div class="tool-skill-row">
+                  <span class="tool-skill-name">Notion / DB 구축</span>
+                  <div class="tool-bar-track"><div class="tool-bar-fill" style="width: 80%;"></div></div>
+                  <span class="tool-skill-score">4.0</span>
+                </div>
+                <div class="tool-skill-row">
+                  <span class="tool-skill-name">Excel / Sheets</span>
+                  <div class="tool-bar-track"><div class="tool-bar-fill" style="width: 80%;"></div></div>
+                  <span class="tool-skill-score">4.0</span>
+                </div>
+                <div class="tool-skill-row">
+                  <span class="tool-skill-name">Figma (콘텐츠/UI)</span>
+                  <div class="tool-bar-track"><div class="tool-bar-fill" style="width: 60%;"></div></div>
+                  <span class="tool-skill-score">3.0</span>
+                </div>
+                <div class="tool-skill-row">
+                  <span class="tool-skill-name">Photoshop / GA4</span>
+                  <div class="tool-bar-track"><div class="tool-bar-fill" style="width: 40%;"></div></div>
+                  <span class="tool-skill-score">2.0</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <span class="sheet-page-num">02 / 11</span>
     </section>
 
-    <!-- Projects Section -->
-    <section class="section projects-section" id="projects">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">프로젝트 · Case Studies</span>
-          <h2 class="section-title">주요 프로젝트</h2>
-          <p class="section-subtitle">카드를 클릭하시면 상세한 문제 정의, 전략 및 성과를 확인하실 수 있습니다.</p>
+    <!-- ==================================================================
+         SLIDE 03 : INDEX.
+         ================================================================== -->
+    <section class="template-sheet" id="slide-3" data-index="2">
+      <div class="index-green-box">
+        <div class="index-left-col">
+          <div class="index-top-label">
+            JANG SANGGYUN<br>PORTFOLIO
+          </div>
+          <h2 class="index-giant-heading">INDEX.</h2>
         </div>
 
-        <div class="projects-grid">
-          <!-- Project 1: Smartbin -->
-          <article class="project-card" data-project="smartbin">
-            <div class="project-image-box">
-              <img src="assets/images/smartbin.png" alt="스마트빈 프로젝트" class="project-thumb">
-              <div class="project-overlay">
-                <span class="overlay-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 상세 보기</span>
-              </div>
+        <div class="index-right-col">
+          <a href="#slide-4" class="index-entry" data-target-slide="3">
+            <span class="index-pill">경험 1</span>
+            <div class="index-entry-text">
+              <h3>가상 브랜드 ‘스마트빈’ 순환경제 모델 기획</h3>
+              <p>쓰레기 선별장 45건 현장 인터뷰로 발견한 재질 혼입 병목 해결 및 KDB 장려상 수상</p>
             </div>
-            <div class="project-info">
-              <div class="project-tags">
-                <span class="tag tag-accent">KDB 창업프로젝트 장려상</span>
-                <span class="tag">기여도 40%</span>
-                <span class="tag">3인 팀</span>
-              </div>
-              <h3 class="project-title">가상 브랜드 ‘스마트빈’ 기획</h3>
-              <p class="project-summary">
-                축제·행사장의 플라스틱 컵 선별·수거 비용을 절감하는 단일 PP 재질 공급 및 직송 순환경제 플랫폼 기획
-              </p>
-              <div class="project-metrics">
-                <div class="metric"><span class="metric-val">45건</span><span class="metric-lbl">현장 인터뷰</span></div>
-                <div class="metric"><span class="metric-val">7.7%</span><span class="metric-lbl">가입 전환율</span></div>
-                <div class="metric"><span class="metric-val">장려상</span><span class="metric-lbl">IR 피칭 수상</span></div>
-              </div>
-              <div class="project-footer">
-                <span class="project-date"><i class="fa-regular fa-calendar"></i> 2026.03 - 2026.07</span>
-                <button class="text-link">자세히 보기 <i class="fa-solid fa-chevron-right"></i></button>
-              </div>
-            </div>
-          </article>
+          </a>
 
-          <!-- Project 2: Cherry Coffee -->
-          <article class="project-card" data-project="cherrycoffee">
-            <div class="project-image-box">
-              <img src="assets/images/cherrycoffee.jpg" alt="체리커피 군자점 프로젝트" class="project-thumb">
-              <div class="project-overlay">
-                <span class="overlay-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 상세 보기</span>
-              </div>
+          <a href="#slide-6" class="index-entry" data-target-slide="5">
+            <span class="index-pill">경험 2</span>
+            <div class="index-entry-text">
+              <h3>카페 ‘체리커피 군자점’ 지점 운영 및 로컬 마케팅 총괄</h3>
+              <p>‘역세권 도심 속 교외 정원’ 소구 릴스 바이럴 및 B2B 제휴로 1달 만에 매출 25% 상승</p>
             </div>
-            <div class="project-info">
-              <div class="project-tags">
-                <span class="tag tag-accent">지점 총괄 100%</span>
-                <span class="tag">로컬 마케팅</span>
-                <span class="tag">1년 운영</span>
-              </div>
-              <h3 class="project-title">카페 ‘체리커피 군자점’ 운영 총괄</h3>
-              <p class="project-summary">
-                차별화된 인스타그램 릴스 소구점 발굴, 매장 내 넛지 효과 적용 및 인근 식당 5곳과의 B2B 제휴로 매출 25% 상승
-              </p>
-              <div class="project-metrics">
-                <div class="metric"><span class="metric-val">+25%</span><span class="metric-lbl">매출 상승</span></div>
-                <div class="metric"><span class="metric-val">+200명</span><span class="metric-lbl">오가닉 팔로워</span></div>
-                <div class="metric"><span class="metric-val">5곳</span><span class="metric-lbl">B2B 로컬 제휴</span></div>
-              </div>
-              <div class="project-footer">
-                <span class="project-date"><i class="fa-regular fa-calendar"></i> 2023.07 - 2024.06</span>
-                <button class="text-link">자세히 보기 <i class="fa-solid fa-chevron-right"></i></button>
-              </div>
-            </div>
-          </article>
+          </a>
 
-          <!-- Project 3: Startup Club -->
-          <article class="project-card" data-project="startupclub">
-            <div class="project-image-box">
-              <img src="assets/images/ai-mvp-poster.jpg" alt="AI 교차검증 문제 정의 및 포스터 MVP 실험" class="project-thumb">
-              <div class="project-overlay">
-                <span class="overlay-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 상세 보기</span>
-              </div>
+          <a href="#slide-8" class="index-entry" data-target-slide="7">
+            <span class="index-pill">경험 3</span>
+            <div class="index-entry-text">
+              <h3>대학생 AI 교차검증 문제 정의 및 오프라인 포스터 MVP 검증</h3>
+              <p>‘신뢰’와 ‘시간 낭비’의 본질 분해 및 교수님 배포 포스터 실험으로 가입 전환율 7.7% 달성</p>
             </div>
-            <div class="project-info">
-              <div class="project-tags">
-                <span class="tag tag-accent">전환율 7.7%</span>
-                <span class="tag">숭실지부장</span>
-                <span class="tag">포스터 MVP</span>
-              </div>
-              <h3 class="project-title">대학생 AI 교차검증 문제 정의 및 MVP 실험</h3>
-              <p class="project-summary">
-                'AI 답변의 불필요한 교차검증 시간'으로 문제를 뾰족하게 재정의하고, 개발 병목을 돌파하기 위해 오프라인 포스터 MVP로 사전 가입 전환율 7.7%를 검증
-              </p>
-              <div class="project-metrics">
-                <div class="metric"><span class="metric-val">7.7%</span><span class="metric-lbl">가입 전환율</span></div>
-                <div class="metric"><span class="metric-val">39명</span><span class="metric-lbl">포스터 유입</span></div>
-                <div class="metric"><span class="metric-val">숭실지부</span><span class="metric-lbl">총괄 리드</span></div>
-              </div>
-              <div class="project-footer">
-                <span class="project-date"><i class="fa-regular fa-calendar"></i> 2026.07 - 현재</span>
-                <button class="text-link">자세히 보기 <i class="fa-solid fa-chevron-right"></i></button>
-              </div>
+          </a>
+
+          <a href="#slide-10" class="index-entry" data-target-slide="9">
+            <span class="index-pill">경험 4</span>
+            <div class="index-entry-text">
+              <h3>마케터 장상균의 3가지 이야기 (Philosophy &amp; Attitude)</h3>
+              <p>F&amp;B와 마케팅에 빠진 계기 · 본질을 파고드는 가설 검증 · 현장에 뛰어드는 협업 역량</p>
             </div>
-          </article>
+          </a>
         </div>
       </div>
+      <span class="sheet-page-num">03 / 11</span>
     </section>
 
-    <!-- Professional Story / Cover Letter -->
-    <section class="section story-section" id="story">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">철학과 태도 · Philosophy</span>
-          <h2 class="section-title">마케터 장상균의 3가지 이야기</h2>
-          <p class="section-subtitle">제가 일하는 방식과 마케팅을 대하는 태도를 소개합니다.</p>
+    <!-- ==================================================================
+         SLIDE 04 : 경험 1 (스마트빈 — 업무상 만난 문제와 현장 리서치)
+         ================================================================== -->
+    <section class="template-sheet" id="slide-4" data-index="3">
+      <div class="green-top-bar">
+        <div class="bar-left">
+          <span class="pill-badge-outline">경험 1</span>
+          <h2 class="bar-title">업무상 만난 문제와 45건 현장 리서치</h2>
         </div>
+        <div class="bar-right-meta">
+          <span><strong>기간</strong> 2026.03.09 - 07.05</span>
+          <span><strong>기여도</strong> 40% (인터뷰·MVP 총괄)</span>
+        </div>
+      </div>
 
-        <div class="story-accordion">
-          <!-- Story 1 -->
-          <div class="story-item active">
-            <button class="story-header">
-              <span class="story-num">01</span>
-              <span class="story-title">F&B와 마케팅에 빠져들게 된 계기</span>
-              <i class="fa-solid fa-chevron-down story-icon"></i>
-            </button>
-            <div class="story-body">
-              <p>
-                1년간 카페를 총괄 운영하며 <strong>마케팅의 작은 디테일 하나가 실제 매장의 매출 곡선을 바꾼다</strong>는 사실을 체감하고 마케팅의 매력에 깊이 빠져들었습니다.
-              </p>
-              <p>
-                단순히 음료를 파는 데 머물지 않고, <em>"고객이 수많은 카페 중 왜 우리 매장을 찾아와야 하는가?"</em>를 매일 치열하게 고민했습니다. 
-                베이커리 진열에 넛지(Nudge) 효과를 적용하고 고객의 주문·수령 동선을 재배치하는 등 매장 경험(CX)을 최적화했습니다.
-              </p>
-              <p>
-                특히 기존 인스타그램 콘텐츠들이 주변 매장과 다를 바 없는 인테리어 사진인 점에 주목했습니다. 
-                대신 <strong>'지하철역과 가까우면서도 교외 대형 카페처럼 여유로운 분위기를 즐길 수 있다'</strong>는 핵심 강점을 잡아 위치와 공간감을 강조한 릴스를 제작했습니다. 
-                그 결과 <strong>1달 만에 오가닉 팔로워가 200명 증가하고 매장 매출도 25% 상승</strong>하는 성과를 만들었습니다.
-              </p>
+      <div class="green-frame-box">
+        <div class="three-col-stage">
+          <!-- Column 1: Customer -->
+          <div class="stage-col">
+            <div class="visual-card-frame">
+              <div style="text-align: center;">
+                <i class="fa-solid fa-Trash-can-arrow-up" style="font-size: 2.4rem; color: var(--green-primary); margin-bottom: 10px;"></i>
+                <div style="font-weight: 900; font-size: 1.45rem; color: var(--text-primary);">실질 재활용률 16.4%</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">컵 내부 90%가 빈 공기 상태로 배출</div>
+              </div>
             </div>
+            <div class="col-title-block">
+              <h3 class="col-main-heading">고객 및 시장 배경</h3>
+              <p class="col-sub-en">Customer &amp; Market</p>
+            </div>
+            <ul class="green-bullet-list">
+              <li>워터밤·맥주축제 등 대형 행사장과 무인카페에서 단시간에 대량의 일회용 플라스틱 컵이 배출됨</li>
+              <li>컵 내부의 <strong>약 90%가 빈 공기 상태</strong>로 버려져 수거 부피가 폭증하고 잔여 음료 부패로 악취 유발</li>
+              <li>주최 측은 막대한 청소 용역비와 분리수거 비용을 부담하나 <strong>실질 재활용률은 16.4%</strong>에 그침</li>
+            </ul>
           </div>
 
-          <!-- Story 2 -->
-          <div class="story-item">
-            <button class="story-header">
-              <span class="story-num">02</span>
-              <span class="story-title">본질을 파고드는 집요함과 가설 검증</span>
-              <i class="fa-solid fa-chevron-down story-icon"></i>
-            </button>
-            <div class="story-body">
-              <p>
-                제 가장 큰 강점은 <strong>겉으로 드러난 현상에 머물지 않고, 고객이 그렇게 행동하는 진짜 이유를 끝까지 파고드는 것</strong>입니다.
-              </p>
-              <p>
-                창업 프로젝트 당시 <em>"AI 답변을 신뢰하기 어렵다"</em>는 유저 피드백이 나왔을 때, 이를 단순한 불만으로 넘기지 않고 <strong>'답변의 정확성을 다시 확인하느라 낭비되는 시간과 피로도'</strong>로 문제의 본질을 재정의했습니다.
-              </p>
-              <p>
-                서비스 개발 준비 기간이 한 달 넘게 길어지자, 탁상공론을 멈추고 고객의 진짜 반응부터 확인하자고 팀에 제안했습니다. 
-                곧바로 오프라인 포스터를 부착하여 가설 검증 실험을 진행했고, <strong>39명 유입 중 3명의 실제 사전 가입(전환율 7.7%)을 숫자로 확인</strong>하며 팀의 불확실성을 해소했습니다.
-              </p>
+          <!-- Column 2: Problem -->
+          <div class="stage-col">
+            <div class="visual-card-frame">
+              <div style="text-align: center;">
+                <i class="fa-solid fa-triangle-exclamation" style="font-size: 2.3rem; color: var(--green-primary); margin-bottom: 10px;"></i>
+                <div style="font-weight: 900; font-size: 1.25rem; color: var(--text-primary);">단순 압축 시 원료가치 0원</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">PET · PP · PS 재질 혼합 압축의 함정</div>
+              </div>
             </div>
+            <div class="col-title-block">
+              <h3 class="col-main-heading">문제 상황</h3>
+              <p class="col-sub-en">Problem Definition</p>
+            </div>
+            <ul class="green-bullet-list">
+              <li>초기에는 부피만 줄이는 ‘단순 3단 압축 쓰레기통’을 구상했으나 실제 폐기물 처리 과정 검증이 필요했음</li>
+              <li><strong>재질 혼합 문제:</strong> PET, PP, PS 등 서로 다른 재질이 섞여 압축되면 선별이 불가능해져 <strong>원료 가치가 0원</strong>이 됨</li>
+              <li><strong>세척 한계:</strong> 남은 음료 오염이 플라스틱 표면에 스며들면 사후 세척으로도 재생 원료화가 불가함</li>
+            </ul>
           </div>
 
-          <!-- Story 3 -->
-          <div class="story-item">
-            <button class="story-header">
-              <span class="story-num">03</span>
-              <span class="story-title">남들이 꺼리는 현장에 뛰어드는 협업 역량</span>
-              <i class="fa-solid fa-chevron-down story-icon"></i>
-            </button>
-            <div class="story-body">
-              <p>
-                저는 협업할 때 <strong>서로의 상황을 먼저 배려하고, 각자 현장에서 발로 뛰며 얻은 생생한 정보를 투명하게 나눌 때 가장 올바른 결정이 나온다</strong>고 믿습니다.
-              </p>
-              <p>
-                스마트빈 프로젝트 초기, 플라스틱 수거함을 기획했으나 구체적인 사업 모델을 세우려면 실제 폐기물 처리 과정을 직접 검증해야 했습니다. 
-                열악한 환경 탓에 재활용 선별장 방문 조사는 누구나 꺼리는 일이었지만, 서로 미루기 전에 필요한 정보를 먼저 확보하는 것이 팀을 위한 길이라 판단했습니다.
-              </p>
-              <p>
-                이에 직접 선별장에 찾아가 작업자분들을 인터뷰했고, <em>'단순 압축 시 플라스틱 재질(PET/PP)이 섞여 재활용 가치가 0원이 된다'</em>는 치명적 병목을 포착했습니다. 
-                이 현장 정보를 팀원들과 투명하게 공유하여, 팀은 <strong>'단순 수거함'에 머물지 않고 '무지 PP컵 공급 + 압축 수거 + 재생 원료 직공급'의 순환경제 밸류체인으로 사업 방향을 성공적으로 피벗</strong>할 수 있었습니다.
-              </p>
+          <!-- Column 3: Field Insight -->
+          <div class="stage-col">
+            <div class="visual-card-frame">
+              <img src="assets/images/smartbin.png" alt="스마트빈 현장 리서치 및 프로토타입" class="zoomable-img">
             </div>
+            <div class="col-title-block">
+              <h3 class="col-main-heading">선별장 45건 인터뷰</h3>
+              <p class="col-sub-en">Field Insight &amp; Pivot</p>
+            </div>
+            <ul class="green-bullet-list">
+              <li>누구나 꺼리는 <strong>쓰레기 선별장을 직접 방문해 작업자 및 축제 관계자 45건 심층 인터뷰</strong>를 주도함</li>
+              <li>“수거함 판매가 아니라 <strong>투입 단계부터 단일 재질(PP)로 통제</strong>해야 돈이 되는 원료가 된다”는 핵심 병목 포착</li>
+              <li>단순 하드웨어에서 <strong>‘선별장 Skip형 고순도 r-PP 직송 밸류체인’</strong>으로 비즈니스 모델 전면 피벗</li>
+            </ul>
           </div>
         </div>
       </div>
+      <span class="sheet-page-num">04 / 11</span>
     </section>
 
-    <!-- Experience & Timeline Section -->
-    <section class="section timeline-section" id="timeline">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">이력과 학력 · Experience</span>
-          <h2 class="section-title">경력 및 학력 타임라인</h2>
-          <p class="section-subtitle">배움과 현장 실행을 멈추지 않고 성장해 온 과정입니다.</p>
+    <!-- ==================================================================
+         SLIDE 05 : 경험 1 결과물 (스마트빈 솔루션 & 수상 성과)
+         ================================================================== -->
+    <section class="template-sheet" id="slide-5" data-index="4">
+      <div class="green-top-bar">
+        <div class="bar-left">
+          <span class="pill-badge-outline">결과물</span>
+          <h2 class="bar-title">가상 브랜드 ‘스마트빈’ 순환경제 밸류체인 구축</h2>
+        </div>
+        <div class="bar-brand-right">
+          JANG SANGGYUN<br>PORTFOLIO
+        </div>
+      </div>
+
+      <div class="green-frame-box">
+        <div class="three-col-stage">
+          <!-- Step 1: Product -->
+          <div class="stage-col">
+            <div class="col-title-block">
+              <h3 class="col-main-heading">단일 재질 통제 &amp; 압축</h3>
+              <p class="col-sub-en">Product</p>
+            </div>
+            <ul class="green-bullet-list">
+              <li>사전에 로고 없는 <strong>무지 투명 PP 컵 3종</strong>만 행사장에 일괄 공급하여 타 재질 혼입을 원천 차단</li>
+              <li>음료 분리 배출 유도 후 발 페달식 물리적 압축 시스템으로 <strong>수거 부피 70% 이상 절감</strong></li>
+            </ul>
+            <div class="visual-card-frame" style="margin-top: auto;">
+              <img src="assets/images/smartbin.png" alt="스마트빈 제품 구조" class="zoomable-img">
+            </div>
+          </div>
+
+          <!-- Step 2: Process -->
+          <div class="stage-col">
+            <div class="col-title-block">
+              <h3 class="col-main-heading">턴키(Turn-key) 직수거</h3>
+              <p class="col-sub-en">Process &amp; Logistics</p>
+            </div>
+            <ul class="green-bullet-list">
+              <li>행사 종료 후 중간 선별장을 거치지 않고 전량 자체 회수하여 <strong>재활용 공장에 고순도 r-PP 펠릿 원료로 직공급</strong></li>
+              <li>대형 축제 단기 집약 거점 모델 및 순환식 <strong>‘밀크런(Milk Run)’ 물류 전략</strong> 수립 (TAM 2.4조 / SAM 970억 / SOM 18억)</li>
+            </ul>
+            <div class="visual-card-frame" style="margin-top: auto; background: var(--green-tint);">
+              <div style="text-align: center;">
+                <div style="font-size: 0.8rem; font-weight: 800; color: var(--green-primary);">CIRCULAR VALUE CHAIN</div>
+                <div style="font-size: 1.05rem; font-weight: 900; margin: 8px 0; color: var(--text-primary);">무지 PP컵 공급 → 70% 압축수거<br>→ 선별장 Skip → r-PP 직공급</div>
+                <span class="cover-chip">부피 70% 절감</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Promotion / ESG -->
+          <div class="stage-col">
+            <div class="col-title-block">
+              <h3 class="col-main-heading">정량적 ESG 리포트</h3>
+              <p class="col-sub-en">Promotion &amp; B2B Value</p>
+            </div>
+            <ul class="green-bullet-list">
+              <li>축제 주최 측 및 지자체에 총 공급량 대비 회수량, 탄소 저감량, 실질 순환율 수치를 담은 <strong>ESG 성과 데이터 리포트 제공</strong></li>
+              <li>그린워싱 우려 없는 투명한 순환 데이터로 B2B·B2G 도입 설득력 확보</li>
+            </ul>
+            <div class="visual-card-frame" style="margin-top: auto;">
+              <div style="text-align: center;">
+                <i class="fa-solid fa-award" style="font-size: 2.4rem; color: var(--green-primary); margin-bottom: 6px;"></i>
+                <div style="font-weight: 900; font-size: 1.15rem;">KDB 산업은행 창업프로젝트</div>
+                <div style="font-weight: 800; font-size: 1rem; color: var(--green-primary); margin-top: 2px;">최종 IR 피칭 장려상 수상</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="timeline">
-          <!-- Item 1 -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <span class="timeline-badge">현재 진행 중</span>
-              <h3 class="timeline-title">대학연합 창업동아리 | 숭실지부장</h3>
-              <span class="timeline-date">2026. 07. 10 ~ 현재</span>
-              <ul class="timeline-list">
-                <li>타겟 고객 선정 및 문제 정의 총괄</li>
-                <li>심층 인터뷰 및 설문 조사를 통한 정성 인사이트 도출</li>
-                <li>데이터 기반 가설 수립 및 실험 스프린트 리드</li>
+        <div class="gray-summary-strip">
+          <div class="strip-headline">
+            핵심 성과 요약 : <span class="highlight-green">KDB 산업은행 창업 프로젝트 장려상 수상</span> | 선별장 45건 인터뷰 기반 순환경제 BM 피벗 완료
+          </div>
+          <a href="assets/files/IR_deck.pptx" download class="btn-action" style="padding: 5px 12px; font-size: 0.78rem;">
+            <i class="fa-solid fa-download"></i> 스마트빈 IR Deck 원본 다운로드
+          </a>
+        </div>
+      </div>
+      <span class="sheet-page-num">05 / 11</span>
+    </section>
+
+    <!-- ==================================================================
+         SLIDE 06 : 경험 2 (체리커피 군자점 — 업무의 핵심 배경과 차별점 분석)
+         ================================================================== -->
+    <section class="template-sheet" id="slide-6" data-index="5">
+      <div class="green-top-bar">
+        <div class="bar-left">
+          <span class="pill-badge-outline">경험 2</span>
+          <h2 class="bar-title">업무의 핵심 배경과 본질적 강점 재정의</h2>
+        </div>
+        <div class="bar-right-meta">
+          <span><strong>기간</strong> 2023.07.15 - 2024.06.15 (1년)</span>
+          <span><strong>기여도</strong> 100% (지점 운영 총괄)</span>
+        </div>
+      </div>
+
+      <div class="green-frame-box">
+        <div class="split-two-col">
+          <!-- Left: Vertical Green Bar Items -->
+          <div class="vbar-item-stack">
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">고객 및 상권 과제</h3>
+                <span class="vbar-item-en">Customer &amp; Market</span>
+              </div>
+              <ul class="green-bullet-list">
+                <li>군자역 인근 수많은 프랜차이즈 및 개인 카페 사이에서 매장 인지도와 재방문율을 높여야 하는 과제 직면</li>
+                <li>피크 타임 외 유휴 시간대 유입 증대 및 지역 주민들의 단골 전환이 절실했음</li>
+              </ul>
+            </div>
+
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">기존 홍보의 한계</h3>
+                <span class="vbar-item-en">Problem</span>
+              </div>
+              <ul class="green-bullet-list">
+                <li>기존 카페 SNS 홍보는 단순히 예쁜 인테리어나 커피 사진 위주여서 주변 매장과 차별점이 없었음</li>
+                <li><em>“고객이 수많은 카페 중 왜 우리 매장을 찾아와야 하는가?”</em>를 고객 관점에서 다시 정의함</li>
+              </ul>
+            </div>
+
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">본질적 공간 강점 포착</h3>
+                <span class="vbar-item-en">Core Insight</span>
+              </div>
+              <ul class="green-bullet-list">
+                <li><strong>‘역세권(지하철역 도보 3분)의 뛰어난 접근성을 가지면서도, 도심 속에서 마치 교외 대형 정원 카페에 온 듯한 여유로운 자연 채광과 테라스를 누릴 수 있다’</strong>는 핵심 가치를 소구점으로 도출</li>
               </ul>
             </div>
           </div>
 
-          <!-- Item 2 -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <span class="timeline-badge badge-award">장려상 수상</span>
-              <h3 class="timeline-title">KDB 산업은행 창업 프로젝트 | IR 피칭</h3>
-              <span class="timeline-date">2026. 03. 09 ~ 2026. 07. 05</span>
-              <ul class="timeline-list">
-                <li>가상 브랜드 '스마트빈' 순환경제 비즈니스 모델 기획</li>
-                <li>선별장 및 이해관계자 45건 인터뷰 리서치 총괄</li>
-                <li>초기 MVP 제작 및 IR Deck 작성 & 피칭 (장려상 수상)</li>
-              </ul>
+          <!-- Right: Store Visual + Positioning Chart -->
+          <div class="chart-showcase-box">
+            <div class="chart-caption-top">
+              핵심 포지셔닝 : <span>“역세권 도보 3분, 도심 속 교외 정원 카페”</span>
             </div>
-          </div>
-
-          <!-- Item 3 -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <span class="timeline-badge">지점 총괄</span>
-              <h3 class="timeline-title">체리커피 군자점 | 지점 운영 총괄</h3>
-              <span class="timeline-date">2023. 07. 15 ~ 2024. 06. 15 (1년)</span>
-              <ul class="timeline-list">
-                <li>매장 운영 총괄 및 직원/바리스타 관리</li>
-                <li>차별화 인스타그램 릴스 기획으로 1달 만에 팔로워 200명 증대 및 매출 25% 상승</li>
-                <li>인근 식당 5곳과 B2B 제휴 쿠폰 및 로컬 마케팅 운영</li>
-                <li>베이커리 진열 넛지 효과 및 고객 동선 재배치</li>
-              </ul>
+            <div class="visual-card-frame" style="height: 240px;">
+              <img src="assets/images/cherrycoffee.jpg" alt="체리커피 군자점 매장 전경" class="zoomable-img">
             </div>
-          </div>
-
-          <!-- Item 4: Education -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <span class="timeline-badge">학력</span>
-              <h3 class="timeline-title">숭실대학교 | 벤처중소기업학과 학사</h3>
-              <span class="timeline-date">2021. 03 ~ 2027. 02 (졸업예정)</span>
-              <p class="timeline-desc">비즈니스 모델링, 스타트업 전략, 마케팅 원론 및 기업가정신 전공</p>
-            </div>
-          </div>
-
-          <!-- Item 5: Military -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <span class="timeline-badge">병역</span>
-              <h3 class="timeline-title">39보병사단 대테러특수임무대 3팀</h3>
-              <span class="timeline-date">병장 만기전역</span>
-              <p class="timeline-desc">대테러 초동조치 및 특수경호 임무 수행 (강한 책임감, 체력, 위기 상황 극복 역량 배양)</p>
+            <div style="background: #ffffff; border: 1.5px solid var(--green-primary); padding: 14px 18px;">
+              <div style="font-size: 0.84rem; font-weight: 800; color: var(--green-primary); margin-bottom: 4px;">
+                <i class="fa-solid fa-bullseye"></i> 차별화 소구 전략 (Positioning Shift)
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                단순 감성 인테리어 사진 → <strong>지하철역 출구부터 매장 정원 테라스로 이어지는 동선과 공간감을 강조한 숏폼 릴스</strong>로 전환
+              </p>
             </div>
           </div>
         </div>
       </div>
+      <span class="sheet-page-num">06 / 11</span>
     </section>
 
-    <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
-      <div class="container">
-        <div class="contact-box">
-          <div class="contact-header">
-            <span class="section-tag">문의 · Get in touch</span>
-            <h2 class="section-title">함께 더 큰 성장을 만들 준비가 되었습니다</h2>
-            <p class="section-subtitle">
-              브랜드 마케팅 및 CRM 직무 기회, 커피챗이나 포트폴리오에 관한 어떤 질문이든 언제든 편하게 연락해 주세요.
+    <!-- ==================================================================
+         SLIDE 07 : 경험 2 결과물 (체리커피 릴스 바이럴 & 매출 25% 상승)
+         ================================================================== -->
+    <section class="template-sheet" id="slide-7" data-index="6">
+      <div class="green-top-bar">
+        <div class="bar-left">
+          <span class="pill-badge-outline">결과물</span>
+          <h2 class="bar-title">오가닉 팔로워 200명 증가 및 전월 대비 매출 25% 상승</h2>
+        </div>
+        <div class="bar-brand-right">
+          JANG SANGGYUN<br>PORTFOLIO
+        </div>
+      </div>
+
+      <div class="green-frame-box">
+        <div class="split-two-col">
+          <!-- Left: Revenue +25% & Follower +200 Bar Chart (Matches Page 7 of PDF Template) -->
+          <div class="chart-showcase-box">
+            <div class="chart-caption-top">
+              릴스 런칭 및 제휴 1개월 만에 <span>전월 대비 매장 매출 25% 상승</span>
+            </div>
+
+            <div class="bar-comparison-wrap">
+              <div class="bar-col">
+                <span class="bar-value">100% (기존)</span>
+                <div class="bar-pillar" style="height: 115px;">Before</div>
+                <span class="bar-label">캠페인 전 매출</span>
+              </div>
+
+              <div class="bar-col">
+                <span class="bar-value" style="color: var(--green-primary);">+25% 상승</span>
+                <div class="bar-pillar green-active" style="height: 165px;">+25% UP</div>
+                <span class="bar-label">캠페인 1개월 후</span>
+              </div>
+
+              <div class="bar-col">
+                <span class="bar-value" style="color: var(--green-primary);">+200명</span>
+                <div class="bar-pillar green-active" style="height: 150px;">Organic</div>
+                <span class="bar-label">오가닉 팔로워 증가</span>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-secondary); padding-top: 4px;">
+              <span><strong>광고비 0원:</strong> 100% 오가닉 릴스 도달</span>
+              <span><strong>로컬 제휴:</strong> 인근 식당 5곳 상생 네트워크</span>
+            </div>
+          </div>
+
+          <!-- Right: 3 Action Pillars (Product / Place / Promotion) -->
+          <div class="vbar-item-stack">
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">공간 강점을 살린 숏폼 릴스 제작</h3>
+                <span class="vbar-item-en">Content</span>
+              </div>
+              <ul class="green-bullet-list">
+                <li>‘역세권 도심 속 숨은 숲속 정원 카페’를 테마로 접근성과 여유로운 공간감을 강조한 릴스를 기획·제작·배포하여 <strong>1개월 만에 오가닉 팔로워 200명 증가</strong></li>
+              </ul>
+            </div>
+
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">매장 경험(CX) 및 넛지(Nudge) 진열</h3>
+                <span class="vbar-item-en">Store CX</span>
+              </div>
+              <ul class="green-bullet-list">
+                <li>고객이 주문 카운터로 향하는 시선과 동선에 당일 구운 시그니처 베이커리를 전략적으로 재배치하여 <strong>음료+베이커리 동반 구매 및 객단가 상승 유도</strong></li>
+              </ul>
+            </div>
+
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">인근 인기 식당 5곳 B2B 상생 제휴</h3>
+                <span class="vbar-item-en">Promotion</span>
+              </div>
+              <ul class="green-bullet-list">
+                <li>주변 식당 5곳에 직접 제휴를 제안해 식사 영수증 지참 시 음료 할인 및 상호 쿠폰 비치를 진행, <strong>점심 직후 시간대 신규 유입 및 매출 25% 상승 견인</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="sheet-page-num">07 / 11</span>
+    </section>
+
+    <!-- ==================================================================
+         SLIDE 08 : 경험 3 (대학생 AI 교차검증 문제 정의 및 문제 쪼개기)
+         ================================================================== -->
+    <section class="template-sheet" id="slide-8" data-index="7">
+      <div class="green-top-bar">
+        <div class="bar-left">
+          <span class="pill-badge-outline">경험 3</span>
+          <h2 class="bar-title">대학생 AI 활용 문제 정의 쪼개기와 병목 돌파</h2>
+        </div>
+        <div class="bar-right-meta">
+          <span><strong>기간</strong> 2026.07.10 - 현재</span>
+          <span><strong>역할</strong> 대학연합 창업동아리 숭실지부장</span>
+        </div>
+      </div>
+
+      <div class="green-frame-box">
+        <div class="split-two-col">
+          <!-- Left: Problem Decomposition Story -->
+          <div class="vbar-item-stack">
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">초기 문제 정의와 멘토 피드백</h3>
+                <span class="vbar-item-en">Initial Hypothesis</span>
+              </div>
+              <ul class="green-bullet-list">
+                <li>대학생의 AI 활용 문제를 정의하며, 처음에는 <strong>‘AI 답변의 신뢰성이 낮아 여러 AI를 교차 검증하느라 시간을 낭비한다’</strong>고 보았음</li>
+                <li>그러나 멘토님의 <em>“신뢰란 무엇인가?”</em>라는 피드백을 받고, 추상적인 정의를 더 날카롭게 쪼개야겠다고 판단함</li>
+              </ul>
+            </div>
+
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">‘신뢰’와 ‘불필요한 시간’의 구체화</h3>
+                <span class="vbar-item-en">Problem Breakdown</span>
+              </div>
+              <ul class="green-bullet-list">
+                <li>팀원들과 치열하게 논의해 <strong>‘신뢰’는 답변의 정확성</strong>으로, <strong>‘불필요한 시간’은 정확성을 확인하는 교차검증 시간</strong>으로 구체화함</li>
+                <li>전공 교재 풀이과정과 답이 제공되지 않아 약 80%의 대학생이 여러 AI와 자료를 교차 확인하며 겪는 불편함으로 타겟 문제를 좁힘</li>
+              </ul>
+            </div>
+
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">1달간의 실험 준비 병목 돌파</h3>
+                <span class="vbar-item-en">Action Leadership</span>
+              </div>
+              <ul class="green-bullet-list">
+                <li>이후 실험 준비가 한 달가량 이어져 병목이 생기자, <strong>완성도를 더 높이기보다 고객 반응을 먼저 검증하자고 제안</strong>해 팀의 동의를 얻음</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right: Actual Uploaded AI MVP Poster Image -->
+          <div class="chart-showcase-box">
+            <div class="chart-caption-top">
+              실제 배포한 오프라인 실험 포스터 <span>(클릭 시 확대)</span>
+            </div>
+            <div class="visual-card-frame" style="height: 290px; background: #ffffff; padding: 8px;">
+              <img src="assets/images/ai-mvp-poster.jpg" alt="대학생 AI 교차검증 및 전공 풀이 가설 검증 포스터" class="zoomable-img" style="object-fit: contain; width: 100%; height: 100%;">
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+              ▲ 교수님을 통해 실제 배포한 오프라인 포스터 MVP (QR 유입 39명 중 3명 개인정보 입력 및 가입, 전환율 7.7%)
             </p>
           </div>
+        </div>
+      </div>
+      <span class="sheet-page-num">08 / 11</span>
+    </section>
 
-          <div class="contact-cards">
-            <!-- Email -->
-            <div class="contact-card">
-              <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
-              <h4>이메일</h4>
-              <p class="contact-text">wkdtkdrbs11@naver.com</p>
-              <div class="contact-btn-group">
-                <a href="mailto:wkdtkdrbs11@naver.com" class="btn btn-sm btn-outline">메일 쓰기</a>
-                <button class="btn btn-sm btn-copy copy-quick-btn" data-copy="wkdtkdrbs11@naver.com">
-                  <i class="fa-regular fa-copy"></i> 주소 복사
-                </button>
+    <!-- ==================================================================
+         SLIDE 09 : 경험 3 결과물 (포스터 실험 전환율 7.7% 및 러닝)
+         ================================================================== -->
+    <section class="template-sheet" id="slide-9" data-index="8">
+      <div class="green-top-bar">
+        <div class="bar-left">
+          <span class="pill-badge-outline">결과물</span>
+          <h2 class="bar-title">포스터 MVP 실험 전환율 7.7% 달성 및 실행 기준 정립</h2>
+        </div>
+        <div class="bar-brand-right">
+          JANG SANGGYUN<br>PORTFOLIO
+        </div>
+      </div>
+
+      <div class="green-frame-box">
+        <div class="split-two-col">
+          <!-- Left: 3 Execution Steps -->
+          <div class="vbar-item-stack">
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">오프라인 포스터 MVP 설계</h3>
+                <span class="vbar-item-en">MVP Design</span>
               </div>
+              <ul class="green-bullet-list">
+                <li>“AI마다 답이 달라서 못 믿겠어요 / 풀이과정이 없어 내 풀이가 맞는지 확인할 수 없어요”라는 핵심 페인포인트와 QR코드를 직관적으로 배치</li>
+              </ul>
             </div>
 
-            <!-- Phone -->
-            <div class="contact-card">
-              <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-              <h4>연락처</h4>
-              <p class="contact-text" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main);">010-5779-0849</p>
-              <div class="contact-btn-group">
-                <a href="tel:01057790849" class="btn btn-sm btn-outline">
-                  <i class="fa-solid fa-phone"></i> 전화 걸기
-                </a>
-                <button class="btn btn-sm btn-copy copy-quick-btn" data-copy="010-5779-0849">
-                  <i class="fa-regular fa-copy"></i> 번호 복사
-                </button>
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">교수님 협조를 통한 타겟 배포</h3>
+                <span class="vbar-item-en">Channel Strategy</span>
               </div>
+              <ul class="green-bullet-list">
+                <li>실제 타겟 수강생들에게 닿기 위해 <strong>교수님을 통해 포스터를 배포</strong>하여 실험 신뢰도와 도달률을 확보함</li>
+              </ul>
             </div>
 
-            <!-- Location / School -->
-            <div class="contact-card">
-              <div class="contact-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-              <h4>학력 & 위치</h4>
-              <p class="contact-text">숭실대학교 (서울시 동작구)</p>
-              <div class="contact-btn-group">
-                <a href="https://storage.tally.so/private/sungsildae-jangsanggyun.pdf?id=DRopzZ&accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkRSb3B6WiIsImZvcm1JZCI6ImxhYUFybyIsImlhdCI6MTc5MzA3ODIxMn0.ktHkb8NlappkHsdNQdMEUUPK8oagAjka0NH6gAHdOW4&signature=c3f70bbfe1ee48373dab26e4eeea1a5db02c415a1bd4f3d9d94b6a52182c206d" target="_blank" class="btn btn-sm btn-primary">
-                  <i class="fa-solid fa-download"></i> 공식 이력서
-                </a>
+            <div class="vbar-item">
+              <div class="vbar-item-header">
+                <h3 class="vbar-item-title">개인정보 입력 전환으로 진성 수요 검증</h3>
+                <span class="vbar-item-en">Validation Metric</span>
+              </div>
+              <ul class="green-bullet-list">
+                <li>단순 클릭이 아닌 <strong>‘개인정보를 입력하고 가입’</strong>하는 높은 전환 허들을 설정해 <strong>39명 중 3명 가입(7.7% 전환율)</strong>을 확인함</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right: Conversion Funnel Box -->
+          <div class="chart-showcase-box">
+            <div class="chart-caption-top">
+              오프라인 포스터 실험 퍼널 : <span>가입 전환율 7.7% 달성</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 14px; padding: 10px 6px;">
+              <div style="background: #ffffff; border: 2px solid var(--green-mid); padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted);">STEP 1. 타겟 접점 확보</div>
+                  <div style="font-size: 0.96rem; font-weight: 800;">교수님 협조 기반 학과 수강생 포스터 배포</div>
+                </div>
+                <span class="cover-chip">전공 수강생 타겟</span>
+              </div>
+
+              <div style="background: #ffffff; border: 2px solid var(--green-primary); padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-size: 0.78rem; font-weight: 700; color: var(--green-primary);">STEP 2. 포스터 QR 스캔 유입</div>
+                  <div style="font-size: 0.96rem; font-weight: 800;">문제 메시지에 공감해 랜딩 유입된 학생</div>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 900; color: var(--text-primary);">39명</span>
+              </div>
+
+              <div style="background: var(--green-primary); color: #ffffff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-size: 0.78rem; font-weight: 700; opacity: 0.9;">STEP 3. 개인정보 입력 및 최종 사전 가입</div>
+                  <div style="font-size: 1.02rem; font-weight: 800;">높은 허들을 넘어 실제 가입 완료</div>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-family: var(--font-mono); font-size: 1.45rem; font-weight: 900;">3명 (7.7%)</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        <div class="gray-summary-strip">
+          <div class="strip-headline">
+            배운 점 : 브랜드의 정체성과 메시지를 실험할 때, <span class="highlight-green">문제를 깊이 정의하되 적시에 검증해 다음 판단의 근거를 만드는 것</span>이 중요함을 배웠습니다.
+          </div>
+          <div class="keyword-pill-row">
+            <span class="green-keyword-pill">#문제정의쪼개기</span>
+            <span class="green-keyword-pill">#적시검증추진력</span>
+            <span class="green-keyword-pill">#전환율7.7%</span>
+          </div>
+        </div>
       </div>
+      <span class="sheet-page-num">09 / 11</span>
     </section>
+
+    <!-- ==================================================================
+         SLIDE 10 : 경험 4 (마케터 장상균의 3가지 이야기)
+         ================================================================== -->
+    <section class="template-sheet" id="slide-10" data-index="9">
+      <div class="green-top-bar">
+        <div class="bar-left">
+          <span class="pill-badge-outline">경험 4</span>
+          <h2 class="bar-title">마케터 장상균의 3가지 이야기</h2>
+        </div>
+        <div class="bar-brand-right">
+          JANG SANGGYUN<br>PHILOSOPHY
+        </div>
+      </div>
+
+      <div class="green-frame-box">
+        <div class="story-template-layout">
+          <!-- Left Gray Summary Panel (Matches Page 10 & 11 of PDF Template) -->
+          <aside class="story-left-gray">
+            <div>
+              <span class="cover-chip" style="margin-bottom: 12px; display: inline-block;">WORK ETHIC</span>
+              <h3 class="story-left-title">본질을 묻고,<br>현장과 데이터로<br>답합니다</h3>
+              <p class="story-left-desc">
+                눈앞의 현상에 머무르지 않고 고객이 행동하는 진짜 이유를 파고들며, 탁상공론 대신 빠른 실험과 현장 협업으로 실질적인 비즈니스 임팩트를 만듭니다.
+              </p>
+            </div>
+
+            <div class="three-squares" aria-hidden="true">
+              <span class="sq-1"></span>
+              <span class="sq-2"></span>
+              <span class="sq-3"></span>
+            </div>
+          </aside>
+
+          <!-- Right 3 Numbered Story Cards -->
+          <div class="story-right-list">
+            <article class="story-row-card">
+              <div class="story-icon-box">01</div>
+              <div>
+                <h4 class="story-row-title">1. F&amp;B와 마케팅에 빠져들게 된 계기</h4>
+                <p class="story-row-body">
+                  1년간 카페를 총괄 운영하며 <strong>마케팅의 작은 디테일 하나가 실제 매장의 매출 곡선을 바꾼다</strong>는 사실을 체감했습니다. 베이커리 진열에 넛지(Nudge) 효과를 적용하고 동선을 재배치해 매장 경험(CX)을 최적화했으며, 주변 매장과 똑같은 인테리어 사진 대신 <strong>‘지하철역과 가까우면서도 교외 대형 카페처럼 여유로운 분위기를 즐길 수 있다’</strong>는 역세권 정원 강점을 잡아 릴스를 제작해 <strong>1달 만에 오가닉 팔로워 200명 증가, 매장 매출 25% 상승</strong>을 이끌어냈습니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="story-row-card">
+              <div class="story-icon-box">02</div>
+              <div>
+                <h4 class="story-row-title">2. 본질을 파고드는 집요함과 적시 가설 검증</h4>
+                <p class="story-row-body">
+                  제 강점은 문제의 본질을 파악하고 실행으로 옮기는 추진력입니다. 연합동아리 창업 프로젝트에서 대학생의 AI 활용 문제를 정의할 때, 멘토님의 <em>“신뢰란 무엇인가”</em>라는 피드백을 계기로 <strong>‘신뢰’는 답변의 정확성, ‘불필요한 시간’은 정확성을 확인하는 교차검증 시간</strong>으로 구체화했습니다. 실험 준비가 한 달가량 길어지자 완성도를 높이기보다 고객 반응을 먼저 검증하자고 제안해 교수님을 통한 포스터 실험으로 <strong>39명 중 3명 가입(7.7% 전환율)</strong>을 확인하며 다음 판단의 근거를 만들었습니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="story-row-card">
+              <div class="story-icon-box">03</div>
+              <div>
+                <h4 class="story-row-title">3. 남들이 꺼리는 현장에 뛰어드는 협업 역량</h4>
+                <p class="story-row-body">
+                  스마트빈 프로젝트 초기, 열악한 환경 탓에 누구나 꺼리던 <strong>재활용 선별장 방문 인터뷰(총 45건)에 먼저 나서 작업자분들의 목소리를 확보</strong>했습니다. 현장에서 <em>‘단순 압축 시 플라스틱 재질(PET/PP)이 섞여 재활용 가치가 0원이 된다’</em>는 치명적 병목을 발견해 팀과 투명하게 공유했고, 팀은 <strong>‘무지 PP컵 공급 + 압축 수거 + 재생 원료 직공급’의 순환경제 밸류체인으로 피벗하여 KDB 창업프로젝트 장려상</strong>을 수상했습니다.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <span class="sheet-page-num">10 / 11</span>
+    </section>
+
+    <!-- ==================================================================
+         SLIDE 11 : THANK YOU & CONTACT
+         ================================================================== -->
+    <section class="template-sheet" id="slide-11" data-index="10">
+      <div class="cover-upper-box">
+        <div class="cover-top-meta">
+          JANG SANGGYUN<br>
+          BRAND &amp; CRM MARKETER
+        </div>
+
+        <div class="cover-center-hero">
+          <h2 class="cover-giant-title">THANK Y<span class="serif-o">O</span>U</h2>
+          <p class="cover-subtitle">검토해 주셔서 감사합니다. 함께 더 큰 성장을 만들 준비가 되어 있습니다.</p>
+          <div class="cover-sub-chips">
+            <span class="cover-chip">즉시 실무 투입 가능</span>
+            <span class="cover-chip">TOEIC 825점 · 1종 보통</span>
+            <span class="cover-chip">SDT 특수임무대 만기전역</span>
+          </div>
+        </div>
+
+        <div class="cover-bottom-right">
+          <div class="three-squares" aria-hidden="true">
+            <span class="sq-1"></span>
+            <span class="sq-2"></span>
+            <span class="sq-3"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-bottom-bar">
+        <div class="cover-name-en">Contact</div>
+        <div class="cover-contact-list">
+          <a href="tel:01057790849" class="cover-contact-item phone-enlarged" id="copyPhoneBtn" data-copy="010-5779-0849" title="클릭하여 전화번호 복사">
+            <span class="contact-circle-icon"><i class="fa-solid fa-phone"></i></span>
+            <span>010-5779-0849</span>
+          </a>
+          <a href="mailto:wkdtkdrbs11@naver.com" class="cover-contact-item" id="copyEmailBtn" data-copy="wkdtkdrbs11@naver.com" title="클릭하여 이메일 복사">
+            <span class="contact-circle-icon"><i class="fa-solid fa-envelope"></i></span>
+            <span>wkdtkdrbs11@naver.com</span>
+          </a>
+          <span class="cover-contact-item">
+            <span class="contact-circle-icon"><i class="fa-solid fa-location-dot"></i></span>
+            <span>서울특별시 · 숭실대학교 벤처중소기업학과</span>
+          </span>
+        </div>
+      </div>
+      <span class="sheet-page-num">11 / 11</span>
+    </section>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-container">
-      <div class="footer-left">
-        <p class="footer-copy">© 2026 장상균 (Jang Sanggyun). All Rights Reserved.</p>
-        <p class="footer-sub">Designed for Brand & CRM Marketing Portfolio</p>
-      </div>
-      <div class="footer-right">
-        <a href="#hero" class="back-to-top" title="맨 위로 가기">
-          <i class="fa-solid fa-arrow-up"></i>
-        </a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Project Details Modal Dialog -->
-  <dialog class="project-modal" id="project-modal">
-    <div class="modal-content">
-      <button class="modal-close" id="modal-close" aria-label="닫기">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <div id="modal-body-container">
-        <!-- Dynamically populated via script.js -->
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Toast Notification -->
-  <div class="toast" id="toast">
-    <i class="fa-solid fa-check"></i> <span id="toast-message">클립보드에 복사되었습니다!</span>
+  <!-- Slide Deck Bottom Navigation Bar (Visible in 16:9 Presentation Mode) -->
+  <div class="deck-nav-bar" id="deckNavBar">
+    <button type="button" class="deck-nav-btn" id="prevSlideBtn"><i class="fa-solid fa-chevron-left"></i> 이전</button>
+    <span class="deck-progress-text" id="slideProgressText">01 / 11</span>
+    <button type="button" class="deck-nav-btn" id="nextSlideBtn">다음 <i class="fa-solid fa-chevron-right"></i></button>
   </div>
 
+  <!-- Image Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="이미지 확대 보기">
+    <div class="lightbox-inner">
+      <button type="button" class="lightbox-close" id="lightboxClose" aria-label="닫기">✕</button>
+      <img src="" alt="확대 이미지" id="lightboxImg">
+    </div>
+  </div>
+
+  <!-- Green Grid Template Script -->
   <script src="script.js"></script>
 </body>
 </html>
