@@ -734,44 +734,44 @@ body.deck-mode .deck-nav-bar {
 
 .index-entry {
   display: flex;
-  align-items: flex-start;
-  gap: 18px;
-  padding: 14px 18px;
+  align-items: center;
+  gap: 22px;
+  padding: 22px 26px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
   transition: all 0.18s ease;
   cursor: pointer;
 }
 
 .index-entry:hover {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.18);
   transform: translateX(6px);
 }
 
 .index-pill {
   flex-shrink: 0;
-  padding: 6px 18px;
+  padding: 8px 22px;
   border: 2px solid #ffffff;
   border-radius: 999px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 800;
   color: #ffffff;
 }
 
 .index-entry-text h3 {
-  font-size: 1.25rem;
+  font-size: 1.38rem;
   font-weight: 900;
   letter-spacing: -0.015em;
-  line-height: 1.3;
+  line-height: 1.35;
   margin-bottom: 6px;
   color: #ffffff;
 }
 
 .index-entry-text p {
-  font-size: 0.88rem;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 /* ==========================================================================

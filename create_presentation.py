@@ -400,21 +400,20 @@ r.font.color.rgb = COLOR_WHITE
 # Right Entries
 entries = [
     ("Project 1", "가상 브랜드 ‘스마트빈’ 기획", "축제·행사장 플라스틱 컵 선별 비용 절감 단일 PP 공급 및 직송 순환경제 플랫폼 (선별장 45건 인터뷰 & KDB 장려상)"),
-    ("Project 2", "카페 ‘체리커피 군자점’ 운영 총괄", "차별화 릴스 소구점(위치 강조) 발굴, 매장 넛지 효과 적용 및 인근 식당 5곳 B2B 제휴로 매출 25% 상승"),
-    ("Project 3", "대학생 AI 교차검증 문제 정의 및 MVP 실험", "‘AI 답변의 불필요한 교차검증 시간’으로 문제 쪼개기 및 오프라인 포스터 MVP로 사전 가입 전환율 7.7% 달성"),
-    ("Story 3", "마케터 장상균의 3가지 이야기 (Philosophy & Attitude)", "F&B와 마케팅에 빠진 계기 · 본질을 파고드는 가설 검증 · 남들이 꺼리는 현장에 뛰어드는 협업 역량")
+    ("Project 2", "카페 ‘체리커피 군자점’ 운영 총괄", "차별화 릴스(위치 강조) 기획·제작, 매장 넛지 효과 적용 및 인근 식당 5곳 B2B 제휴로 매출 25% 상승 달성"),
+    ("Project 3", "대학생 AI 교차검증 문제 정의 및 MVP 실험", "‘AI 답변의 불필요한 교차검증 시간’으로 문제 쪼개기 및 오프라인 포스터 MVP로 사전 가입 전환율 7.7% 달성")
 ]
 
 for idx, (pill, title, desc) in enumerate(entries):
-    top_pos = Inches(1.2 + idx * 1.3)
-    card = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.7), top_pos, Inches(7.5), Inches(1.18))
+    top_pos = Inches(1.25 + idx * 1.7)
+    card = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.7), top_pos, Inches(7.5), Inches(1.48))
     card.fill.solid()
     card.fill.fore_color.rgb = RGBColor(46, 155, 67)
     card.line.color.rgb = COLOR_WHITE
     card.line.width = Pt(1)
 
     # Pill
-    badge = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.95), top_pos + Inches(0.3), Inches(1.3), Inches(0.55))
+    badge = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.95), top_pos + Inches(0.45), Inches(1.35), Inches(0.58))
     badge.fill.background()
     badge.line.color.rgb = COLOR_WHITE
     badge.line.width = Pt(1.5)
@@ -424,26 +423,26 @@ for idx, (pill, title, desc) in enumerate(entries):
     r = p.add_run()
     r.text = pill
     r.font.name = FONT_HEADING
-    r.font.size = Pt(11.5)
+    r.font.size = Pt(12)
     r.font.bold = True
     r.font.color.rgb = COLOR_WHITE
 
     # Text
-    e_box = s3.shapes.add_textbox(Inches(6.45), top_pos + Inches(0.14), Inches(5.6), Inches(0.9))
+    e_box = s3.shapes.add_textbox(Inches(6.5), top_pos + Inches(0.18), Inches(5.5), Inches(1.15))
     tf = e_box.text_frame
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     p = tf.paragraphs[0]
     r = p.add_run()
     r.text = title + "\n"
     r.font.name = FONT_HEADING
-    r.font.size = Pt(15.5)  # Enlarged & Bolder
+    r.font.size = Pt(17)  # Enlarged & Bolder
     r.font.bold = True
     r.font.color.rgb = COLOR_WHITE
 
     r = p.add_run()
     r.text = desc
     r.font.name = FONT_BODY
-    r.font.size = Pt(9.5)
+    r.font.size = Pt(11)
     r.font.color.rgb = COLOR_LIGHT
 
 # ==============================================================================
@@ -1004,94 +1003,45 @@ for s_idx, (st_t, st_d, st_v) in enumerate(fn_steps):
     r2 = p2.add_run(); r2.text = st_v; r2.font.name = FONT_HEADING; r2.font.size = Pt(11 if s_idx==2 else 12); r2.font.bold = True; r2.font.color.rgb = v_col
 
 # ==============================================================================
-# SLIDE 9 : Story 3 (마케터 장상균의 3가지 이야기)
+# SLIDE 9 : THANK YOU & CONTACT
 # ==============================================================================
 s9 = prs.slides.add_slide(blank_layout)
 set_slide_background(s9, COLOR_BG)
-add_green_top_bar(s9, "Story 3", "마케터 장상균의 3가지 이야기", "JANG SANGGYUN", "PHILOSOPHY")
-add_main_frame_box(s9)
 
-# Left Gray Panel
-p_left = s9.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(1.42), Inches(3.4), Inches(5.4))
-p_left.fill.solid(); p_left.fill.fore_color.rgb = COLOR_PANEL; p_left.line.fill.background()
+up9 = s9.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(0.6), Inches(12.133), Inches(4.9))
+up9.fill.solid(); up9.fill.fore_color.rgb = COLOR_WHITE; up9.line.color.rgb = COLOR_PRIMARY; up9.line.width = Pt(3.5)
 
-tf = s9.shapes.add_textbox(Inches(1.0), Inches(1.85), Inches(2.6), Inches(4.5)).text_frame
-tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
-p = tf.paragraphs[0]
-r = p.add_run(); r.text = "WORK ETHIC\n\n"; r.font.name = FONT_HEADING; r.font.size = Pt(11); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
-
-r = p.add_run(); r.text = "본질을 묻고,\n현장과 데이터로\n답합니다\n\n"; r.font.name = FONT_HEADING; r.font.size = Pt(18); r.font.bold = True; r.font.color.rgb = COLOR_DARK
-
-r = p.add_run(); r.text = "눈앞의 현상에 머무르지 않고 고객이 행동하는 진짜 이유를 파고들며, 탁상공론 대신 빠른 실험과 현장 협업으로 실질적인 비즈니스 임팩트를 만듭니다."
-r.font.name = FONT_BODY; r.font.size = Pt(10.5); r.font.color.rgb = COLOR_TEXT
-
-# Right 3 Stories
-stories = [
-    ("01", "1. F&B와 마케팅에 빠져들게 된 계기",
-     "1년간 카페를 총괄 운영하며 마케팅의 작은 디테일 하나가 실제 매장의 매출 곡선을 바꾼다는 사실을 체감했습니다. 베이커리 진열에 넛지(Nudge) 효과를 적용하고 동선을 재배치해 매장 경험(CX)을 최적화했으며, 주변 매장과 똑같은 인테리어 사진 대신 ‘지하철역과 가까우면서도 교외 대형 카페처럼 여유로운 분위기를 즐길 수 있다’는 역세권 정원 강점을 잡아 릴스를 제작해 1달 만에 팔로워 200명 증가, 매장 매출 25% 상승을 이끌어냈습니다."),
-    ("02", "2. 본질을 파고드는 집요함과 적시 가설 검증",
-     "제 강점은 문제의 본질을 파악하고 실행으로 옮기는 추진력입니다. 연합동아리 창업 프로젝트에서 대학생의 AI 활용 문제를 정의할 때, 멘토님의 “신뢰란 무엇인가”라는 피드백을 계기로 ‘신뢰’는 답변의 정확성, ‘불필요한 시간’은 정확성을 확인하는 교차검증 시간으로 구체화했습니다. 실험 준비가 한 달가량 길어지자 완성도를 높이기보다 고객 반응을 먼저 검증하자고 제안해 교수님을 통한 포스터 실험으로 39명 중 3명 가입(7.7% 전환율)을 확인하며 다음 판단의 근거를 만들었습니다."),
-    ("03", "3. 남들이 꺼리는 현장에 뛰어드는 협업 역량",
-     "스마트빈 프로젝트 초기, 열악한 환경 탓에 누구나 꺼리던 재활용 선별장 방문 인터뷰(총 45건)에 먼저 나서 작업자분들의 목소리를 확보했습니다. 현장에서 ‘단순 압축 시 플라스틱 재질(PET/PP)이 섞여 재활용 가치가 0원이 된다’는 치명적 병목을 발견해 팀과 투명하게 공유했고, 팀은 ‘무지 PP컵 공급 + 압축 수거 + 재생 원료 직공급’의 순환경제 밸류체인으로 피벗하여 KDB 창업프로젝트 장려상을 수상했습니다.")
-]
-
-for idx, (num, title, body) in enumerate(stories):
-    top_pos = Inches(1.65 + idx * 1.7)
-    
-    # Icon box
-    ib = s9.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(4.3), top_pos, Inches(0.65), Inches(0.65))
-    ib.fill.solid(); ib.fill.fore_color.rgb = COLOR_TINT; ib.line.color.rgb = COLOR_PRIMARY; ib.line.width = Pt(1.5)
-    tf = ib.text_frame; p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-    r = p.add_run(); r.text = num; r.font.name = FONT_HEADING; r.font.size = Pt(14); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
-
-    # Story text
-    s_box = s9.shapes.add_textbox(Inches(5.15), top_pos, Inches(7.3), Inches(1.55))
-    tf = s_box.text_frame; tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
-    p = tf.paragraphs[0]
-    r = p.add_run(); r.text = title + "\n"; r.font.name = FONT_HEADING; r.font.size = Pt(13); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
-
-    r = p.add_run(); r.text = body; r.font.name = FONT_BODY; r.font.size = Pt(9.5); r.font.color.rgb = COLOR_TEXT
-
-# ==============================================================================
-# SLIDE 10 : THANK YOU & CONTACT
-# ==============================================================================
-s10 = prs.slides.add_slide(blank_layout)
-set_slide_background(s10, COLOR_BG)
-
-up10 = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(0.6), Inches(12.133), Inches(4.9))
-up10.fill.solid(); up10.fill.fore_color.rgb = COLOR_WHITE; up10.line.color.rgb = COLOR_PRIMARY; up10.line.width = Pt(3.5)
-
-tf = s10.shapes.add_textbox(Inches(1.0), Inches(0.9), Inches(4.0), Inches(0.8)).text_frame
+tf = s9.shapes.add_textbox(Inches(1.0), Inches(0.9), Inches(4.0), Inches(0.8)).text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
 r = p.add_run(); r.text = "JANG SANGGYUN\nBRAND & CRM MARKETER"; r.font.name = FONT_HEADING; r.font.size = Pt(12); r.font.bold = True; r.font.color.rgb = COLOR_DARK
 
 # Giant Title: THANK YOU
-tf = s10.shapes.add_textbox(Inches(1.0), Inches(1.85), Inches(11.333), Inches(1.4)).text_frame
+tf = s9.shapes.add_textbox(Inches(1.0), Inches(1.85), Inches(11.333), Inches(1.4)).text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
 r = p.add_run(); r.text = "THANK YOU"; r.font.name = FONT_HEADING; r.font.size = Pt(72); r.font.bold = True; r.font.color.rgb = COLOR_DARK
 
 # Subtitle
-tf = s10.shapes.add_textbox(Inches(1.0), Inches(3.3), Inches(11.333), Inches(0.5)).text_frame
+tf = s9.shapes.add_textbox(Inches(1.0), Inches(3.3), Inches(11.333), Inches(0.5)).text_frame
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
 r = p.add_run(); r.text = "검토해 주셔서 감사합니다. 함께 더 큰 성장을 만들 준비가 되어 있습니다."; r.font.name = FONT_HEADING; r.font.size = Pt(17); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
 
 # Chips
-tf = s10.shapes.add_textbox(Inches(1.0), Inches(3.95), Inches(11.333), Inches(0.4)).text_frame
+tf = s9.shapes.add_textbox(Inches(1.0), Inches(3.95), Inches(11.333), Inches(0.4)).text_frame
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
 r = p.add_run(); r.text = "#즉시_실무_투입_가능    #TOEIC_825점_1종보통    #SDT_특수임무대_만기전역"; r.font.name = FONT_BODY; r.font.size = Pt(12); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
 
 # Bottom Green Bar
-btm10 = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(5.7), Inches(12.133), Inches(1.2))
-btm10.fill.solid(); btm10.fill.fore_color.rgb = COLOR_PRIMARY; btm10.line.fill.background()
+btm9 = s9.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(5.7), Inches(12.133), Inches(1.2))
+btm9.fill.solid(); btm9.fill.fore_color.rgb = COLOR_PRIMARY; btm9.line.fill.background()
 
-tf = s10.shapes.add_textbox(Inches(1.0), Inches(6.05), Inches(3.0), Inches(0.6)).text_frame
+tf = s9.shapes.add_textbox(Inches(1.0), Inches(6.05), Inches(3.0), Inches(0.6)).text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
 r = p.add_run(); r.text = "Contact"; r.font.name = FONT_HEADING; r.font.size = Pt(22); r.font.bold = True; r.font.color.rgb = COLOR_WHITE
 
-tf = s10.shapes.add_textbox(Inches(4.2), Inches(6.1), Inches(8.1), Inches(0.5)).text_frame
+tf = s9.shapes.add_textbox(Inches(4.2), Inches(6.1), Inches(8.1), Inches(0.5)).text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.RIGHT
 
