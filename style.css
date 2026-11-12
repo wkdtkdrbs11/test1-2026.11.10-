@@ -981,7 +981,7 @@ body.deck-mode .deck-nav-bar {
 }
 
 .p5-step-main {
-  font-size: 1.05rem;
+  font-size: 1.34rem;
   font-weight: 900;
   color: var(--text-primary);
   letter-spacing: -0.015em;
@@ -989,14 +989,14 @@ body.deck-mode .deck-nav-bar {
 }
 
 .p5-step-sub {
-  font-size: 0.74rem;
-  font-weight: 700;
+  font-size: 0.94rem;
+  font-weight: 800;
   color: var(--green-primary);
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 .p5-step-photo-wrap {
-  height: 135px;
+  height: 125px;
   border-radius: 6px;
   overflow: hidden;
   border: 1px solid rgba(38, 140, 58, 0.25);
@@ -1015,13 +1015,13 @@ body.deck-mode .deck-nav-bar {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 800;
   color: var(--text-secondary);
   background: var(--green-tint);
-  padding: 5px 8px;
+  padding: 6px 10px;
   border-radius: 6px;
-  border: 1px solid rgba(38, 140, 58, 0.2);
+  border: 1px solid rgba(38, 140, 58, 0.22);
 }
 
 .p5-step-micro-flow span {
@@ -1029,23 +1029,23 @@ body.deck-mode .deck-nav-bar {
 }
 
 .p5-step-micro-flow i {
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   color: var(--green-primary);
 }
 
 .p5-step-bullets {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  font-size: 0.86rem;
+  gap: 8px;
+  font-size: 1.05rem;
   color: var(--text-secondary);
-  line-height: 1.48;
-  margin-top: 2px;
+  line-height: 1.65;
+  margin-top: 4px;
 }
 
 .p5-step-bullets li {
   position: relative;
-  padding-left: 13px;
+  padding-left: 18px;
 }
 
 .p5-step-bullets li::before {
@@ -1054,6 +1054,7 @@ body.deck-mode .deck-nav-bar {
   left: 0;
   color: var(--green-primary);
   font-weight: 900;
+  font-size: 1.2rem;
 }
 
 .p5-step-bullets strong {
@@ -1066,11 +1067,11 @@ body.deck-mode .deck-nav-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  font-size: 1.05rem;
+  gap: 16px;
+  font-size: 1.15rem;
   font-weight: 900;
   color: var(--text-primary);
-  padding: 4px 0;
+  padding: 6px 0;
   letter-spacing: -0.01em;
 }
 
@@ -1084,7 +1085,7 @@ body.deck-mode .deck-nav-bar {
   background: linear-gradient(135deg, #f4f8f4 0%, #eaf3eb 100%);
   border: 2px solid var(--green-primary);
   border-radius: 999px;
-  padding: 10px 28px;
+  padding: 10px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1095,7 +1096,7 @@ body.deck-mode .deck-nav-bar {
 }
 
 .p5-ref2-goal-badge {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--green-primary);
@@ -1103,7 +1104,7 @@ body.deck-mode .deck-nav-bar {
 }
 
 .p5-ref2-goal-title {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 900;
   color: var(--text-primary);
   letter-spacing: -0.015em;

@@ -573,29 +573,29 @@ for idx, (num_str, title_main, title_sub, img_p, flow_str, bullets) in enumerate
     r.font.color.rgb = COLOR_WHITE
 
     # Title Text
-    tbox = s5.shapes.add_textbox(left_x + Inches(0.58), Inches(1.64), Inches(3.05), Inches(0.48))
+    tbox = s5.shapes.add_textbox(left_x + Inches(0.58), Inches(1.60), Inches(3.05), Inches(0.55))
     tf_t = tbox.text_frame
     tf_t.margin_left = tf_t.margin_top = tf_t.margin_right = tf_t.margin_bottom = 0
     p = tf_t.paragraphs[0]
     r = p.add_run()
     r.text = title_main + "\n"
     r.font.name = FONT_HEADING
-    r.font.size = Pt(12)
+    r.font.size = Pt(15)
     r.font.bold = True
     r.font.color.rgb = COLOR_DARK
     r_sub = p.add_run()
     r_sub.text = title_sub
     r_sub.font.name = FONT_HEADING
-    r_sub.font.size = Pt(8.5)
+    r_sub.font.size = Pt(10.5)
     r_sub.font.bold = True
     r_sub.font.color.rgb = COLOR_PRIMARY
 
     # Image Thumbnail
     if img_p and os.path.exists(img_p):
-        s5.shapes.add_picture(img_p, left_x + Inches(0.12), Inches(2.2), width=Inches(3.51), height=Inches(1.22))
+        s5.shapes.add_picture(img_p, left_x + Inches(0.12), Inches(2.2), width=Inches(3.51), height=Inches(1.18))
 
     # Micro Flow Pill
-    pill = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left_x + Inches(0.12), Inches(3.50), Inches(3.51), Inches(0.32))
+    pill = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left_x + Inches(0.12), Inches(3.45), Inches(3.51), Inches(0.34))
     pill.fill.solid()
     pill.fill.fore_color.rgb = RGBColor(239, 247, 240)
     pill.line.color.rgb = COLOR_PRIMARY
@@ -607,26 +607,26 @@ for idx, (num_str, title_main, title_sub, img_p, flow_str, bullets) in enumerate
     r = p.add_run()
     r.text = flow_str
     r.font.name = FONT_HEADING
-    r.font.size = Pt(8.2)
+    r.font.size = Pt(9)
     r.font.bold = True
     r.font.color.rgb = COLOR_PRIMARY
 
     # Bullets
-    bbox = s5.shapes.add_textbox(left_x + Inches(0.12), Inches(3.90), Inches(3.51), Inches(1.3))
+    bbox = s5.shapes.add_textbox(left_x + Inches(0.12), Inches(3.88), Inches(3.51), Inches(1.35))
     tf_b = bbox.text_frame
     tf_b.margin_left = tf_b.margin_top = tf_b.margin_right = tf_b.margin_bottom = 0
     for b_idx, bullet in enumerate(bullets):
         p = tf_b.paragraphs[0] if b_idx == 0 else tf_b.add_paragraph()
-        p.space_before = Pt(4)
+        p.space_before = Pt(6)
         r = p.add_run()
         r.text = "• " + bullet
         r.font.name = FONT_BODY
-        r.font.size = Pt(9.5)
+        r.font.size = Pt(12)
         r.font.color.rgb = COLOR_TEXT
 
 
 # --- FLOW SUMMARY LINE (Reference 2 Style) ---
-flow_line = s5.shapes.add_textbox(Inches(0.85), Inches(5.42), Inches(11.65), Inches(0.38))
+flow_line = s5.shapes.add_textbox(Inches(0.85), Inches(5.40), Inches(11.65), Inches(0.38))
 tf_fl = flow_line.text_frame
 tf_fl.margin_left = tf_fl.margin_top = tf_fl.margin_right = tf_fl.margin_bottom = 0
 p = tf_fl.paragraphs[0]
@@ -634,15 +634,37 @@ p.alignment = PP_ALIGN.CENTER
 r = p.add_run()
 r.text = "무지 PP컵 공급   ➔   현장 70% 압축수거   ➔   중간 선별장 Skip   ➔   고순도 플라스틱 컵원료화"
 r.font.name = FONT_HEADING
-r.font.size = Pt(12)
+r.font.size = Pt(13)
 r.font.bold = True
 r.font.color.rgb = COLOR_DARK
 
 
 # --- BIG BOTTOM GOAL PILL CONTAINER (Reference 2 Signature Component) ---
-goal_pill = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.85), Inches(5.86), Inches(11.65), Inches(0.82))
+goal_pill = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.85), Inches(5.84), Inches(11.65), Inches(0.85))
 goal_pill.fill.solid()
 goal_pill.fill.fore_color.rgb = RGBColor(244, 248, 244)
+goal_pill.line.color.rgb = COLOR_PRIMARY
+goal_pill.line.width = Pt(2)
+
+tf_g = goal_pill.text_frame
+tf_g.margin_left = tf_g.margin_top = tf_g.margin_right = tf_g.margin_bottom = 0
+p1 = tf_g.paragraphs[0]
+p1.alignment = PP_ALIGN.CENTER
+r1 = p1.add_run()
+r1.text = "CORE VALUE & GOAL\n"
+r1.font.name = FONT_HEADING
+r1.font.size = Pt(9)
+r1.font.bold = True
+r1.font.color.rgb = COLOR_PRIMARY
+
+p2 = tf_g.add_paragraph()
+p2.alignment = PP_ALIGN.CENTER
+r2 = p2.add_run()
+r2.text = "“선별 비용을 없애고, 버려지는 폐기물을 돈이 되는 고순도 재생 원료로 전환”"
+r2.font.name = FONT_HEADING
+r2.font.size = Pt(14)
+r2.font.bold = True
+r2.font.color.rgb = COLOR_DARK
 goal_pill.line.color.rgb = COLOR_PRIMARY
 goal_pill.line.width = Pt(2)
 
