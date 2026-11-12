@@ -694,7 +694,7 @@ r2.font.color.rgb = COLOR_DARK
 # ==============================================================================
 s6 = prs.slides.add_slide(blank_layout)
 set_slide_background(s6, COLOR_BG)
-add_green_top_bar(s6, "Project 2", "카페 ‘체리커피 군자점’ 운영 총괄", "기간: 2023.07.15 - 2024.06.15 (1년)", "")
+add_green_top_bar(s6, "Project 2", "카페 ‘체리커피 군자점’ 운영 총괄", "기간: 2023.07.15 - 2024.06.15", "")
 add_main_frame_box(s6)
 
 # Left 3 Vertical Bar Items
@@ -924,156 +924,98 @@ for idx, (title, sub, bullets) in enumerate(vbars_s7):
         r = p.add_run(); r.text = "• " + bullet; r.font.name = FONT_BODY; r.font.size = Pt(12); r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
-# SLIDE 8 : Project 3 (대학생 AI 교차검증 문제 정의 및 포스터 실험)
+# SLIDE 8 : Project 3 (대학생 AI 교차검증 문제 정의 및 포스터 MVP 검증)
 # ==============================================================================
 s8 = prs.slides.add_slide(blank_layout)
 set_slide_background(s8, COLOR_BG)
-add_green_top_bar(s8, "Project 3", "대학생 AI 활용 문제 정의 쪼개기와 병목 돌파", "기간: 2026.07.10 - 현재", "역할: 대학연합 창업동아리 숭실지부장")
+add_green_top_bar(s8, "Project 3", "대학생 AI 활용 문제 정의 쪼개기와 오프라인 포스터 실험", "기간: 2026.07.10 - 현재", "역할: 대학연합 창업동아리 숭실지부장")
 add_main_frame_box(s8)
 
-# Left 3 Vertical Bar Items
+# Left 3 Vertical Bar Items (Unified Font Sizes)
 vbars_s8 = [
     ("초기 문제 정의와 멘토 피드백", "Initial Hypothesis", [
         "대학생의 AI 활용 문제를 정의하며, 처음에는 ‘AI 답변의 신뢰성이 낮아 여러 AI를 교차 검증을 하느라 시간을 낭비한다’라고 보았음",
-        "그러나 멘토님의 “신뢰란 무엇인가”라는 피드백을 받고 문제를 더 쪼개야겠다고 판단함"
+        "그러나 멘토님의 “신뢰란 무엇인가”라는 피드백을 받고 문제를 더 쪼개야겠다고 판단"
     ]),
-    ("‘신뢰’와 ‘시간 낭비’의 본질 분해", "Problem Breakdown", [
-        "팀원들과 논의해 ‘신뢰’는 답변의 정확성, ‘불필요한 시간’은 정확성을 확인하는 교차검증 시간으로 뾰족하게 구체화함",
+    ("‘신뢰’와 ‘불필요한 시간’의 구체화", "Problem Breakdown", [
+        "팀원들과 논의해 ‘신뢰’는 답변의 정확성, ‘불필요한 시간’은 정확성을 확인하는 교차검증 시간으로 뾰족하게 구체화",
         "전공 교재 풀이과정이 제공되지 않아 80%의 학생이 겪는 불안감을 타겟 문제로 정밀 타겟팅"
     ]),
     ("1달간의 실험 준비 병목 돌파", "Action Leadership", [
-        "실험 준비가 한 달가량 이어져 병목이 생기자, 완성도를 더 높이기보다 고객 반응을 먼저 검증하자고 제안해 팀의 동의를 얻음",
-        "막연한 개발 준비를 멈추고 현장 오프라인 포스터를 통해 신속한 가설 검증 단행"
+        "실험 준비가 한 달가량 이어져 병목이 생기자, 실험설계의 완성도를 높이기보다 고객 반응을 먼저 검증하자고 제안해 팀의 동의를 얻음",
+        "교수님 협조를 얻어 실제 강의실에 오프라인 포스터를 빠르게 배포해 다음 판단의 정량적 근거를 확보함"
     ])
 ]
 
 for idx, (title, sub, bullets) in enumerate(vbars_s8):
-    top_pos = Inches(1.7 + idx * 1.55)
-    bar = s8.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), top_pos, Inches(0.08), Inches(1.3))
+    top_pos = Inches(1.68 + idx * 1.62)
+    bar = s8.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), top_pos, Inches(0.08), Inches(1.4))
     bar.fill.solid(); bar.fill.fore_color.rgb = COLOR_PRIMARY; bar.line.fill.background()
 
-    tbox = s8.shapes.add_textbox(Inches(1.15), top_pos, Inches(5.4), Inches(1.3))
+    tbox = s8.shapes.add_textbox(Inches(1.15), top_pos, Inches(5.4), Inches(1.4))
     tf = tbox.text_frame; tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     p = tf.paragraphs[0]
-    r = p.add_run(); r.text = title + "  "; r.font.name = FONT_HEADING; r.font.size = Pt(13); r.font.bold = True; r.font.color.rgb = COLOR_DARK
-    r = p.add_run(); r.text = sub; r.font.name = FONT_HEADING; r.font.size = Pt(10); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
+    r = p.add_run(); r.text = title + "  "; r.font.name = FONT_HEADING; r.font.size = Pt(15); r.font.bold = True; r.font.color.rgb = COLOR_DARK
+    r = p.add_run(); r.text = sub; r.font.name = FONT_HEADING; r.font.size = Pt(10.5); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
     for bullet in bullets:
-        p = tf.add_paragraph(); p.space_before = Pt(4)
-        r = p.add_run(); r.text = "• " + bullet; r.font.name = FONT_BODY; r.font.size = Pt(9.5); r.font.color.rgb = COLOR_TEXT
+        p = tf.add_paragraph(); p.space_before = Pt(6)
+        r = p.add_run(); r.text = "• " + bullet; r.font.name = FONT_BODY; r.font.size = Pt(12); r.font.color.rgb = COLOR_TEXT
 
-# Right Poster Showcase
-p_frame = s8.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(7.0), Inches(1.7), Inches(5.4), Inches(4.7))
-p_frame.fill.solid(); p_frame.fill.fore_color.rgb = COLOR_WHITE; p_frame.line.color.rgb = COLOR_PRIMARY; p_frame.line.width = Pt(1.5)
+# Right Showcase Box (Poster + Funnel)
+r_frame = s8.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.9), Inches(1.6), Inches(5.5), Inches(5.0))
+r_frame.fill.solid(); r_frame.fill.fore_color.rgb = COLOR_PANEL; r_frame.line.color.rgb = COLOR_PRIMARY; r_frame.line.width = Pt(1.5)
 
-tf = s8.shapes.add_textbox(Inches(7.2), Inches(1.85), Inches(5.0), Inches(0.4)).text_frame
+# Poster Caption & Image
+tf = s8.shapes.add_textbox(Inches(7.1), Inches(1.75), Inches(5.1), Inches(0.35)).text_frame
+tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r = p.add_run(); r.text = "실제 배포한 오프라인 실험 포스터 MVP"; r.font.name = FONT_HEADING; r.font.size = Pt(12); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
+r = p.add_run(); r.text = "실제 배포한 오프라인 실험 포스터"; r.font.name = FONT_HEADING; r.font.size = Pt(12); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
 
 if os.path.exists(IMG_POSTER):
-    s8.shapes.add_picture(IMG_POSTER, Inches(7.3), Inches(2.3), width=Inches(4.8))
+    s8.shapes.add_picture(IMG_POSTER, Inches(7.4), Inches(2.15), width=Inches(4.5), height=Inches(1.85))
 
-tf = s8.shapes.add_textbox(Inches(7.2), Inches(5.95), Inches(5.0), Inches(0.35)).text_frame
-p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r = p.add_run(); r.text = "▲ 교수님을 통해 실제 배포한 오프라인 포스터 (QR 유입 39명 중 3명 가입, 전환율 7.7%)"; r.font.size = Pt(8.5); r.font.color.rgb = COLOR_MUTED
-
-# ==============================================================================
-# SLIDE 9 : 경험 3 결과물 (포스터 실험 전환율 7.7% 및 러닝)
-# ==============================================================================
-s9 = prs.slides.add_slide(blank_layout)
-set_slide_background(s9, COLOR_BG)
-add_green_top_bar(s9, "결과물", "포스터 MVP 실험 전환율 7.7% 달성 및 실행 기준 정립", "JANG SANGGYUN", "PORTFOLIO")
-add_main_frame_box(s9)
-
-# Left 3 Execution Steps
-vbars_s9 = [
-    ("오프라인 포스터 MVP 설계", "MVP Design", [
-        "“AI마다 답이 달라서 못 믿겠어요 / 풀이과정이 없어 내 풀이가 맞는지 확인할 수 없어요”라는 실제 학생들의 언어로 카피 작성",
-        "핵심 페인포인트와 선배 Q&A QR코드를 결합하여 직관적으로 배치"
-    ]),
-    ("교수님 협조를 통한 타겟 배포", "Channel Strategy", [
-        "타겟 학생들이 모이는 핵심 이동 동선인 전공 강의실 및 게시판에 포스터를 직접 배포",
-        "지도 교수님의 공식 협조를 이끌어내어 정보 신뢰도와 참여율을 크게 향상시킴"
-    ]),
-    ("개인정보 입력 전환으로 진성 수요 검증", "Validation Metric", [
-        "단순 QR 스캔에 그치지 않고 ‘이름, 학번, 연락처’를 직접 입력하고 가입하는 높은 전환 장벽을 설정",
-        "39명 유입 중 3명이 실제 개인정보를 입력하고 가입하여 7.7%의 유의미한 사전 전환율 입증"
-    ])
-]
-
-for idx, (title, sub, bullets) in enumerate(vbars_s9):
-    top_pos = Inches(1.7 + idx * 1.45)
-    bar = s9.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.9), top_pos, Inches(0.08), Inches(1.2))
-    bar.fill.solid(); bar.fill.fore_color.rgb = COLOR_PRIMARY; bar.line.fill.background()
-
-    tbox = s9.shapes.add_textbox(Inches(1.15), top_pos, Inches(5.4), Inches(1.2))
-    tf = tbox.text_frame; tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
-    p = tf.paragraphs[0]
-    r = p.add_run(); r.text = title + "  "; r.font.name = FONT_HEADING; r.font.size = Pt(13); r.font.bold = True; r.font.color.rgb = COLOR_DARK
-    r = p.add_run(); r.text = sub; r.font.name = FONT_HEADING; r.font.size = Pt(10); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
-    for bullet in bullets:
-        p = tf.add_paragraph(); p.space_before = Pt(4)
-        r = p.add_run(); r.text = "• " + bullet; r.font.name = FONT_BODY; r.font.size = Pt(9.5); r.font.color.rgb = COLOR_TEXT
-
-# Right Funnel Showcase
-f_frame = s9.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(7.0), Inches(1.7), Inches(5.4), Inches(4.3))
-f_frame.fill.solid(); f_frame.fill.fore_color.rgb = COLOR_PANEL; f_frame.line.color.rgb = COLOR_PRIMARY; f_frame.line.width = Pt(1.5)
-
-tf = s9.shapes.add_textbox(Inches(7.2), Inches(1.9), Inches(5.0), Inches(0.4)).text_frame
-p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
-r = p.add_run(); r.text = "오프라인 포스터 실험 퍼널 : 가입 전환율 7.7% 달성"; r.font.name = FONT_HEADING; r.font.size = Pt(12); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
-
-# Funnel Steps
+# Funnel Steps (from Slide 9)
 fn_steps = [
-    ("STEP 1. 타겟 접점 확보", "교수님 협조 기반 학과 수강생 대상 포스터 배포", "타겟 수강생 전원"),
+    ("STEP 1. 타겟 접점 확보", "교수님 협조 기반 학과 수강생 대상 포스터 배포", "전공 수강생"),
     ("STEP 2. 포스터 QR 스캔 유입", "문제 메시지에 공감해 랜딩 페이지로 유입", "39명"),
-    ("STEP 3. 개인정보 입력 및 가입", "높은 전환 허들을 넘어 실제 사전 가입 완료", "3명 (전환율 7.7%)")
+    ("STEP 3. 개인정보 입력 및 가입", "높은 전환 허들을 넘어 실제 사전 가입 완료", "3명 (7.7%)")
 ]
 
 for s_idx, (st_t, st_d, st_v) in enumerate(fn_steps):
-    step_y = Inches(2.4 + s_idx * 1.1)
-    card = s9.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.3), step_y, Inches(4.8), Inches(0.95))
+    step_y = Inches(4.15 + s_idx * 0.78)
+    card = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.1), step_y, Inches(5.1), Inches(0.70))
     if s_idx == 2:
         card.fill.solid(); card.fill.fore_color.rgb = COLOR_PRIMARY; card.line.fill.background()
         t_col = COLOR_WHITE; v_col = COLOR_WHITE
     else:
-        card.fill.solid(); card.fill.fore_color.rgb = COLOR_WHITE; card.line.color.rgb = COLOR_PRIMARY; card.line.width = Pt(1.5)
+        card.fill.solid(); card.fill.fore_color.rgb = COLOR_WHITE; card.line.color.rgb = COLOR_PRIMARY; card.line.width = Pt(1.2)
         t_col = COLOR_DARK; v_col = COLOR_PRIMARY
 
-    tf = s9.shapes.add_textbox(Inches(7.5), step_y + Inches(0.12), Inches(3.2), Inches(0.7)).text_frame
+    tf = s8.shapes.add_textbox(Inches(7.25), step_y + Inches(0.08), Inches(3.6), Inches(0.55)).text_frame
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     p = tf.paragraphs[0]
-    r = p.add_run(); r.text = st_t + "\n"; r.font.name = FONT_HEADING; r.font.size = Pt(11); r.font.bold = True; r.font.color.rgb = t_col
-    r = p.add_run(); r.text = st_d; r.font.name = FONT_BODY; r.font.size = Pt(9); r.font.color.rgb = t_col
+    r = p.add_run(); r.text = st_t + "  "; r.font.name = FONT_HEADING; r.font.size = Pt(10); r.font.bold = True; r.font.color.rgb = t_col
+    p = tf.add_paragraph()
+    r = p.add_run(); r.text = st_d; r.font.name = FONT_BODY; r.font.size = Pt(8.5); r.font.color.rgb = t_col
 
-    tf2 = s9.shapes.add_textbox(Inches(10.7), step_y + Inches(0.2), Inches(1.3), Inches(0.5)).text_frame
+    tf2 = s8.shapes.add_textbox(Inches(10.8), step_y + Inches(0.12), Inches(1.25), Inches(0.45)).text_frame
     tf2.margin_left = tf2.margin_top = tf2.margin_right = tf2.margin_bottom = 0
     p2 = tf2.paragraphs[0]; p2.alignment = PP_ALIGN.RIGHT
-    r2 = p2.add_run(); r2.text = st_v; r2.font.name = FONT_MONO; r2.font.size = Pt(12 if s_idx==2 else 13); r2.font.bold = True; r2.font.color.rgb = v_col
-
-# Bottom Gray Summary Strip
-strip = s9.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(6.15), Inches(12.133), Inches(0.65))
-strip.fill.solid(); strip.fill.fore_color.rgb = COLOR_PANEL; strip.line.fill.background()
-
-s_box = s9.shapes.add_textbox(Inches(1.0), Inches(6.28), Inches(11.333), Inches(0.4))
-tf = s_box.text_frame; tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
-p = tf.paragraphs[0]
-r = p.add_run(); r.text = "배운 점 : "; r.font.name = FONT_HEADING; r.font.size = Pt(11); r.font.bold = True; r.font.color.rgb = COLOR_DARK
-r = p.add_run(); r.text = "브랜드의 정체성과 메시지를 실험할 때, 문제를 깊이 정의하되 적시에 검증해 다음 판단의 근거를 만드는 것"; r.font.name = FONT_HEADING; r.font.size = Pt(11); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
-r = p.add_run(); r.text = "이 중요함을 배웠습니다."; r.font.name = FONT_BODY; r.font.size = Pt(11); r.font.color.rgb = COLOR_TEXT
+    r2 = p2.add_run(); r2.text = st_v; r2.font.name = FONT_HEADING; r2.font.size = Pt(11 if s_idx==2 else 12); r2.font.bold = True; r2.font.color.rgb = v_col
 
 # ==============================================================================
-# SLIDE 10 : Story 3 (마케터 장상균의 3가지 이야기)
+# SLIDE 9 : Story 3 (마케터 장상균의 3가지 이야기)
 # ==============================================================================
-s10 = prs.slides.add_slide(blank_layout)
-set_slide_background(s10, COLOR_BG)
-add_green_top_bar(s10, "Story 3", "마케터 장상균의 3가지 이야기", "JANG SANGGYUN", "PHILOSOPHY")
-add_main_frame_box(s10)
+s9 = prs.slides.add_slide(blank_layout)
+set_slide_background(s9, COLOR_BG)
+add_green_top_bar(s9, "Story 3", "마케터 장상균의 3가지 이야기", "JANG SANGGYUN", "PHILOSOPHY")
+add_main_frame_box(s9)
 
 # Left Gray Panel
-p_left = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(1.42), Inches(3.4), Inches(5.4))
+p_left = s9.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(1.42), Inches(3.4), Inches(5.4))
 p_left.fill.solid(); p_left.fill.fore_color.rgb = COLOR_PANEL; p_left.line.fill.background()
 
-tf = s10.shapes.add_textbox(Inches(1.0), Inches(1.85), Inches(2.6), Inches(4.5)).text_frame
+tf = s9.shapes.add_textbox(Inches(1.0), Inches(1.85), Inches(2.6), Inches(4.5)).text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
 r = p.add_run(); r.text = "WORK ETHIC\n\n"; r.font.name = FONT_HEADING; r.font.size = Pt(11); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
@@ -1097,13 +1039,13 @@ for idx, (num, title, body) in enumerate(stories):
     top_pos = Inches(1.65 + idx * 1.7)
     
     # Icon box
-    ib = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(4.3), top_pos, Inches(0.65), Inches(0.65))
+    ib = s9.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(4.3), top_pos, Inches(0.65), Inches(0.65))
     ib.fill.solid(); ib.fill.fore_color.rgb = COLOR_TINT; ib.line.color.rgb = COLOR_PRIMARY; ib.line.width = Pt(1.5)
     tf = ib.text_frame; p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
     r = p.add_run(); r.text = num; r.font.name = FONT_HEADING; r.font.size = Pt(14); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
 
     # Story text
-    s_box = s10.shapes.add_textbox(Inches(5.15), top_pos, Inches(7.3), Inches(1.55))
+    s_box = s9.shapes.add_textbox(Inches(5.15), top_pos, Inches(7.3), Inches(1.55))
     tf = s_box.text_frame; tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     p = tf.paragraphs[0]
     r = p.add_run(); r.text = title + "\n"; r.font.name = FONT_HEADING; r.font.size = Pt(13); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
@@ -1111,45 +1053,45 @@ for idx, (num, title, body) in enumerate(stories):
     r = p.add_run(); r.text = body; r.font.name = FONT_BODY; r.font.size = Pt(9.5); r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
-# SLIDE 11 : THANK YOU & CONTACT
+# SLIDE 10 : THANK YOU & CONTACT
 # ==============================================================================
-s11 = prs.slides.add_slide(blank_layout)
-set_slide_background(s11, COLOR_BG)
+s10 = prs.slides.add_slide(blank_layout)
+set_slide_background(s10, COLOR_BG)
 
-up11 = s11.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(0.6), Inches(12.133), Inches(4.9))
-up11.fill.solid(); up11.fill.fore_color.rgb = COLOR_WHITE; up11.line.color.rgb = COLOR_PRIMARY; up11.line.width = Pt(3.5)
+up10 = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(0.6), Inches(12.133), Inches(4.9))
+up10.fill.solid(); up10.fill.fore_color.rgb = COLOR_WHITE; up10.line.color.rgb = COLOR_PRIMARY; up10.line.width = Pt(3.5)
 
-tf = s11.shapes.add_textbox(Inches(1.0), Inches(0.9), Inches(4.0), Inches(0.8)).text_frame
+tf = s10.shapes.add_textbox(Inches(1.0), Inches(0.9), Inches(4.0), Inches(0.8)).text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
 r = p.add_run(); r.text = "JANG SANGGYUN\nBRAND & CRM MARKETER"; r.font.name = FONT_HEADING; r.font.size = Pt(12); r.font.bold = True; r.font.color.rgb = COLOR_DARK
 
 # Giant Title: THANK YOU
-tf = s11.shapes.add_textbox(Inches(1.0), Inches(1.85), Inches(11.333), Inches(1.4)).text_frame
+tf = s10.shapes.add_textbox(Inches(1.0), Inches(1.85), Inches(11.333), Inches(1.4)).text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
 r = p.add_run(); r.text = "THANK YOU"; r.font.name = FONT_HEADING; r.font.size = Pt(72); r.font.bold = True; r.font.color.rgb = COLOR_DARK
 
 # Subtitle
-tf = s11.shapes.add_textbox(Inches(1.0), Inches(3.3), Inches(11.333), Inches(0.5)).text_frame
+tf = s10.shapes.add_textbox(Inches(1.0), Inches(3.3), Inches(11.333), Inches(0.5)).text_frame
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
 r = p.add_run(); r.text = "검토해 주셔서 감사합니다. 함께 더 큰 성장을 만들 준비가 되어 있습니다."; r.font.name = FONT_HEADING; r.font.size = Pt(17); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
 
 # Chips
-tf = s11.shapes.add_textbox(Inches(1.0), Inches(3.95), Inches(11.333), Inches(0.4)).text_frame
+tf = s10.shapes.add_textbox(Inches(1.0), Inches(3.95), Inches(11.333), Inches(0.4)).text_frame
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
 r = p.add_run(); r.text = "#즉시_실무_투입_가능    #TOEIC_825점_1종보통    #SDT_특수임무대_만기전역"; r.font.name = FONT_BODY; r.font.size = Pt(12); r.font.bold = True; r.font.color.rgb = COLOR_PRIMARY
 
 # Bottom Green Bar
-btm11 = s11.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(5.7), Inches(12.133), Inches(1.2))
-btm11.fill.solid(); btm11.fill.fore_color.rgb = COLOR_PRIMARY; btm11.line.fill.background()
+btm10 = s10.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.6), Inches(5.7), Inches(12.133), Inches(1.2))
+btm10.fill.solid(); btm10.fill.fore_color.rgb = COLOR_PRIMARY; btm10.line.fill.background()
 
-tf = s11.shapes.add_textbox(Inches(1.0), Inches(6.05), Inches(3.0), Inches(0.6)).text_frame
+tf = s10.shapes.add_textbox(Inches(1.0), Inches(6.05), Inches(3.0), Inches(0.6)).text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
 r = p.add_run(); r.text = "Contact"; r.font.name = FONT_HEADING; r.font.size = Pt(22); r.font.bold = True; r.font.color.rgb = COLOR_WHITE
 
-tf = s11.shapes.add_textbox(Inches(4.2), Inches(6.1), Inches(8.1), Inches(0.5)).text_frame
+tf = s10.shapes.add_textbox(Inches(4.2), Inches(6.1), Inches(8.1), Inches(0.5)).text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]; p.alignment = PP_ALIGN.RIGHT
 

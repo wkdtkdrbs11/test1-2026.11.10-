@@ -1231,31 +1231,135 @@ body.deck-mode .deck-nav-bar {
   color: var(--text-secondary);
 }
 
-/* Slide 7 Specific: Unified Font Sizes & Reels + Mini Graph Card */
-#slide-7 .vbar-item-title {
+/* Slide 7 & Slide 8 Specific: Unified Font Sizes & Components */
+#slide-7 .vbar-item-title,
+#slide-8 .vbar-item-title {
   font-size: 1.34rem;
   font-weight: 900;
   letter-spacing: -0.015em;
 }
 
-#slide-7 .vbar-item-en {
+#slide-7 .vbar-item-en,
+#slide-8 .vbar-item-en {
   font-size: 0.94rem;
   font-weight: 800;
   color: var(--green-primary);
 }
 
-#slide-7 .green-bullet-list {
+#slide-7 .green-bullet-list,
+#slide-8 .green-bullet-list {
   font-size: 1.05rem;
   line-height: 1.65;
   gap: 10px;
 }
 
-#slide-7 .green-bullet-list li {
+#slide-7 .green-bullet-list li,
+#slide-8 .green-bullet-list li {
   padding-left: 18px;
 }
 
-#slide-7 .green-bullet-list li::before {
+#slide-7 .green-bullet-list li::before,
+#slide-8 .green-bullet-list li::before {
   font-size: 1.2rem;
+}
+
+#slide-8 .chart-showcase-box {
+  padding: 14px 18px;
+  gap: 10px;
+}
+
+.s8-poster-frame {
+  height: 180px;
+  background: #ffffff;
+  border: 1.5px solid var(--green-primary);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.s8-poster-frame img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.s8-funnel-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.s8-funnel-step {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.s8-funnel-step.step-1 {
+  background: #ffffff;
+  border: 1.5px solid var(--green-mid);
+}
+
+.s8-funnel-step.step-2 {
+  background: #ffffff;
+  border: 2px solid var(--green-primary);
+}
+
+.s8-funnel-step.step-3 {
+  background: var(--green-primary);
+  color: #ffffff;
+  padding: 10px 14px;
+}
+
+.s8-fs-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.s8-fs-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.s8-fs-label.green {
+  color: var(--green-primary);
+}
+
+.s8-fs-label.white {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.s8-fs-desc {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.s8-fs-desc.white {
+  color: #ffffff;
+  font-size: 0.94rem;
+}
+
+.s8-fs-metric {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--green-primary);
+}
+
+.s8-fs-metric.white {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffffff;
 }
 
 /* S7 Visual Graph Card */
