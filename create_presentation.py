@@ -35,6 +35,7 @@ IMG_CHERRY = os.path.join(BASE_DIR, "assets", "images", "cherrycoffee.jpg")
 IMG_POSTER = os.path.join(BASE_DIR, "assets", "images", "ai-mvp-poster.jpg")
 IMG_TRASH = os.path.join(BASE_DIR, "assets", "images", "trash-cups-overflow.jpg")
 IMG_STAFF = os.path.join(BASE_DIR, "assets", "images", "staff-sorting-interview.jpg")
+IMG_FESTIVAL = os.path.join(BASE_DIR, "assets", "images", "songdo-beer-festival.jpg")
 
 prs = Presentation()
 prs.slide_width = Inches(13.333)
@@ -452,12 +453,12 @@ add_main_frame_box(s4)
 
 # 3 Columns
 cols_s4 = [
-    ("고객 및 시장 배경", "Customer & Market", IMG_TRASH, [
+    ("고객 및 시장 배경", "Customer & Market", IMG_FESTIVAL, [
         "워터밤·맥주축제 등 대형 행사장과 무인카페에서 단시간에 대량의 일회용 플라스틱 컵 배출",
         "컵 내부의 약 90%가 빈 공기 상태로 버려져 수거 부피가 폭증하고 잔여 음료 부패로 악취 유발",
         "주최 측은 막대한 청소 용역비와 분리 비용을 부담하나 실질 재활용률은 16.4%에 그침"
     ]),
-    ("문제 상황", "Problem Definition", IMG_SMARTBIN, [
+    ("문제 상황", "Problem Definition", IMG_TRASH, [
         "초기에는 부피만 줄이는 ‘단순 3단 압축 쓰레기통’을 구상했으나 실제 처리 과정 검증 착수",
         "재질 혼합 문제: PET, PP, PS 등 서로 다른 재질이 섞여 압축되면 선별 불가로 원료 가치 0원",
         "세척 한계: 남은 음료 오염이 플라스틱 표면에 스며들면 사후 세척으로도 재생 원료화 불가"
