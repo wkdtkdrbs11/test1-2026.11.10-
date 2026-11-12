@@ -183,47 +183,23 @@ r.font.size = Pt(13)
 r.font.bold = True
 r.font.color.rgb = COLOR_PRIMARY
 
-# Bottom Footer Meta inside Box (No Green Box)
-f_line = s1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.0), Inches(6.05), Inches(11.333), Inches(0.015))
+# Bottom Footer Meta inside Box (Name Only, Right-Aligned)
+f_line = s1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(1.0), Inches(6.12), Inches(11.333), Inches(0.015))
 f_line.fill.solid()
 f_line.fill.fore_color.rgb = COLOR_LIGHT
 f_line.line.fill.background()
 
-f_name = s1.shapes.add_textbox(Inches(1.0), Inches(6.2), Inches(3.5), Inches(0.45))
+f_name = s1.shapes.add_textbox(Inches(7.0), Inches(6.22), Inches(5.333), Inches(0.45))
 tf = f_name.text_frame
 tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 p = tf.paragraphs[0]
+p.alignment = PP_ALIGN.RIGHT
 r = p.add_run()
 r.text = "Jang, sang-gyun"
 r.font.name = FONT_HEADING
-r.font.size = Pt(14)
+r.font.size = Pt(16)
 r.font.bold = True
 r.font.color.rgb = COLOR_DARK
-
-f_contact = s1.shapes.add_textbox(Inches(4.8), Inches(6.22), Inches(7.5), Inches(0.45))
-tf = f_contact.text_frame
-tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
-p = tf.paragraphs[0]
-p.alignment = PP_ALIGN.RIGHT
-
-r = p.add_run()
-r.text = "📞 010-5779-0849   "
-r.font.name = FONT_HEADING
-r.font.size = Pt(13)
-r.font.bold = True
-r.font.color.rgb = COLOR_PRIMARY
-
-r = p.add_run()
-r.text = "  ✉️ wkdtkdrbs11@naver.com   "
-r.font.name = FONT_BODY
-r.font.size = Pt(11)
-r.font.color.rgb = COLOR_TEXT
-
-r = p.add_run()
-r.text = "  🌐 숭실대학교 벤처중소기업학과"
-r.font.name = FONT_BODY
-r.font.size = Pt(11)
-r.font.color.rgb = COLOR_TEXT
 
 # ==============================================================================
 # SLIDE 2 : 이력사항 (PROFILE)
