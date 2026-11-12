@@ -1048,3 +1048,28 @@ r = p.add_run(); r.text = "✉️ wkdtkdrbs11@naver.com"; r.font.name = FONT_BOD
 out_path = os.path.join(BASE_DIR, "마케터_장상균_포트폴리오.pptx")
 prs.save(out_path)
 print(f"SUCCESS: Successfully generated PPTX deck at {out_path}")
+
+# Auto-export to ultra-high-resolution vector PDF using PowerPoint COM
+try:
+    import subprocess
+    pdf_out = os.path.join(BASE_DIR, "마케터_장상균_포트폴리오.pdf")
+    ps_cmd = f"""
+$pptxPath = '{out_path}'
+$pdfPath = '{pdf_out}'
+try {{
+    $ppt = New-Object -ComObject PowerPoint.Application
+    $pres = $ppt.Presentations.Open($pptxPath, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoFalse)
+    $pres.SaveAs($pdfPath, 32)
+    $pres.Close()
+    $ppt.Quit()
+    Write-Output 'SUCCESS: Generated ultra-high-resolution vector PDF via PowerPoint native export'
+}} catch {{
+    Write-Output ('PowerPoint Export Failed: ' + $_)
+}} finally {{
+    Stop-Process -Name 'POWERPNT' -Force -ErrorAction SilentlyContinue
+}}
+"""
+    res = subprocess.run(["powershell", "-NoProfile", "-Command", ps_cmd], capture_output=True, text=True, timeout=30)
+    print(res.stdout.strip())
+except Exception as e:
+    print("Auto PDF export skipped:", e)
