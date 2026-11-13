@@ -1778,14 +1778,15 @@ body.capture-slide-mode .template-sheet.active-capture {
 
 @media print {
   @page {
-    size: 297mm 167mm; /* 16:9 widescreen ratio */
+    size: 1920px 1080px;
     margin: 0;
   }
 
   html, body {
-    background: var(--bg-page) !important;
+    width: 1920px !important;
     margin: 0 !important;
     padding: 0 !important;
+    background: var(--bg-page) !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -1798,7 +1799,7 @@ body.capture-slide-mode .template-sheet.active-capture {
 
   .portfolio-deck {
     max-width: none !important;
-    width: 100% !important;
+    width: 1920px !important;
     margin: 0 !important;
     padding: 0 !important;
     gap: 0 !important;
@@ -1806,18 +1807,20 @@ body.capture-slide-mode .template-sheet.active-capture {
 
   .template-sheet {
     display: flex !important;
-    width: 297mm !important;
-    min-height: 167mm !important;
-    height: auto !important;
-    padding: 8mm 12mm !important;
+    width: 1920px !important;
+    height: 1080px !important;
+    min-height: 1080px !important;
+    max-height: 1080px !important;
+    padding: 44px 54px !important;
     margin: 0 !important;
     border: none !important;
     box-shadow: none !important;
+    box-sizing: border-box !important;
     page-break-after: always !important;
     break-after: page !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
-    overflow: visible !important;
+    overflow: hidden !important;
   }
 
   .template-sheet:last-child {
